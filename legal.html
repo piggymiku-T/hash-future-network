@@ -1,1 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060B14">
+<title>法務情報 | HASH FUTURE株式会社</title>
+<meta name="description" content="HASH FUTURE株式会社の個人情報保護方針、情報セキュリティ方針、アクセシビリティガイドライン、サイトの利用条件を掲載しています。">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060B14;--panel:#0B1220;--panel-2:#0E1727;
+  --border:#1A2740;--border-2:#243352;
+  --accent:#00E5FF;--accent-2:#7B61FF;--accent-3:#00FFA3;
+  --text:#E8ECF4;--text-2:#C5CDDD;--muted:#6B7A99;--muted-2:#8A98B8;
+  --radius:16px;--radius-sm:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 900px 700px at 15% 8%,rgba(0,229,255,.05),transparent 55%),
+    radial-gradient(ellipse 1000px 800px at 85% 18%,rgba(123,97,255,.05),transparent 55%)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:rgba(0,229,255,.3);color:#fff}
 
+/* HEADER */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,11,20,.72);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(26,39,64,.5);padding-top:calc(18px + env(safe-area-inset-top))}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-img{height:42px;width:auto;display:block;filter:drop-shadow(0 0 20px rgba(0,229,255,.15))}
+.site-nav{display:flex;gap:32px;align-items:center}
+.site-nav a{font-size:13px;font-weight:500;color:var(--muted-2);transition:color .2s;position:relative;padding:4px 0}
+.site-nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.site-nav a:hover{color:var(--accent)}
+.site-nav a:hover::after{transform:scaleX(1)}
+
+/* PAGE HEADER */
+.page-hero{padding:180px 40px 60px;position:relative;z-index:1}
+.page-hero-inner{max-width:900px;margin:0 auto}
+.page-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding:5px 12px;border:1px solid rgba(0,229,255,.22);border-radius:6px;background:rgba(0,229,255,.04)}
+.page-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.page-hero h1{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.6px;line-height:1.15;margin-bottom:18px}
+.page-hero p{font-size:15px;color:var(--muted-2);max-width:640px;line-height:1.85}
+
+/* LAYOUT */
+.legal-layout{max-width:1200px;margin:0 auto;padding:0 40px 120px;display:grid;grid-template-columns:240px 1fr;gap:60px;position:relative;z-index:1}
+
+/* SIDEBAR NAV */
+.legal-nav{position:sticky;top:120px;align-self:start;border-left:1px solid var(--border);padding-left:24px}
+.legal-nav h4{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:18px}
+.legal-nav a{display:block;font-size:13px;color:var(--muted-2);padding:8px 0;line-height:1.5;transition:all .2s;position:relative}
+.legal-nav a::before{content:'';position:absolute;left:-25px;top:50%;width:14px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.legal-nav a:hover{color:var(--accent)}
+.legal-nav a:hover::before{transform:scaleX(1)}
+
+/* CONTENT */
+.legal-content{max-width:760px}
+.legal-section{margin-bottom:80px;scroll-margin-top:120px}
+.legal-section:last-child{margin-bottom:0}
+.legal-section h2{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.8px;margin-bottom:8px;line-height:1.3;display:flex;align-items:center;gap:14px}
+.legal-section h2 .num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);padding:5px 10px;border:1px solid rgba(0,229,255,.25);border-radius:6px;background:rgba(0,229,255,.06);letter-spacing:.5px;flex-shrink:0}
+.legal-section .updated{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:32px;display:block}
+.legal-section .intro{font-size:14.5px;color:var(--muted-2);line-height:1.9;margin-bottom:32px;padding:20px 24px;background:linear-gradient(180deg,rgba(14,23,39,.7),rgba(11,18,32,.5));border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px}
+.legal-block{margin-bottom:32px}
+.legal-block h3{font-size:16px;font-weight:700;letter-spacing:-.3px;margin-bottom:14px;color:var(--text);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.legal-block h3 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent);flex-shrink:0;margin-top:11px}
+.legal-block p{font-size:14px;color:var(--text-2);line-height:1.9;margin-bottom:12px}
+.legal-block p:last-child{margin-bottom:0}
+.legal-block ol,.legal-block ul{margin:0;padding-left:0;list-style:none;counter-reset:li}
+.legal-block ol li,.legal-block ul li{font-size:14px;color:var(--text-2);line-height:1.9;padding:10px 0 10px 32px;position:relative;border-bottom:1px solid rgba(26,39,64,.4)}
+.legal-block ol li:last-child,.legal-block ul li:last-child{border-bottom:none}
+.legal-block ol{counter-reset:li}
+.legal-block ol li::before{counter-increment:li;content:counter(li,decimal-leading-zero);position:absolute;left:0;top:11px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.5px}
+.legal-block ul li::before{content:'';position:absolute;left:8px;top:20px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.5}
+.legal-block ul li:hover::before{opacity:1}
+
+/* TABLE */
+.info-table{width:100%;border-collapse:collapse;font-size:13.5px;background:rgba(14,23,39,.6);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-top:16px}
+.info-table tr{border-bottom:1px solid rgba(26,39,64,.5)}
+.info-table tr:last-child{border-bottom:none}
+.info-table td{padding:14px 18px;vertical-align:top;line-height:1.75}
+.info-table td:first-child{width:32%;color:var(--muted);font-weight:600;background:rgba(0,0,0,.15)}
+.info-table td:last-child{color:var(--text-2)}
+
+/* FOOTER */
+.site-footer{padding:60px 40px 40px;border-top:1px solid var(--border);background:linear-gradient(180deg,transparent,rgba(6,11,20,.9));position:relative;z-index:1;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;margin-bottom:56px}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.footer-brand .logo-img{height:38px}
+.footer-desc{font-size:12.5px;color:var(--muted);line-height:1.8;max-width:380px}
+.footer-col h4{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:20px}
+.footer-col a{display:block;font-size:13px;color:var(--muted-2);padding:6px 0;transition:all .2s}
+.footer-col a:hover{color:var(--accent);padding-left:6px}
+.footer-bottom{max-width:1320px;margin:0 auto;padding-top:28px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.3px}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .legal-layout{grid-template-columns:1fr;gap:40px;padding:0 20px 80px}
+  .legal-nav{position:static;border-left:none;padding-left:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0}
+  .legal-nav a{display:inline-block;padding:8px 14px 8px 0;margin-right:20px}
+  .legal-nav a::before{display:none}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media (max-width:768px){
+  .site-header{padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top))}
+  .site-nav{display:none}
+  .logo-img{height:34px}
+  .page-hero{padding:130px 20px 40px}
+  .page-hero h1{letter-spacing:-1px}
+  .legal-section{margin-bottom:60px}
+  .legal-section h2{flex-direction:column;align-items:flex-start;gap:10px}
+  .legal-block ol li,.legal-block ul li{padding:10px 0 10px 28px}
+  .info-table td{display:block;width:100% !important}
+  .info-table td:first-child{border-bottom:1px solid rgba(26,39,64,.5)}
+  .footer-inner{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center;gap:10px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="logo">
+    <img src="assets/logo.png" alt="HASH FUTURE" class="logo-img">
+  </a>
+  <nav class="site-nav">
+    <a href="index.html#services">サービス</a>
+    <a href="index.html#idc">AIインフラ</a>
+    <a href="index.html#pricing">料金</a>
+    <a href="index.html#company">会社情報</a>
+    <a href="index.html#contact">お問い合わせ</a>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Legal</div>
+    <h1>法務情報</h1>
+    <p>HASH FUTURE株式会社が事業活動を行う上で遵守する基本方針をまとめています。個人情報の保護、情報セキュリティ、アクセシビリティ、サイト利用条件についてご確認いただけます。</p>
+  </div>
+</section>
+
+<div class="legal-layout">
+
+  <nav class="legal-nav">
+    <h4>Contents</h4>
+    <a href="#privacy">個人情報保護方針</a>
+    <a href="#security">情報セキュリティ方針</a>
+    <a href="#accessibility">アクセシビリティ</a>
+    <a href="#terms">サイトの利用条件</a>
+  </nav>
+
+  <div class="legal-content">
+
+    <!-- 1. 個人情報保護方針 -->
+    <section class="legal-section" id="privacy">
+      <h2><span class="num">01</span>個人情報保護方針</h2>
+      <span class="updated">Privacy Policy</span>
+
+      <p class="intro">当社は、事業活動を通じて取得した個人情報の保護に努めることを社会的責務と認識し、以下の方針に基づく個人情報の保護に努めます。</p>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>1. 個人情報の取得について</h3>
+        <p>当社は、適法かつ公正な手段によって、個人情報を取得致します。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>2. 個人情報の利用について</h3>
+        <ol>
+          <li>当社は、個人情報を取得の際に示した利用目的の範囲内で、業務の遂行上必要な限りにおいて、利用します。</li>
+          <li>当社は、個人情報を第三者との間で共同利用し、又は、個人情報の取扱いを第三者に委託する場合には、当該第三者につき厳正な調査を行ったうえ、秘密を保持させるために、適正な監督を行います。</li>
+        </ol>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>3. 個人情報の第三者提供について</h3>
+        <p>当社は、法令に定める場合を除き、個人情報を、事前に本人の同意を得ることなく、第三者に提供致しません。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>4. 個人情報の管理について</h3>
+        <ol>
+          <li>当社は、個人情報の正確性を保ち、これを安全に管理致します。</li>
+          <li>当社は、個人情報の紛失、破壊、改ざん及び漏えいなどを防止するための対策を講じます。</li>
+          <li>当社は、個人情報を持ち出し、外部へ送信する等により漏えいさせません。</li>
+        </ol>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>5. 個人情報の開示・訂正・利用停止・消去について</h3>
+        <p>当社は、本人が自己の個人情報について、開示・訂正・利用停止・消去等を求める権利を有していることを確認し、これらの要求がある場合には、誠実に対応します。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>お問い合わせ窓口</h3>
+        <table class="info-table">
+          <tr><td>窓口</td><td>HASH FUTURE株式会社 個人情報保護担当</td></tr>
+          <tr><td>E-MAIL</td><td>info@hash-future.com</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. 情報セキュリティ方針 -->
+    <section class="legal-section" id="security">
+      <h2><span class="num">02</span>情報セキュリティ方針</h2>
+      <span class="updated">Information Security Policy</span>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>1. 情報セキュリティへの取組み</h3>
+        <p>当社は、「情報セキュリティは、当社の経営上及び事業上の最重要課題のひとつである。」との認識のもとにこれに取組む。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>2. 情報資産の保護</h3>
+        <p>当社は、情報資産の機密性、完全性及び可用性に対する脅威から情報資産を確実に保護するため、業務内容に応じた適切な管理策を講じる。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>3. コンプライアンス・プログラム</h3>
+        <p>当社は、役員及び従業員に情報資産保護の重要性を認識させ、情報セキュリティマネジメントシステムを確立・徹底するためのコンプライアンス・プログラムを策定し、これを実施し、維持し及び継続的に改善する。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>4. 法令等の遵守</h3>
+        <p>当社は、コンプライアンス・プログラムを情報セキュリティに関する法令、規格その他の規範に準拠・適合させるとともに、これらの法令、規格その他の規範を遵守する。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>5. 教育・訓練</h3>
+        <p>当社は、役員及び従業員の情報セキュリティへの意識向上を図るとともに、情報セキュリティ、コンプライアンス・プログラムについての教育・訓練を行なう。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>6. 事故発生予防と対応</h3>
+        <p>当社は、情報セキュリティ事故の発生予防に努めるとともに、万一、事故が発生した場合には、再発防止策を含む適切な対策を速やかに講じる。</p>
+      </div>
+    </section>
+
+    <!-- 3. アクセシビリティ -->
+    <section class="legal-section" id="accessibility">
+      <h2><span class="num">03</span>アクセシビリティガイドライン</h2>
+      <span class="updated">Accessibility Guideline</span>
+
+      <p class="intro">Webサイトは生活に必要な多様な役割を果たすようになってきており、企業のWebサイトにおける情報発信の重要性が高まっています。そこで当社は当サイトをアクセシブルにすることは企業としての責任と考え、次の3点を策定の際の基準としました。</p>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>1. 項目の重要性</h3>
+        <p>その項目を守らないことによる影響が大きいかどうか。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>2. 実現および確認の容易性</h3>
+        <p>現在の技術・情報で容易に実施できるかどうか。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>3. ユーザーの意見</h3>
+        <p>ユーザーの利用状況に即したものかどうか。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>対応方針</h3>
+        <p>当社は、WCAG 2.1（Web Content Accessibility Guidelines）Level AA を参考基準として、当サイトの継続的な改善に努めます。アクセシビリティに関するご意見・ご要望は、下記の窓口までお寄せください。</p>
+        <table class="info-table">
+          <tr><td>窓口</td><td>HASH FUTURE株式会社 Web担当</td></tr>
+          <tr><td>E-MAIL</td><td>info@hash-future.com</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. サイトの利用条件 -->
+    <section class="legal-section" id="terms">
+      <h2><span class="num">04</span>サイトの利用条件</h2>
+      <span class="updated">Terms of Use</span>
+
+      <p class="intro">HASH FUTURE株式会社（以下「当社」）が運営するWebサイト（以下「本サイト」）をご利用いただく際の条件を定めます。本サイトをご利用いただいた場合、本条件に同意したものとみなします。</p>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第1条（著作権・商標）</h3>
+        <p>本サイトに掲載されている文章、画像、動画、ロゴ、デザインその他一切のコンテンツに関する著作権、商標権その他の知的財産権は、当社または正当な権利を有する第三者に帰属します。私的利用の範囲を超える複製、転載、改変、頒布、公衆送信等の行為は、当社の事前の書面による承諾なく行うことはできません。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第2条（免責事項）</h3>
+        <p>当社は、本サイトに掲載する情報について、その正確性、完全性、有用性、最新性等について細心の注意を払っておりますが、これらの内容を保証するものではありません。本サイトのご利用により生じたいかなる損害についても、当社は一切の責任を負いかねます。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第3条（サービスの変更・中断・終了）</h3>
+        <p>当社は、予告なく本サイトの内容を変更し、または提供を中断・終了することがあります。これにより利用者に生じたいかなる損害についても、当社は一切の責任を負いかねます。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第4条（リンクについて）</h3>
+        <p>本サイトからリンクする第三者のWebサイト、および本サイトへリンクする第三者のWebサイトの内容については、当社は一切の責任を負いかねます。リンクの設定は、各サイトの利用条件に従って行ってください。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第5条（禁止事項）</h3>
+        <p>本サイトのご利用にあたり、以下の行為を禁止します。</p>
+        <ul>
+          <li>当社または第三者の著作権、商標権その他の知的財産権を侵害する行為</li>
+          <li>当社または第三者の財産、プライバシー等を侵害する行為</li>
+          <li>本サイトの運営を妨害する行為、またはそのおそれのある行為</li>
+          <li>虚偽の情報を送信する行為</li>
+          <li>法令または公序良俗に違反する行為</li>
+          <li>その他、当社が不適切と判断する行為</li>
+        </ul>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第6条（準拠法・管轄裁判所）</h3>
+        <p>本サイトのご利用および本条件の解釈については、日本法を準拠法とします。本サイトに関連して生じた紛争については、横浜地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>第7条（本条件の変更）</h3>
+        <p>当社は、本条件を予告なく変更することがあります。変更後の本条件は、本サイト上に掲載した時点から効力を生じるものとします。</p>
+      </div>
+
+      <div class="legal-block">
+        <h3><span class="dot"></span>制定日</h3>
+        <table class="info-table">
+          <tr><td>制定</td><td>2013年5月27日</td></tr>
+          <tr><td>最終改定</td><td>2026年4月1日</td></tr>
+          <tr><td>運営</td><td>HASH FUTURE株式会社<br>〒251-0041 神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</td></tr>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="HASH FUTURE" class="logo-img">
+      </div>
+      <p class="footer-desc">AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="index.html#services">プロジェクトマネジメント</a>
+      <a href="index.html#services">システムコンサルティング</a>
+      <a href="index.html#services">システム運用支援</a>
+      <a href="index.html#pricing">各種サービス料金</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#privacy">個人情報保護方針</a>
+      <a href="#security">情報セキュリティ方針</a>
+      <a href="#accessibility">アクセシビリティ</a>
+      <a href="#terms">サイトの利用条件</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2013–2026 HASH FUTURE Co., Ltd. All rights reserved.</span>
+    <span>神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</span>
+  </div>
+</footer>
+
+<script>
+/* Smooth scroll with header offset handled by scroll-margin-top in CSS */
+document.querySelectorAll('.legal-nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.startsWith('#')){
+      e.preventDefault();
+      const el=document.querySelector(id);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+</script>
+
+</body>
+</html>
