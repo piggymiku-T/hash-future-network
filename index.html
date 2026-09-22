@@ -144,33 +144,33 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .detail-item .v{color:var(--muted-2);font-size:13px;line-height:1.75}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:1fr;gap:24px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
 .pricing-card{background:linear-gradient(180deg,rgba(14,23,39,.85),rgba(11,18,32,.6));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .35s;position:relative}
 .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
 .pricing-card[data-accent="violet"]::before{background:linear-gradient(90deg,transparent,var(--accent-2),transparent)}
 .pricing-card[data-accent="green"]::before{background:linear-gradient(90deg,transparent,var(--accent-3),transparent)}
 .pricing-card:hover{border-color:var(--border-3);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.pricing-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:28px 32px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(0,229,255,.04),transparent)}
+.pricing-head{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:14px;align-items:center;padding:22px 24px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(0,229,255,.04),transparent)}
 .pricing-head-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--accent);padding:6px 12px;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.25);border-radius:8px;letter-spacing:.5px}
 .pricing-card[data-accent="violet"] .pricing-head-num{color:var(--accent-2);background:rgba(123,97,255,.08);border-color:rgba(123,97,255,.25)}
 .pricing-card[data-accent="green"] .pricing-head-num{color:var(--accent-3);background:rgba(0,255,163,.08);border-color:rgba(0,255,163,.25)}
 .pricing-head-title{font-size:17px;font-weight:700;letter-spacing:-.3px}
 .pricing-head-title small{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:6px;font-weight:500;text-transform:uppercase}
-.pricing-head-range{text-align:right;font-family:'JetBrains Mono',monospace}
+.pricing-head-range{grid-column:1/-1;text-align:left;font-family:'JetBrains Mono',monospace;padding-top:14px;border-top:1px solid var(--border)}
 .pricing-head-range .label{display:block;font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;font-weight:500}
-.pricing-head-range .value{font-size:20px;color:var(--accent);font-weight:700;letter-spacing:-.5px}
+.pricing-head-range .value{font-size:18px;color:var(--accent);font-weight:700;letter-spacing:-.5px}
 .pricing-card[data-accent="violet"] .pricing-head-range .value{color:var(--accent-2)}
 .pricing-card[data-accent="green"] .pricing-head-range .value{color:var(--accent-3)}
 .pricing-list{list-style:none;padding:8px 0}
-.pricing-row{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:16px 32px;border-bottom:1px solid rgba(26,39,64,.35);transition:background .2s;position:relative}
+.pricing-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px 24px;border-bottom:1px solid rgba(26,39,64,.35);transition:background .2s;position:relative}
 .pricing-row:last-child{border-bottom:none}
 .pricing-row:hover{background:rgba(0,229,255,.03)}
-.pricing-name{font-size:13.5px;color:var(--text-2);font-weight:500;line-height:1.55;display:flex;align-items:center;gap:10px}
+.pricing-name{font-size:12.5px;color:var(--text-2);font-weight:500;line-height:1.5;display:flex;align-items:flex-start;gap:8px}
 .pricing-name::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--muted);transition:all .2s;flex-shrink:0}
 .pricing-row:hover .pricing-name::before{background:var(--accent);box-shadow:0 0 8px var(--accent)}
 .pricing-card[data-accent="violet"] .pricing-row:hover .pricing-name::before{background:var(--accent-2);box-shadow:0 0 8px var(--accent-2)}
 .pricing-card[data-accent="green"] .pricing-row:hover .pricing-name::before{background:var(--accent-3);box-shadow:0 0 8px var(--accent-3)}
-.pricing-price{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text);font-weight:600;letter-spacing:-.2px;white-space:nowrap;text-align:right}
+.pricing-price{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text);font-weight:600;letter-spacing:-.2px;white-space:nowrap;text-align:right;padding-top:1px}
 .pricing-price .note{display:block;font-size:10.5px;color:var(--muted);font-weight:500;letter-spacing:.3px;margin-top:3px;font-family:'Noto Sans JP',sans-serif}
 
 /* COMPANY */
@@ -205,9 +205,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .stats{grid-template-columns:repeat(2,1fr)}
   .company-grid{grid-template-columns:1fr}
   .footer-inner{grid-template-columns:1fr 1fr;gap:40px}
-  .pricing-head{grid-template-columns:auto 1fr;grid-template-rows:auto auto}
-  .pricing-head-range{grid-column:1/-1;text-align:left;padding-top:12px;border-top:1px solid var(--border);margin-top:8px}
-}
+    .pricing-grid{grid-template-columns:1fr;gap:24px}
+  .pricing-head{grid-template-columns:auto 1fr auto;grid-template-rows:auto;gap:24px;padding:28px 32px}
+  .pricing-head-range{grid-column:auto;text-align:right;padding-top:0;border-top:none}
+  .pricing-head-range .value{font-size:20px}
+  .pricing-row{padding:16px 32px;gap:32px}
+  .pricing-name{font-size:13.5px;gap:10px}
+  .pricing-price{font-size:14px}
 @media (max-width:768px){
   .site-header{padding:14px 20px;padding-top:calc(14px + env(safe-area-inset-top))}
   .site-nav{display:none}
