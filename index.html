@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060B14">
+<title>Hash Future — Japan AI Compute Network</title>
+<meta name="description" content="Hash Future connects AI compute infrastructure across Japan. Join our site network.">
+<meta property="og:title" content="Hash Future — Japan AI Compute Network">
+<meta property="og:description" content="Join the Hash Future site network.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060B14;--bg-2:#0A1020;--panel:#0D1524;--border:#1A2740;--border-2:#243352;
+  --accent:#00E5FF;--accent-2:#7B61FF;--accent-3:#00FFA3;
+  --text:#E8ECF4;--muted:#6B7A99;--muted-2:#8A98B8;--danger:#FF5470;
+  --radius:14px;--radius-sm:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter','Noto Sans JP',-apple-system,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 20% 10%,rgba(0,229,255,.08),transparent 60%),
+    radial-gradient(ellipse 900px 700px at 85% 20%,rgba(123,97,255,.08),transparent 60%),
+    radial-gradient(ellipse 700px 500px at 50% 90%,rgba(0,255,163,.05),transparent 60%);
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit}
+
+/* HEADER */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 32px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,11,20,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(26,39,64,.6);transition:padding .3s ease;
+  padding-top:calc(16px + env(safe-area-inset-top));
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));border-radius:8px;
+  font-weight:900;font-size:20px;color:#060B14;box-shadow:0 0 24px rgba(0,229,255,.35);
+  letter-spacing:-1px;font-family:'Inter',sans-serif;
+}
+.logo-text{
+  font-weight:800;font-size:17px;letter-spacing:-.4px;
+  background:linear-gradient(135deg,#fff 0%,var(--accent) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.site-nav{display:flex;gap:28px;align-items:center}
+.site-nav a{font-size:13.5px;font-weight:500;color:var(--muted-2);transition:color .2s}
+.site-nav a:hover{color:var(--accent)}
+.lang-switch{display:flex;gap:2px;padding:3px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:600}
+.lang-switch button{padding:4px 10px;border-radius:5px;color:var(--muted);transition:all .2s}
+.lang-switch button.active{background:var(--accent);color:#060B14}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 32px 60px;overflow:hidden}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.hero-content{position:relative;z-index:2;max-width:1280px;width:100%;margin:0 auto;pointer-events:none}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 14px;
+  border:1px solid rgba(0,229,255,.35);border-radius:100px;
+  font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--accent);
+  background:rgba(0,229,255,.06);margin-bottom:28px;text-transform:uppercase;
+}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.hero h1{font-size:clamp(38px,5.4vw,72px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;max-width:900px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 60%,var(--accent-3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:clamp(15px,1.4vw,18px);color:var(--muted-2);max-width:600px;margin-bottom:40px;line-height:1.7}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:10px;font-size:14.5px;font-weight:600;transition:all .25s ease;border:1px solid transparent}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#060B14;box-shadow:0 8px 32px rgba(0,229,255,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,229,255,.42)}
+.btn-ghost{border-color:var(--border-2);color:var(--text);background:rgba(13,21,36,.6)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn svg{width:16px;height:16px}
+.hero-stats{
+  position:absolute;bottom:40px;right:32px;z-index:2;display:flex;gap:36px;
+  padding:20px 28px;background:rgba(13,21,36,.72);border:1px solid var(--border);
+  border-radius:var(--radius);backdrop-filter:blur(12px);
+}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat-num{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--accent)}
+.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+
+/* SECTIONS */
+.section{position:relative;padding:100px 32px;z-index:1}
+.container{max-width:1280px;margin:0 auto}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section-label::before{content:'';width:32px;height:1px;background:var(--accent)}
+.section-title{font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:20px;max-width:720px}
+.section-desc{font-size:16px;color:var(--muted-2);max-width:640px;line-height:1.75;margin-bottom:56px}
+
+/* FEATURES */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.feature{padding:32px;background:linear-gradient(180deg,rgba(13,21,36,.9),rgba(13,21,36,.5));border:1px solid var(--border);border-radius:var(--radius);transition:all .3s ease;position:relative;overflow:hidden}
+.feature::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
+.feature:hover{border-color:var(--border-2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.feature:hover::before{opacity:1}
+.feature-icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,rgba(0,229,255,.15),rgba(123,97,255,.15));border:1px solid rgba(0,229,255,.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent)}
+.feature-icon svg{width:22px;height:22px}
+.feature h3{font-size:17px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.feature p{font-size:13.5px;color:var(--muted-2);line-height:1.7}
+
+/* FORM SECTION */
+.form-section{background:linear-gradient(180deg,transparent,rgba(10,16,32,.6),transparent);padding-top:120px;padding-bottom:120px}
+.form-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
+.form-visual{position:sticky;top:100px;background:linear-gradient(180deg,rgba(13,21,36,.95),rgba(13,21,36,.6));border:1px solid var(--border);border-radius:var(--radius);padding:28px;overflow:hidden}
+#formCanvas{width:100%;height:420px;display:block;border-radius:var(--radius-sm);background:radial-gradient(ellipse at center,rgba(0,229,255,.06),transparent 70%)}
+.visual-caption{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.visual-caption h4{font-size:13px;font-weight:600;color:var(--muted-2);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.visual-caption h4 span{font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700}
+.progress-bar{height:4px;border-radius:2px;background:var(--border);overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-3));border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1);box-shadow:0 0 12px var(--accent)}
+.node-status{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.node-chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:4px 9px;border-radius:100px;background:rgba(26,39,64,.5);color:var(--muted);border:1px solid var(--border);transition:all .4s ease}
+.node-chip.active{background:rgba(0,229,255,.15);color:var(--accent);border-color:rgba(0,229,255,.5);box-shadow:0 0 12px rgba(0,229,255,.3)}
+
+/* FORM BODY */
+.form-body{background:linear-gradient(180deg,rgba(13,21,36,.95),rgba(10,16,32,.95));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative}
+.form-step-header{padding:24px 32px 20px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(16,26,46,.8),transparent)}
+.step-indicator{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:10px;letter-spacing:1px}
+.step-indicator .current{color:var(--accent);font-weight:700}
+.form-step-header h3{font-size:19px;font-weight:700;letter-spacing:-.3px;display:flex;align-items:center;gap:10px}
+.form-step-header h3 .jp{font-size:13px;color:var(--muted);font-weight:400}
+.step-body{padding:28px 32px;display:none}
+.step-body.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12.5px;font-weight:600;color:var(--muted-2);display:flex;align-items:center;gap:6px}
+.field label .req{color:var(--danger);font-size:14px;line-height:1}
+.field label .hint{font-weight:400;font-size:11px;color:var(--muted);margin-left:auto}
+.field input,.field select,.field textarea{padding:11px 13px;background:rgba(6,11,20,.6);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:16px;transition:all .2s;outline:none;width:100%}
+.field textarea{resize:vertical;min-height:80px;line-height:1.5}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:rgba(0,229,255,.03);box-shadow:0 0 0 3px rgba(0,229,255,.1)}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted);opacity:.6}
+.field select{appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7A99' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.form-actions{padding:20px 32px 28px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-top:1px solid var(--border);background:rgba(6,11,20,.3)}
+.form-actions .step-info{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+.form-actions .btns{display:flex;gap:10px}
+.btn-step{padding:11px 22px;border-radius:8px;font-size:13.5px;font-weight:600;transition:all .2s;border:1px solid var(--border-2)}
+.btn-step.back{color:var(--muted-2)}
+.btn-step.back:hover{color:var(--text);border-color:var(--accent)}
+.btn-step.next{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#060B14;border:none;box-shadow:0 4px 16px rgba(0,229,255,.25)}
+.btn-step.next:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,229,255,.4)}
+.btn-step.submit{background:linear-gradient(135deg,var(--accent-3),var(--accent));color:#060B14;border:none;box-shadow:0 4px 16px rgba(0,255,163,.3)}
+.btn-step:disabled{opacity:.5;cursor:not-allowed}
+.form-message{margin:0 32px 20px;padding:12px 16px;border-radius:8px;font-size:13px;display:none}
+.form-message.ok{display:block;background:rgba(0,255,163,.08);border:1px solid rgba(0,255,163,.3);color:var(--accent-3)}
+.form-message.err{display:block;background:rgba(255,84,112,.08);border:1px solid rgba(255,84,112,.3);color:var(--danger)}
+
+/* SUCCESS */
+.success-screen{padding:48px 32px;text-align:center;display:none}
+.success-screen.active{display:block;animation:fadeUp .5s ease}
+.success-icon{width:72px;height:72px;margin:0 auto 24px;border-radius:50%;background:linear-gradient(135deg,rgba(0,255,163,.2),rgba(0,229,255,.1));border:2px solid var(--accent-3);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(0,255,163,.4);animation:successPulse 2s ease-in-out infinite}
+@keyframes successPulse{0%,100%{box-shadow:0 0 40px rgba(0,255,163,.4)}50%{box-shadow:0 0 60px rgba(0,255,163,.65)}}
+.success-icon svg{width:32px;height:32px;color:var(--accent-3)}
+.success-screen h3{font-size:22px;font-weight:700;margin-bottom:12px}
+.success-screen p{color:var(--muted-2);font-size:14px;max-width:440px;margin:0 auto 28px;line-height:1.7}
+.success-summary{text-align:left;background:rgba(6,11,20,.5);border:1px solid var(--border);border-radius:10px;padding:20px;max-width:440px;margin:0 auto 24px;font-size:13px}
+.success-summary div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(26,39,64,.5)}
+.success-summary div:last-child{border-bottom:none}
+.success-summary .k{color:var(--muted)}
+.success-summary .v{font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:600}
+
+/* FOOTER */
+.site-footer{padding:60px 32px 40px;border-top:1px solid var(--border);background:linear-gradient(180deg,transparent,rgba(6,11,20,.8));position:relative;z-index:1;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+.footer-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-meta{font-size:12.5px;color:var(--muted);display:flex;gap:24px;flex-wrap:wrap}
+.footer-meta a{transition:color .2s}
+.footer-meta a:hover{color:var(--accent)}
+
+/* MOBILE STICKY BAR (hidden on desktop) */
+.mobile-bar{display:none}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .form-wrap{grid-template-columns:1fr;gap:32px}
+  .form-visual{position:static}
+  #formCanvas{height:320px}
+}
+@media (max-width:768px){
+  .site-header{padding:14px 18px;padding-top:calc(14px + env(safe-area-inset-top))}
+  .site-nav{display:none}
+  .logo-text{font-size:15px}
+  .logo-mark{width:32px;height:32px;font-size:18px}
+  .section{padding:64px 18px}
+  .hero{padding:100px 18px 40px;min-height:88vh}
+  .hero h1{letter-spacing:-1.2px;margin-bottom:18px}
+  .hero-sub{font-size:14.5px;margin-bottom:28px}
+  .hero-actions{width:100%}
+  .hero-actions .btn{flex:1;justify-content:center;padding:13px 20px;font-size:14px}
+  .hero-stats{
+    position:static;margin-top:32px;justify-content:space-between;
+    padding:14px 18px;border-radius:12px;gap:12px;
+  }
+  .stat-num{font-size:16px}
+  .stat-label{font-size:10px}
+  .section-title{letter-spacing:-.6px}
+  .section-desc{font-size:14.5px;margin-bottom:36px}
+  .features{grid-template-columns:1fr;gap:14px}
+  .feature{padding:22px}
+  .form-section{padding-top:70px;padding-bottom:100px}
+  .form-visual{padding:18px}
+  #formCanvas{height:220px}
+  .node-chip{font-size:9px;padding:3px 7px}
+  .form-body{border-radius:12px}
+  .form-step-header{padding:18px 18px 14px}
+  .form-step-header h3{font-size:16px;flex-direction:column;align-items:flex-start;gap:2px}
+  .step-body{padding:20px 18px}
+  .field-grid{grid-template-columns:1fr;gap:14px}
+  .field input,.field select,.field textarea{font-size:16px;padding:12px 13px}
+  .form-actions{padding:16px 18px 18px;flex-direction:column-reverse;align-items:stretch;gap:10px}
+  .form-actions .btns{width:100%;gap:8px}
+  .form-actions .btn-step{flex:1;padding:13px;font-size:14px}
+  .step-info{text-align:center}
+  .form-message{margin:0 18px 16px}
+  .success-screen{padding:32px 20px}
+  .success-screen h3{font-size:18px}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-meta{justify-content:center;gap:16px;font-size:11.5px}
+
+  /* mobile sticky submit bar */
+  .mobile-bar{
+    display:flex;position:fixed;left:0;right:0;bottom:0;z-index:99;
+    padding:10px 14px;padding-bottom:calc(10px + env(safe-area-inset-bottom));
+    background:rgba(6,11,20,.92);backdrop-filter:blur(14px);
+    border-top:1px solid var(--border);gap:10px;
+    transform:translateY(100%);transition:transform .3s ease;
+  }
+  .mobile-bar.visible{transform:translateY(0)}
+  .mobile-bar .mb-info{flex:1;font-size:12px;color:var(--muted);display:flex;flex-direction:column;justify-content:center}
+  .mobile-bar .mb-info strong{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:13px}
+  .mobile-bar button{
+    padding:12px 20px;border-radius:8px;font-size:14px;font-weight:600;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#060B14;
+  }
+  .mobile-bar button.back-only{background:transparent;color:var(--muted-2);border:1px solid var(--border-2)}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="#top" class="logo">
+    <div class="logo-mark">H</div>
+    <div class="logo-text">Hash Future</div>
+  </a>
+  <nav class="site-nav">
+    <a href="#about">About</a>
+    <a href="#network">Network</a>
+    <a href="#form">Join</a>
+  </nav>
+  <div class="lang-switch">
+    <button class="active" data-lang="ja">JP</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="cn">CN</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Japan AI Compute Network</div>
+    <h1>Connecting AI compute<br><span class="grad">across Japan.</span></h1>
+    <p class="hero-sub" data-i18n="hero-sub">Hash Futureは、日本全国のAI計算インフラを統合するプラットフォームです。GPUクラスタの展開から電力調達、DC選定、全スタック運用まで、ワンストップで提供します。</p>
+    <div class="hero-actions">
+      <a href="#form" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span data-i18n="cta-primary">Join the Network</span>
+      </a>
+      <a href="#about" class="btn btn-ghost"><span data-i18n="cta-secondary">Learn more</span></a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">47</div><div class="stat-label">Prefectures</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Node Hubs</div></div>
+    <div class="stat"><div class="stat-num">PUE≤1.3</div><div class="stat-label">Target</div></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-label">About Hash Future</div>
+    <h2 class="section-title" data-i18n="about-title">AIインフラを、日本のすみずみまで。</h2>
+    <p class="section-desc" data-i18n="about-desc">Hash Futureは、日本に拠点を置くAIインフラ統合企業です。GPUクラスタの展開に必要なDC場地の選定、法令・耐震・電力の適格性審査、リース交渉、全スタック運用までを一気通貫で提供します。</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3 data-i18n="f1-title">日本全域のサイト選定</h3>
+        <p data-i18n="f1-desc">北海道から九州まで、GPUクラスタに適したDC場地のスクリーニングと評価を実施します。</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 data-i18n="f2-title">電力・PUE適格性審査</h3>
+        <p data-i18n="f2-desc">IT受電容量、PUE、接電ステータス、再エネ比率を精査し、2029年以降の規制にも対応します。</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
+        <h3 data-i18n="f3-title">全スタック運用</h3>
+        <p data-i18n="f3-desc">GPUサーバ、ストレージ、100G専用線、DLC冷却を含む全スタックの設計・調達・運用を代行します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section form-section" id="form">
+  <div class="container">
+    <div class="section-label">Site Intake</div>
+    <h2 class="section-title" data-i18n="form-title">Join the Hash Future Network</h2>
+    <p class="section-desc" data-i18n="form-desc">以下の情報をご提供いただくことで、貴社のDC場地がHash Futureの候補ネットワークに登録されます。全ての情報は機密として取り扱い、選定評価のみに使用いたします。</p>
+
+    <div class="form-wrap">
+      <div class="form-visual">
+        <canvas id="formCanvas"></canvas>
+        <div class="visual-caption">
+          <h4><span data-i18n="network-activation">Network Activation</span><span id="progressText">0 / 8</span></h4>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="node-status" id="nodeStatus">
+            <span class="node-chip" data-node="n1">TOKYO</span>
+            <span class="node-chip" data-node="n2">OSAKA</span>
+            <span class="node-chip" data-node="n3">SAPPORO</span>
+            <span class="node-chip" data-node="n4">SENDAI</span>
+            <span class="node-chip" data-node="n5">NAGOYA</span>
+            <span class="node-chip" data-node="n6">FUKUOKA</span>
+            <span class="node-chip" data-node="n7">HIROSHIMA</span>
+            <span class="node-chip" data-node="n8">NAHA</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-body" id="dcForm" novalidate>
+        <div class="form-step-header">
+          <div class="step-indicator"><span>STEP</span><span class="current" id="stepCurrent">01</span><span>/ 08</span></div>
+          <h3 id="stepTitle">ご提出者情報 <span class="jp">Submitter</span></h3>
+        </div>
+
+        <div class="step-body active" data-step="1" data-node="n1">
+          <div class="field-grid">
+            <div class="field"><label>会社名 <span class="req">*</span><span class="hint">Company</span></label><input type="text" name="company" required placeholder="例：株式会社〇〇"></div>
+            <div class="field"><label>ご担当者氏名 <span class="req">*</span><span class="hint">Contact</span></label><input type="text" name="contact_name" required placeholder="山田 太郎"></div>
+            <div class="field"><label>メールアドレス <span class="req">*</span><span class="hint">Email</span></label><input type="email" name="email" required placeholder="name@company.co.jp"></div>
+            <div class="field"><label>電話番号 <span class="req">*</span><span class="hint">Phone</span></label><input type="tel" name="phone" required placeholder="03-0000-0000"></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="2" data-node="n2">
+          <div class="field-grid">
+            <div class="field"><label>場地名 <span class="req">*</span><span class="hint">Site Name</span></label><input type="text" name="site_name" required placeholder="〇〇データセンター"></div>
+            <div class="field"><label>所在地 <span class="req">*</span><span class="hint">Address</span></label><input type="text" name="site_address" required placeholder="北海道石狩市"></div>
+            <div class="field"><label>場地性質 <span class="req">*</span><span class="hint">Site Type</span></label>
+              <select name="site_type" required><option value="">選択してください</option><option>自社所有（Owned）</option><option>賃借（Leased）</option><option>工場跡地（Former Factory）</option><option>更地・毛坯（Land / Shell）</option></select>
+            </div>
+            <div class="field"><label>DC可用面積（㎡）<span class="hint">Usable Area</span></label><input type="number" name="dc_area_sqm" step="0.01"></div>
+            <div class="field"><label>設置可能ラック数 <span class="req">*</span><span class="hint">Racks</span></label><input type="number" name="rack_count" required></div>
+            <div class="field"><label>ラックあたり電力密度（kW） <span class="req">*</span></label><input type="number" name="kw_per_rack" step="0.01" required></div>
+            <div class="field"><label>賃貸期間（年） <span class="req">*</span><span class="hint">Lease (years)</span></label><input type="number" name="lease_years" step="0.5" required></div>
+            <div class="field"><label>免責期間（月）<span class="hint">Rent Free</span></label><input type="number" name="rent_free_months" step="1"></div>
+            <div class="field full"><label>更新・退出・原状回復条件</label><textarea name="lease_terms" placeholder="更新料、中途解約、原状回復義務など"></textarea></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="3" data-node="n3">
+          <div class="field-grid">
+            <div class="field"><label>建築基準法適合年 <span class="req">*</span></label>
+              <select name="building_code" required><option value="">選択してください</option><option>1981年6月改正基準以降</option><option>1981年6月改正基準以前</option><option>不明</option></select>
+            </div>
+            <div class="field"><label>耐震等級 <span class="req">*</span></label>
+              <select name="seismic_grade" required><option value="">選択してください</option><option>免震（Base Isolation）</option><option>制振（Damping）</option><option>耐震・震度7不倒不壊</option><option>耐震・通常基準</option></select>
+            </div>
+            <div class="field"><label>地盤・液状化リスク</label><input type="text" name="ground_risk" placeholder="地盤調査書の有無など"></div>
+            <div class="field"><label>消防法・隣接距離</label><input type="text" name="fire_compliance" placeholder="隣接建築物10m以上など"></div>
+            <div class="field"><label>設計PUE <span class="req">*</span></label><input type="number" name="design_pue" step="0.01" placeholder="例：1.25" required></div>
+            <div class="field"><label>実測PUE（運用中の場合）</label><input type="number" name="actual_pue" step="0.01"></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="4" data-node="n4">
+          <div class="field-grid">
+            <div class="field"><label>可用IT受電容量（MW） <span class="req">*</span><span class="hint">IT基準</span></label><input type="number" name="it_capacity_mw" step="0.01" required></div>
+            <div class="field"><label>受電電圧 <span class="req">*</span></label>
+              <select name="voltage" required><option value="">選択してください</option><option>特別高圧 20kV以上</option><option>高圧 6kV</option><option>その他</option></select>
+            </div>
+            <div class="field"><label>電力会社 <span class="req">*</span></label><input type="text" name="utility" placeholder="例：北海道電力" required></div>
+            <div class="field"><label>電力単価（円/kWh、税抜） <span class="req">*</span><span class="hint">実効単価</span></label><input type="number" name="power_price_jpy" step="0.01" required></div>
+            <div class="field"><label>接電ステータス <span class="req">*</span></label>
+              <select name="grid_status" required><option value="">選択してください</option><option>供給承諾済み（Committed）</option><option>接続検討中（Under review）</option><option>未申込（Not applied）</option></select>
+            </div>
+            <div class="field"><label>接電工事費負担額（円）</label><input type="number" name="grid_connection_cost" step="1"></div>
+            <div class="field full"><label>将来拡張余地</label><input type="text" name="expansion" placeholder="例：+5MW、2028年"></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="5" data-node="n5">
+          <div class="field-grid">
+            <div class="field"><label>冷却方式 <span class="req">*</span></label>
+              <select name="cooling_type" required><option value="">選択してください</option><option>空冷（Air）</option><option>外気冷房併用（Free cooling）</option><option>水冷DLC（Direct Liquid Cooling）</option><option>液浸（Immersion）</option></select>
+            </div>
+            <div class="field"><label>液冷対応 <span class="req">*</span></label>
+              <select name="liquid_cooling" required><option value="">選択してください</option><option>対応済み（Ready）</option><option>改造可能（Can retrofit）</option><option>非対応（Not available）</option></select>
+            </div>
+            <div class="field"><label>外気冷房可能月数（月/年）</label><input type="number" name="free_cooling_months" step="1"></div>
+            <div class="field"><label>工業用水 可用量・水質</label><input type="text" name="water_supply" placeholder="例：50 m³/日"></div>
+            <div class="field full"><label>CDU / 配管改造見積（円、分項）</label><textarea name="cdu_retrofit_cost" placeholder="CDU：___円 / 配管：___円 / その他：___円"></textarea></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="6" data-node="n6">
+          <div class="field-grid">
+            <div class="field"><label>接続キャリア <span class="req">*</span></label><input type="text" name="carriers" placeholder="NTT、KDDI、ソフトバンク" required></div>
+            <div class="field"><label>100G専用線 月額（円/月/回線、税抜） <span class="req">*</span></label><input type="number" name="line_100g_monthly_jpy" step="1" required></div>
+            <div class="field"><label>専用線 初期工事費（円/回線）</label><input type="number" name="line_setup_cost_jpy" step="1"></div>
+            <div class="field"><label>提供可能回線数（本） <span class="req">*</span></label><input type="number" name="line_count" step="1" required></div>
+            <div class="field"><label>東京IXまでの遅延（ms）</label><input type="number" name="latency_tokyo" step="0.1"></div>
+            <div class="field"><label>大阪IXまでの遅延（ms）</label><input type="number" name="latency_osaka" step="0.1"></div>
+            <div class="field full"><label>暗号ファイバー・クロスコネクト</label><input type="text" name="dark_fiber" placeholder="例：あり、2芯 / XC：5,000円/月"></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="7" data-node="n7">
+          <div class="field-grid">
+            <div class="field"><label>Hosting単価（円/kW/月、税抜） <span class="req">*</span></label><input type="number" name="hosting_jpy_kw_month" step="0.01" required></div>
+            <div class="field"><label>Hosting基準 <span class="req">*</span></label>
+              <select name="hosting_basis" required><option value="">選択してください</option><option>IT kW基準</option><option>総設備kW基準</option></select>
+            </div>
+            <div class="field"><label>Hostingに電気代含む？</label>
+              <select name="hosting_include_power"><option value="">選択してください</option><option>含む</option><option>含まない</option></select>
+            </div>
+            <div class="field"><label>改造工期（月）</label><input type="number" name="retrofit_months" step="0.5"></div>
+            <div class="field"><label>改造投資負担者</label>
+              <select name="retrofit_investor"><option value="">選択してください</option><option>サプライヤー（Supplier）</option><option>顧客（Customer）</option><option>折半（Split）</option></select>
+            </div>
+            <div class="field"><label>ラック設置費（円/台）</label><input type="number" name="install_fee_jpy" step="1"></div>
+            <div class="field full"><label>改造範囲と分項見積（円） <span class="req">*</span></label><textarea name="retrofit_breakdown" placeholder="配電：___円 / 冷却：___円 / 消防：___円 / セキュリティ：___円 / ネットワーク：___円" required></textarea></div>
+          </div>
+        </div>
+
+        <div class="step-body" data-step="8" data-node="n8">
+          <div class="field-grid">
+            <div class="field"><label>法人実効税率（%）</label><input type="number" name="tax_rate" step="0.01" placeholder="例：30.62"></div>
+            <div class="field"><label>固定資産税・都市計画税（円/年）</label><input type="number" name="property_tax_jpy" step="1"></div>
+            <div class="field"><label>GX戦略地域 該当</label>
+              <select name="gx_zone"><option value="">選択してください</option><option>該当（Yes）</option><option>非該当（No）</option></select>
+            </div>
+            <div class="field"><label>地方補助金・税制優遇</label><input type="text" name="subsidies" placeholder="設備投資減税など"></div>
+            <div class="field"><label>外資保有制限</label><input type="text" name="foreign_restriction" placeholder="FEFTA事前届出など"></div>
+            <div class="field full"><label>備考・補足</label><textarea name="remarks" placeholder="上記以外の重要事項、添付資料の説明など"></textarea></div>
+            <div class="field full">
+              <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:13px;font-weight:400">
+                <input type="checkbox" name="confirm_truth" required style="width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:#00E5FF">
+                <span>提出情報は全て事実に基づき、虚偽が判明した場合は評価対象外となることに同意します。<br><span style="color:var(--muted);font-size:11.5px">I confirm the information provided is true and accurate.</span></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-message" id="formMessage"></div>
+
+        <div class="form-actions" id="formActions">
+          <div class="step-info" id="stepInfo">STEP 01 / 08</div>
+          <div class="btns">
+            <button type="button" class="btn-step back" id="btnBack" style="display:none">戻る</button>
+            <button type="button" class="btn-step next" id="btnNext">次へ</button>
+            <button type="submit" class="btn-step submit" id="btnSubmit" style="display:none">提出する</button>
+          </div>
+        </div>
+
+        <div class="success-screen" id="successScreen">
+          <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>ご提出ありがとうございました</h3>
+          <p>貴社の場地ノードがHash Futureネットワークに追加されました。担当者より2営業日以内にご連絡いたします。</p>
+          <div class="success-summary" id="successSummary"></div>
+          <button type="button" class="btn-step back" id="btnDownload" style="padding:11px 22px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--muted-2);border:1px solid var(--border-2)">控えをダウンロード（JSON）</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="logo-mark">H</div><div class="logo-text">Hash Future</div></div>
+    <div class="footer-meta">
+      <a href="https://hash-future.com/">hash-future.com</a>
+      <span>© 2026 Hash Future Inc.</span>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile sticky bar -->
+<div class="mobile-bar" id="mobileBar">
+  <div class="mb-info">
+    <span>STEP <strong id="mbStep">1</strong> / 8</span>
+    <span id="mbHint" style="font-size:11px">—</span>
+  </div>
+  <button type="button" id="mbBack" class="back-only" style="display:none">戻る</button>
+  <button type="button" id="mbNext">次へ</button>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG  →  替换成你自己的 Apps Script URL
+   ============================================================ */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT_ID/exec";
+
+/* ============================================================
+   CHANNEL TRACKING  (?ref=vendor-a)
+   ============================================================ */
+const urlParams = new URLSearchParams(location.search);
+let REF_CODE = urlParams.get('ref') || '';
+if (REF_CODE) {
+  try { localStorage.setItem('hf_ref', REF_CODE); } catch(e){}
+} else {
+  try { REF_CODE = localStorage.getItem('hf_ref') || ''; } catch(e){}
+}
+
+/* ============================================================
+   DEVICE DETECTION
+   ============================================================ */
+const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  || window.matchMedia('(max-width: 768px)').matches;
+
+/* ============================================================
+   NETWORK CANVAS
+   ============================================================ */
+const CITIES = [
+  {id:'n1', name:'TOKYO',     lat:35.68, lng:139.69},
+  {id:'n2', name:'OSAKA',     lat:34.69, lng:135.50},
+  {id:'n3', name:'SAPPORO',   lat:43.06, lng:141.35},
+  {id:'n4', name:'SENDAI',    lat:38.27, lng:140.87},
+  {id:'n5', name:'NAGOYA',    lat:35.18, lng:136.91},
+  {id:'n6', name:'FUKUOKA',   lat:33.59, lng:130.40},
+  {id:'n7', name:'HIROSHIMA', lat:34.39, lng:132.46},
+  {id:'n8', name:'NAHA',      lat:26.21, lng:127.68},
+];
+const BBOX = {lngMin:126, lngMax:146, latMin:24, latMax:46};
+
+class NetworkCanvas {
+  constructor(canvas, opts={}) {
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
+    const maxDPR = IS_MOBILE ? 1.5 : 2;
+    this.dpr = Math.min(window.devicePixelRatio || 1, maxDPR);
+    this.opts = Object.assign({
+      showLabels: true,
+      showParticles: true,
+      baseRadius: 5,
+      activeRadius: 9,
+      particleCount: IS_MOBILE ? 25 : 60,
+    }, opts);
+    this.nodes = [];
+    this.edges = [];
+    this.particles = [];
+    this.activeNodes = new Set();
+    this.pulses = [];
+    this.time = 0;
+    this.running = true;
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+    // pause when tab hidden (save battery)
+    document.addEventListener('visibilitychange', () => {
+      this.running = !document.hidden;
+    });
+  }
+
+  resize() {
+    const rect = this.canvas.getBoundingClientRect();
+    this.width = rect.width;
+    this.height = rect.height;
+    this.canvas.width = this.width * this.dpr;
+    this.canvas.height = this.height * this.dpr;
+    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    this.computeLayout();
+  }
+
+  project(lat, lng) {
+    const padX = this.width * 0.14;
+    const padY = this.height * 0.16;
+    const w = this.width - padX * 2;
+    const h = this.height - padY * 2;
+    return {
+      x: padX + ((lng - BBOX.lngMin) / (BBOX.lngMax - BBOX.lngMin)) * w,
+      y: padY + ((BBOX.latMax - lat) / (BBOX.latMax - BBOX.latMin)) * h,
+    };
+  }
+
+  computeLayout() {
+    this.nodes = CITIES.map(c => {
+      const p = this.project(c.lat, c.lng);
+      return {...c, x: p.x, y: p.y, phase: Math.random() * Math.PI * 2};
+    });
+    const byId = {};
+    this.nodes.forEach(n => byId[n.id] = n);
+    const pairs = [
+      ['n1','n2'],['n1','n4'],['n1','n5'],
+      ['n2','n5'],['n2','n7'],['n2','n6'],
+      ['n3','n4'],['n6','n8'],['n7','n6'],
+    ];
+    this.edges = pairs.map(([a,b]) => ({a: byId[a], b: byId[b]}));
+    this.particles = Array.from({length: this.opts.particleCount}, () => ({
+      x: Math.random() * this.width,
+      y: Math.random() * this.height,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: (Math.random() - 0.5) * 0.15,
+      r: Math.random() * 1.2 + 0.3,
+      alpha: Math.random() * 0.5 + 0.1,
+    }));
+  }
+
+  activate(id) {
+    if (this.activeNodes.has(id)) return;
+    this.activeNodes.add(id);
+    const node = this.nodes.find(n => n.id === id);
+    if (node) this.pulses.push({node, t: 0, max: 1.4});
+  }
+
+  update(dt) {
+    this.time += dt;
+    this.particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = this.width; if (p.x > this.width) p.x = 0;
+      if (p.y < 0) p.y = this.height; if (p.y > this.height) p.y = 0;
+    });
+    this.pulses = this.pulses.filter(p => (p.t += dt) < p.max);
+  }
+
+  draw() {
+    const ctx = this.ctx;
+    const t = this.time;
+    ctx.clearRect(0, 0, this.width, this.height);
+
+    // grid (skip on mobile hero for perf)
+    if (!IS_MOBILE) {
+      ctx.strokeStyle = 'rgba(26,39,64,0.35)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < this.width; x += 60) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, this.height); ctx.stroke();
+      }
+      for (let y = 0; y < this.height; y += 60) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(this.width, y); ctx.stroke();
+      }
+    }
+
+    // particles
+    this.particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0,229,255,${p.alpha})`;
+      ctx.fill();
+    });
+
+    // edges
+    this.edges.forEach(({a, b}) => {
+      const bothActive = this.activeNodes.has(a.id) && this.activeNodes.has(b.id);
+      const oneActive = this.activeNodes.has(a.id) || this.activeNodes.has(b.id);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      if (bothActive) {
+        const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+        grad.addColorStop(0, 'rgba(0,229,255,0.7)');
+        grad.addColorStop(1, 'rgba(0,255,163,0.7)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.8;
+        if (!IS_MOBILE) { ctx.shadowBlur = 12; ctx.shadowColor = 'rgba(0,229,255,0.6)'; }
+      } else if (oneActive) {
+        ctx.strokeStyle = 'rgba(0,229,255,0.28)';
+        ctx.lineWidth = 1;
+      } else {
+        ctx.strokeStyle = 'rgba(107,122,153,0.15)';
+        ctx.lineWidth = 1;
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+    });
+
+    // nodes
+    this.nodes.forEach(n => {
+      const active = this.activeNodes.has(n.id);
+      const r = active ? this.opts.activeRadius : this.opts.baseRadius;
+      const fx = Math.sin(t * 0.6 + n.phase) * 1.5;
+      const fy = Math.cos(t * 0.5 + n.phase) * 1.5;
+      const dx = n.x + fx;
+      const dy = n.y + fy;
+
+      if (active) {
+        const haloR = r + 8 + Math.sin(t * 2 + n.phase) * 3;
+        const grad = ctx.createRadialGradient(dx, dy, 0, dx, dy, haloR);
+        grad.addColorStop(0, 'rgba(0,229,255,0.5)');
+        grad.addColorStop(1, 'rgba(0,229,255,0)');
+        ctx.beginPath(); ctx.arc(dx, dy, haloR, 0, Math.PI * 2);
+        ctx.fillStyle = grad; ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(dx, dy, r, 0, Math.PI * 2);
+      if (active) {
+        const coreGrad = ctx.createRadialGradient(dx - 2, dy - 2, 0, dx, dy, r);
+        coreGrad.addColorStop(0, '#FFFFFF');
+        coreGrad.addColorStop(1, '#00E5FF');
+        ctx.fillStyle = coreGrad;
+        if (!IS_MOBILE) { ctx.shadowBlur = 20; ctx.shadowColor = 'rgba(0,229,255,0.9)'; }
+      } else {
+        ctx.fillStyle = 'rgba(107,122,153,0.5)';
+      }
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.beginPath();
+      ctx.arc(dx, dy, r + 3, 0, Math.PI * 2);
+      ctx.strokeStyle = active ? 'rgba(0,229,255,0.7)' : 'rgba(107,122,153,0.25)';
+      ctx.lineWidth = 1; ctx.stroke();
+
+      if (this.opts.showLabels) {
+        ctx.font = '600 10px "JetBrains Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = active ? '#00E5FF' : 'rgba(107,122,153,0.7)';
+        ctx.fillText(n.name, dx, dy + r + 8);
+      }
+    });
+
+    // pulses
+    this.pulses.forEach(p => {
+      const k = p.t / p.max;
+      ctx.beginPath();
+      ctx.arc(p.node.x, p.node.y, 8 + k * 50, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(0,229,255,${(1 - k) * 0.7})`;
+      ctx.lineWidth = 2 * (1 - k);
+      ctx.stroke();
+    });
+  }
+
+  start() {
+    let last = performance.now();
+    const loop = (now) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      if (this.running) { this.update(dt); this.draw(); }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  }
+}
+
+const heroCanvas = new NetworkCanvas(document.getElementById('heroCanvas'), {
+  showLabels: false, baseRadius: 4, activeRadius: 7,
+});
+heroCanvas.start();
+
+const formCanvas = new NetworkCanvas(document.getElementById('formCanvas'), {
+  showLabels: !IS_MOBILE, baseRadius: 5, activeRadius: 9,
+});
+formCanvas.start();
+
+/* ============================================================
+   FORM WIZARD
+   ============================================================ */
+const form = document.getElementById('dcForm');
+const stepBodies = form.querySelectorAll('.step-body');
+const stepCurrent = document.getElementById('stepCurrent');
+const stepTitle = document.getElementById('stepTitle');
+const stepInfo = document.getElementById('stepInfo');
+const btnBack = document.getElementById('btnBack');
+const btnNext = document.getElementById('btnNext');
+const btnSubmit = document.getElementById('btnSubmit');
+const formMessage = document.getElementById('formMessage');
+const formActions = document.getElementById('formActions');
+const successScreen = document.getElementById('successScreen');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+const nodeChips = document.querySelectorAll('.node-chip');
+const mobileBar = document.getElementById('mobileBar');
+const mbStep = document.getElementById('mbStep');
+const mbHint = document.getElementById('mbHint');
+const mbBack = document.getElementById('mbBack');
+const mbNext = document.getElementById('mbNext');
+const STORAGE_KEY = 'hash_future_dc_draft_v1';
+
+const STEP_TITLES = {
+  1: ['ご提出者情報', 'Submitter', '提交人信息'],
+  2: ['場地基本情報', 'Site Basics', '场地基本信息'],
+  3: ['法令・耐震', 'Compliance & Seismic', '合规与抗震'],
+  4: ['電力', 'Power', '电力'],
+  5: ['冷却', 'Cooling', '冷却'],
+  6: ['ネットワーク', 'Network', '网络'],
+  7: ['費用・Capex', 'Cost & Capex', '成本与Capex'],
+  8: ['税務・確認', 'Tax & Confirm', '税务与确认'],
+};
+
+let currentStep = 1;
+const totalSteps = 8;
+
+function showStep(n) {
+  currentStep = n;
+  stepBodies.forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+  stepCurrent.textContent = String(n).padStart(2, '0');
+  stepInfo.textContent = `STEP ${String(n).padStart(2, '0')} / ${String(totalSteps).padStart(2, '0')}`;
+  mbStep.textContent = n;
+  const [jp, en] = STEP_TITLES[n];
+  stepTitle.innerHTML = `${jp} <span class="jp">${en}</span>`;
+  btnBack.style.display = n === 1 ? 'none' : 'inline-block';
+  btnNext.style.display = n === totalSteps ? 'none' : 'inline-block';
+  btnSubmit.style.display = n === totalSteps ? 'inline-block' : 'none';
+  mbBack.style.display = n === 1 ? 'none' : 'inline-block';
+  mbNext.textContent = n === totalSteps ? '提出する' : '次へ';
+  mbHint.textContent = jp;
+
+  if (IS_MOBILE) {
+    form.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function validateStep(n) {
+  const step = form.querySelector(`.step-body[data-step="${n}"]`);
+  const fields = step.querySelectorAll('input[required], select[required], textarea[required]');
+  for (const f of fields) {
+    if (f.type === 'checkbox' && !f.checked) {
+      formMessage.className = 'form-message err';
+      formMessage.textContent = '必須項目に同意してください。';
+      f.scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+    if (f.type !== 'checkbox' && !f.value.trim()) {
+      formMessage.className = 'form-message err';
+      formMessage.textContent = '必須項目を入力してください。';
+      f.scrollIntoView({behavior:'smooth', block:'center'});
+      f.focus({preventScroll:true});
+      return false;
+    }
+    if (f.type === 'email' && f.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)) {
+      formMessage.className = 'form-message err';
+      formMessage.textContent = 'メールアドレスの形式が正しくありません。';
+      f.focus({preventScroll:true});
+      return false;
+    }
+  }
+  formMessage.className = 'form-message';
+  formMessage.textContent = '';
+  return true;
+}
+
+function activateNodeForStep(n) {
+  const step = form.querySelector(`.step-body[data-step="${n}"]`);
+  if (!step) return;
+  const nodeId = step.dataset.node;
+  formCanvas.activate(nodeId);
+  nodeChips.forEach(chip => {
+    if (chip.dataset.node === nodeId) chip.classList.add('active');
+  });
+  const activeCount = formCanvas.activeNodes.size;
+  progressText.textContent = `${activeCount} / 8`;
+  progressFill.style.width = `${(activeCount / 8) * 100}%`;
+}
+
+btnNext.addEventListener('click', () => {
+  if (!validateStep(currentStep)) return;
+  activateNodeForStep(currentStep);
+  if (currentStep < totalSteps) showStep(currentStep + 1);
+});
+btnBack.addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+mbNext.addEventListener('click', () => {
+  if (currentStep === totalSteps) { form.requestSubmit(); return; }
+  if (!validateStep(currentStep)) return;
+  activateNodeForStep(currentStep);
+  if (currentStep < totalSteps) showStep(currentStep + 1);
+});
+mbBack.addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+
+/* Mobile bar visibility: show when form section visible */
+const formSection = document.getElementById('form');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (IS_MOBILE) mobileBar.classList.toggle('visible', e.isIntersecting && !successScreen.classList.contains('active'));
+  });
+}, {threshold: 0.1});
+observer.observe(formSection);
+
+/* Draft persistence */
+form.addEventListener('input', () => {
+  const data = {};
+  new FormData(form).forEach((v,k)=>{ if(k !== 'confirm_truth') data[k]=v; });
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e){}
+});
+window.addEventListener('DOMContentLoaded', () => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+    const data = JSON.parse(saved);
+    Object.keys(data).forEach(k => {
+      const el = form.elements[k];
+      if (el && el.type !== 'checkbox') el.value = data[k];
+    });
+  } catch(e){}
+});
+
+/* Client IP lookup */
+async function getClientIP() {
+  try {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), 2500);
+    const r = await fetch('https://api.ipify.org?format=json', {signal: ctrl.signal});
+    clearTimeout(to);
+    const j = await r.json();
+    return j.ip || '';
+  } catch(e) { return ''; }
+}
+
+/* Collect */
+function collectData() {
+  const data = {};
+  new FormData(form).forEach((v,k) => {
+    data[k] = (k === 'confirm_truth') ? 'Yes' : v;
+  });
+  data._submitted_at = new Date().toISOString();
+  data._submitted_at_jst = new Date().toLocaleString('ja-JP', {timeZone:'Asia/Tokyo'});
+  data._ref = REF_CODE || '';
+  data._user_agent = navigator.userAgent;
+  data._page_url = location.href;
+  data._is_mobile = IS_MOBILE ? 'Yes' : 'No';
+  return data;
+}
+
+/* Submit */
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  for (let i = 1; i <= totalSteps; i++) {
+    if (!validateStep(i)) { showStep(i); return; }
+    activateNodeForStep(i);
+  }
+
+  if (APPS_SCRIPT_URL.includes('REPLACE_WITH_YOUR')) {
+    formMessage.className = 'form-message err';
+    formMessage.textContent = '送信先URLが未設定です。管理者にお問い合わせください。';
+    return;
+  }
+
+  btnSubmit.disabled = true;
+  btnSubmit.textContent = '送信中...';
+  mbNext.disabled = true;
+  mbNext.textContent = '送信中...';
+
+  const data = collectData();
+  const ip = await getClientIP();
+  data._client_ip = ip;
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(data),
+    });
+
+    stepBodies.forEach(s => s.classList.remove('active'));
+    form.querySelector('.form-step-header').style.display = 'none';
+    formActions.style.display = 'none';
+    formMessage.style.display = 'none';
+    mobileBar.classList.remove('visible');
+
+    const summary = document.getElementById('successSummary');
+    summary.innerHTML = `
+      <div><span class="k">場地名</span><span class="v">${escapeHtml(data.site_name || '—')}</span></div>
+      <div><span class="k">会社名</span><span class="v">${escapeHtml(data.company || '—')}</span></div>
+      <div><span class="k">IT容量</span><span class="v">${escapeHtml(data.it_capacity_mw || '—')} MW</span></div>
+      <div><span class="k">設計PUE</span><span class="v">${escapeHtml(data.design_pue || '—')}</span></div>
+      <div><span class="k">送信時刻</span><span class="v">${new Date().toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'})}</span></div>
+    `;
+    successScreen.classList.add('active');
+
+    CITIES.forEach(c => formCanvas.activate(c.id));
+    nodeChips.forEach(chip => chip.classList.add('active'));
+    progressText.textContent = '8 / 8';
+    progressFill.style.width = '100%';
+
+    downloadJSON(data, `HashFuture_${data.site_name || 'Site'}_${Date.now()}.json`);
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+  } catch(err) {
+    console.error(err);
+    formMessage.className = 'form-message err';
+    formMessage.textContent = '送信に失敗しました。ネットワークをご確認の上、再度お試しください。';
+    btnSubmit.disabled = false;
+    btnSubmit.textContent = '提出する';
+    mbNext.disabled = false;
+    mbNext.textContent = '提出する';
+  }
+});
+
+document.getElementById('btnDownload').addEventListener('click', () => {
+  const data = collectData();
+  downloadJSON(data, `HashFuture_${data.site_name || 'Site'}_${Date.now()}.json`);
+});
+
+function downloadJSON(obj, filename) {
+  const blob = new Blob([JSON.stringify(obj, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[c]));
+}
+
+/* ============================================================
+   I18N
+   ============================================================ */
+const I18N = {
+  ja: {
+    'hero-sub': 'Hash Futureは、日本全国のAI計算インフラを統合するプラットフォームです。GPUクラスタの展開から電力調達、DC選定、全スタック運用まで、ワンストップで提供します。',
+    'cta-primary': 'Join the Network',
+    'cta-secondary': 'Learn more',
+    'about-title': 'AIインフラを、日本のすみずみまで。',
+    'about-desc': 'Hash Futureは、日本に拠点を置くAIインフラ統合企業です。GPUクラスタの展開に必要なDC場地の選定、法令・耐震・電力の適格性審査、リース交渉、全スタック運用までを一気通貫で提供します。',
+    'f1-title':'日本全域のサイト選定','f1-desc':'北海道から九州まで、GPUクラスタに適したDC場地のスクリーニングと評価を実施します。',
+    'f2-title':'電力・PUE適格性審査','f2-desc':'IT受電容量、PUE、接電ステータス、再エネ比率を精査し、2029年以降の規制にも対応します。',
+    'f3-title':'全スタック運用','f3-desc':'GPUサーバ、ストレージ、100G専用線、DLC冷却を含む全スタックの設計・調達・運用を代行します。',
+    'form-title': 'Join the Hash Future Network',
+    'form-desc': '以下の情報をご提供いただくことで、貴社のDC場地がHash Futureの候補ネットワークに登録されます。全ての情報は機密として取り扱い、選定評価のみに使用いたします。',
+    'network-activation': 'Network Activation',
+  },
+  en: {
+    'hero-sub': 'Hash Future integrates AI compute infrastructure across Japan. From GPU cluster deployment to power procurement, DC site selection, and full-stack operations — one partner, end to end.',
+    'cta-primary': 'Join the Network','cta-secondary': 'Learn more',
+    'about-title': 'AI infrastructure, from Hokkaido to Okinawa.',
+    'about-desc': 'Hash Future is a Japan-based AI infrastructure integrator. We handle DC site selection, compliance, seismic review, power procurement, lease negotiation, and full-stack operations for GPU cluster deployments.',
+    'f1-title':'Nationwide site selection','f1-desc':'We screen and evaluate DC sites suitable for GPU clusters, from Hokkaido to Kyushu.',
+    'f2-title':'Power & PUE qualification','f2-desc':'We review IT capacity, PUE, grid status, and renewable ratio, aligned with post-2029 regulations.',
+    'f3-title':'Full-stack operations','f3-desc':'We design, procure, and operate the full stack: GPU servers, storage, 100G lines, DLC cooling.',
+    'form-title': 'Join the Hash Future Network',
+    'form-desc': 'Provide the following information to register your DC site in the Hash Future candidate network. All information is treated confidentially and used solely for evaluation.',
+    'network-activation': 'Network Activation',
+  },
+  cn: {
+    'hero-sub': 'Hash Future 是整合日本全国 AI 计算基础设施的平台。从 GPU 集群部署、电力采购、DC 选址到全栈运维，一站式提供。',
+    'cta-primary': '加入网络','cta-secondary': '了解更多',
+    'about-title': '让 AI 基础设施覆盖日本的每一个角落。',
+    'about-desc': 'Hash Future 是一家总部位于日本的 AI 基础设施整合商。我们为 GPU 集群部署提供场地筛选、合规审查、耐震评估、电力接入、租约谈判及全栈运营的一站式服务。',
+    'f1-title':'日本全域选址','f1-desc':'从北海道到九州，为 GPU 集群筛选和评估 DC 场地。',
+    'f2-title':'电力与 PUE 审查','f2-desc':'审查 IT 容量、PUE、接电状态、绿电比例，符合 2029 后监管方向。',
+    'f3-title':'全栈运营','f3-desc':'GPU 服务器、存储、100G 专线、液冷全栈设计、采购和运营。',
+    'form-title': '加入 Hash Future 网络',
+    'form-desc': '填写以下信息后，贵司的 DC 场地将登记进入 Hash Future 候选网络。所有信息将严格保密，仅用于选型评估。',
+    'network-activation': '网络激活进度',
+  },
+};
+
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.dataset.i18n;
+      if (I18N[lang] && I18N[lang][k]) el.textContent = I18N[lang][k];
+    });
+    document.documentElement.lang = lang === 'cn' ? 'zh' : lang;
+    try { localStorage.setItem('hf_lang', lang); } catch(e){}
+  });
+});
+// restore lang
+try {
+  const savedLang = localStorage.getItem('hf_lang');
+  if (savedLang && I18N[savedLang]) {
+    const b = document.querySelector(`.lang-switch button[data-lang="${savedLang}"]`);
+    if (b) b.click();
+  }
+} catch(e){}
+
+/* Header scroll */
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.site-header');
+  const y = window.scrollY;
+  header.style.padding = y > 60
+    ? (IS_MOBILE ? '10px 18px' : '10px 32px')
+    : (IS_MOBILE ? '14px 18px' : '16px 32px');
+}, {passive: true});
+
+showStep(1);
+</script>
+
+</body>
+</html>
