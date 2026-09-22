@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /intake-
+Allow: /
+
+Sitemap: https://piggyqiku-t.github.io/hash-future-network/sitemap.xml
