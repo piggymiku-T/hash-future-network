@@ -41,7 +41,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .logo-text .main{font-weight:800;font-size:16px;letter-spacing:.3px;background:linear-gradient(135deg,#fff 0%,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:'Inter',sans-serif}
 .logo-text .sub{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2.5px;font-weight:500}
 .site-nav{display:flex;gap:32px;align-items:center}
-.site-nav a{font-size:13px;font-weight:500;color:var(--muted-2);transition:color .2s;position:relative;padding:4px 0;font-family:'Inter','Noto Sans JP',sans-serif;letter-spacing:.02em}
+.site-nav a{font-size:13px;font-weight:500;color:var(--muted-2);transition:color .2s;position:relative;padding:4px 0}
 .site-nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .site-nav a:hover{color:var(--accent)}
 .site-nav a:hover::after{transform:scaleX(1)}
@@ -49,14 +49,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .lang-switch button{padding:5px 11px;border-radius:5px;color:var(--muted);transition:all .2s;font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
 .lang-switch button.active{background:var(--accent);color:#060B14}
 
-/* HERO */
+/* HERO —— 关键修复：canvas 用 top/bottom 拉伸 */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 40px 80px;overflow:hidden}
-#heroCanvas{position:absolute;top:0;right:0;width:52%;height:100%;z-index:1;pointer-events:none}
+#heroCanvas{position:absolute;top:0;right:0;bottom:0;width:52%;z-index:1;pointer-events:none;display:block}
 .hero-content{position:relative;z-index:2;max-width:1320px;width:100%;margin:0 auto;pointer-events:none}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border:1px solid rgba(0,229,255,.3);border-radius:100px;font-size:11.5px;font-weight:600;letter-spacing:1.2px;color:var(--accent);background:rgba(0,229,255,.06);margin-bottom:32px;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
 .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse-dot 2s ease-in-out infinite}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
-.hero h1{font-size:clamp(36px,4.6vw,62px);font-weight:800;line-height:1.08;letter-spacing:-2.2px;margin-bottom:28px;max-width:640px;font-family:'Inter','Noto Sans JP',sans-serif}
+.hero h1{font-size:clamp(36px,4.6vw,62px);font-weight:800;line-height:1.08;letter-spacing:-2.2px;margin-bottom:28px;max-width:640px}
 .hero h1 .grad{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 55%,var(--accent-3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-sub{font-size:clamp(14.5px,1.35vw,16px);color:var(--muted-2);max-width:560px;margin-bottom:44px;line-height:1.85;font-weight:400}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto}
@@ -76,7 +76,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .section-title .hl{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .section-desc{font-size:15px;color:var(--muted-2);max-width:760px;line-height:1.85;margin-bottom:64px}
 
-/* STATS ROW */
+/* STATS */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:80px 0 0;background:var(--border);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
 .stat-cell{background:var(--panel);padding:32px 28px;position:relative;transition:background .3s}
 .stat-cell:hover{background:var(--panel-2)}
@@ -123,7 +123,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* DETAIL BLOCKS */
 .detail-block{margin-top:32px}
 .detail-block:first-child{margin-top:24px}
-.detail-block h4{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:.5px;display:flex;align-items:center;gap:10px;font-family:'Inter','Noto Sans JP',sans-serif}
+.detail-block h4{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:16px;letter-spacing:.5px;display:flex;align-items:center;gap:10px}
 .detail-block h4::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:2px}
 .detail-list{margin-top:8px}
 .detail-item{display:grid;grid-template-columns:280px 1fr;gap:24px;padding:16px 0;border-bottom:1px solid rgba(26,39,64,.4);transition:background .2s;padding-left:8px;padding-right:8px;border-radius:6px}
@@ -154,14 +154,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .pricing-row{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:16px 32px;border-bottom:1px solid rgba(26,39,64,.35);transition:background .2s;position:relative}
 .pricing-row:last-child{border-bottom:none}
 .pricing-row:hover{background:rgba(0,229,255,.03)}
-.pricing-row:hover .pricing-name{color:var(--text)}
-.pricing-row:hover .pricing-price{transform:translateX(-2px)}
 .pricing-name{font-size:13.5px;color:var(--text-2);font-weight:500;line-height:1.55;display:flex;align-items:center;gap:10px}
 .pricing-name::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--muted);transition:all .2s;flex-shrink:0}
 .pricing-row:hover .pricing-name::before{background:var(--accent);box-shadow:0 0 8px var(--accent)}
 .pricing-card[data-accent="violet"] .pricing-row:hover .pricing-name::before{background:var(--accent-2);box-shadow:0 0 8px var(--accent-2)}
 .pricing-card[data-accent="green"] .pricing-row:hover .pricing-name::before{background:var(--accent-3);box-shadow:0 0 8px var(--accent-3)}
-.pricing-price{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text);font-weight:600;letter-spacing:-.2px;transition:transform .25s;white-space:nowrap;text-align:right}
+.pricing-price{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text);font-weight:600;letter-spacing:-.2px;white-space:nowrap;text-align:right}
 .pricing-price .note{display:block;font-size:10.5px;color:var(--muted);font-weight:500;letter-spacing:.3px;margin-top:3px;font-family:'Noto Sans JP',sans-serif}
 
 /* COMPANY */
@@ -204,7 +202,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .logo-mark{width:34px;height:34px;font-size:18px}
   .section{padding:72px 20px}
   .hero{padding:110px 20px 50px;min-height:90vh}
-  #heroCanvas{width:100%;left:0;right:auto;opacity:.32}
+  #heroCanvas{width:100%;left:0;right:0;opacity:.35}
   .hero h1{letter-spacing:-1.4px;margin-bottom:22px;max-width:100%}
   .hero-sub{max-width:100%}
   .hero-actions{width:100%}
@@ -236,13 +234,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .footer-bottom{flex-direction:column;text-align:center;gap:10px;font-size:11px}
 }
 
-/* ===== IDC SECTION ===== */
+/* IDC */
 .idc-section{background:linear-gradient(180deg,transparent,rgba(123,97,255,.035),transparent);position:relative}
 .idc-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:80%;height:1px;background:linear-gradient(90deg,transparent,rgba(123,97,255,.5),transparent)}
 .idc-section .section-label{border-color:rgba(123,97,255,.25);background:rgba(123,97,255,.05);color:var(--accent-2)}
 .idc-section .section-label::before{background:var(--accent-2);box-shadow:0 0 8px var(--accent-2)}
 .idc-section .section-title .hl{background:linear-gradient(135deg,var(--accent-2) 0%,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-
 .idc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin-bottom:56px}
 .idc-stat{background:linear-gradient(180deg,rgba(18,15,36,.92),rgba(11,18,32,.92));padding:30px 26px;position:relative;transition:background .3s}
 .idc-stat:hover{background:linear-gradient(180deg,rgba(26,20,54,.95),rgba(15,20,38,.95))}
@@ -251,7 +248,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .idc-stat-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px;font-weight:600}
 .idc-stat-value{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--text);letter-spacing:-1px;line-height:1.1;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px}
 .idc-stat-value .unit{font-size:11.5px;color:var(--muted-2);font-weight:500;letter-spacing:.5px;font-family:'Noto Sans JP',sans-serif}
-
 .idc-pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:56px}
 .idc-pillar{padding:30px 28px;background:linear-gradient(180deg,rgba(14,23,39,.9),rgba(11,18,32,.55));border:1px solid var(--border);border-radius:var(--radius);transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
 .idc-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(123,97,255,.5),transparent);opacity:0;transition:opacity .3s}
@@ -260,14 +256,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .idc-pillar-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);font-weight:700;letter-spacing:1.5px;padding:5px 11px;background:rgba(123,97,255,.1);border:1px solid rgba(123,97,255,.25);border-radius:6px;display:inline-block;margin-bottom:18px}
 .idc-pillar h4{font-size:15.5px;font-weight:700;margin-bottom:12px;letter-spacing:-.2px;line-height:1.5}
 .idc-pillar p{font-size:13px;color:var(--muted-2);line-height:1.8}
-
 .idc-cta{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;padding:40px 44px;background:linear-gradient(135deg,rgba(123,97,255,.14),rgba(0,229,255,.05));border:1px solid rgba(123,97,255,.28);border-radius:var(--radius);position:relative;overflow:hidden}
 .idc-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:480px;height:480px;background:radial-gradient(circle,rgba(123,97,255,.18),transparent 70%);pointer-events:none}
 .idc-cta::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,229,255,.1),transparent 70%);pointer-events:none}
 .idc-cta > *{position:relative;z-index:1}
 .idc-cta h3{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px;line-height:1.4}
 .idc-cta p{font-size:13.5px;color:var(--muted-2);line-height:1.75;max-width:680px}
-
 @media (max-width:1024px){
   .idc-stats{grid-template-columns:repeat(2,1fr)}
   .idc-pillars{grid-template-columns:1fr}
@@ -281,7 +275,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .idc-cta .btn{width:100%;justify-content:center;padding:14px 24px}
 }
 
-/* ===== CONTACT MODAL ===== */
+/* CONTACT MODAL */
 .contact-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
 .contact-modal.open{display:flex;animation:contactFade .25s ease}
 @keyframes contactFade{from{opacity:0}to{opacity:1}}
@@ -318,7 +312,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .contact-success.active{display:block;animation:successFadeIn .5s cubic-bezier(.4,0,.2,1)}
 @keyframes successFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* Success Animation */
 .success-anim{width:130px;height:130px;margin:0 auto 26px;position:relative}
 .success-svg{width:100%;height:100%;position:relative;z-index:2;overflow:visible}
 .success-ring-bg{fill:none;stroke:rgba(0,255,163,.12);stroke-width:2}
@@ -332,7 +325,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .contact-success.active .success-glow{animation:successGlow 1.8s ease-out .5s infinite}
 @keyframes successGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
 
-/* Particles */
 .success-particles{position:absolute;top:50%;left:50%;width:0;height:0;z-index:1}
 .success-particles span{position:absolute;width:6px;height:6px;background:var(--accent-3);border-radius:50%;box-shadow:0 0 12px var(--accent-3);opacity:0;top:0;left:0}
 .contact-success.active .success-particles span{animation:particleBurst 1.4s cubic-bezier(.15,.6,.3,1) .7s forwards}
@@ -355,7 +347,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .contact-success p{font-size:13.5px;color:var(--muted-2);line-height:1.8;max-width:400px;margin:0 auto;opacity:0}
 .contact-success.active p{animation:successTextIn .5s ease .45s forwards}
 
-/* Reference badge */
 .success-ref{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:10px 18px;background:rgba(0,255,163,.06);border:1px solid rgba(0,255,163,.25);border-radius:10px;opacity:0}
 .contact-success.active .success-ref{animation:successTextIn .5s ease .6s forwards}
 .success-ref .ref-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-3);letter-spacing:2px;font-weight:600}
@@ -411,7 +402,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   </div>
 </section>
 
-<!-- SERVICES -->
 <section class="section" id="services">
   <div class="container">
     <div class="section-label">Services</div>
@@ -462,27 +452,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       </div>
     </div>
 
-    <!-- STATS -->
     <div class="stats">
-      <div class="stat-cell">
-        <div class="stat-num">2013<span class="unit">年</span></div>
-        <div class="stat-label">Founded</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">20<span class="unit">年+</span></div>
-        <div class="stat-label">Experience</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">11<span class="unit">事業</span></div>
-        <div class="stat-label">Business Lines</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">3<span class="unit">拠点</span></div>
-        <div class="stat-label">Core Services</div>
-      </div>
+      <div class="stat-cell"><div class="stat-num">2013<span class="unit">年</span></div><div class="stat-label">Founded</div></div>
+      <div class="stat-cell"><div class="stat-num">20<span class="unit">年+</span></div><div class="stat-label">Experience</div></div>
+      <div class="stat-cell"><div class="stat-num">11<span class="unit">事業</span></div><div class="stat-label">Business Lines</div></div>
+      <div class="stat-cell"><div class="stat-num">3<span class="unit">拠点</span></div><div class="stat-label">Core Services</div></div>
     </div>
 
-    <!-- IDC / AI INFRASTRUCTURE -->
     <section class="section idc-section" id="idc" style="padding-left:0;padding-right:0">
       <div class="container">
         <div class="section-label">AI Infrastructure</div>
@@ -490,45 +466,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
         <p class="section-desc" data-i18n="idc-desc">HASH FUTUREは、日本全国のデータセンター場地を発掘・評価し、GPUクラスタの展開から液冷冷却・電力調達・運用までを一貫して提供します。AI時代の計算基盤を、日本全国に分散配置します。</p>
 
         <div class="idc-stats">
-          <div class="idc-stat">
-            <div class="idc-stat-label">Candidate Network</div>
-            <div class="idc-stat-value">47<span class="unit">都道府県</span></div>
-          </div>
-          <div class="idc-stat">
-            <div class="idc-stat-label">Target PUE</div>
-            <div class="idc-stat-value">≤1.3<span class="unit">2029年規制対応</span></div>
-          </div>
-          <div class="idc-stat">
-            <div class="idc-stat-label">Cooling</div>
-            <div class="idc-stat-value">DLC<span class="unit">液冷対応</span></div>
-          </div>
-          <div class="idc-stat">
-            <div class="idc-stat-label">GPU Platform</div>
-            <div class="idc-stat-value">B300<span class="unit">/ GB300</span></div>
-          </div>
+          <div class="idc-stat"><div class="idc-stat-label">Candidate Network</div><div class="idc-stat-value">47<span class="unit">都道府県</span></div></div>
+          <div class="idc-stat"><div class="idc-stat-label">Target PUE</div><div class="idc-stat-value">≤1.3<span class="unit">2029年規制対応</span></div></div>
+          <div class="idc-stat"><div class="idc-stat-label">Cooling</div><div class="idc-stat-value">DLC<span class="unit">液冷対応</span></div></div>
+          <div class="idc-stat"><div class="idc-stat-label">GPU Platform</div><div class="idc-stat-value">B300<span class="unit">/ GB300</span></div></div>
         </div>
 
         <div class="idc-pillars">
-          <div class="idc-pillar">
-            <div class="idc-pillar-num">01</div>
-            <h4>場地発掘・適格性審査</h4>
-            <p>全国の候補DC場地をスクリーニングし、電力容量・PUE・耐震・法令適合性を精査。AIクラスタに適した場地のみを選定します。</p>
-          </div>
-          <div class="idc-pillar">
-            <div class="idc-pillar-num">02</div>
-            <h4>電力・法規・耐震審査</h4>
-            <p>IT受電容量、特別高圧接続、PUE ≤1.3 対応、建築基準法・消防法・震度7不倒不壊を確認。2029年以降の新設DC規制に準拠します。</p>
-          </div>
-          <div class="idc-pillar">
-            <div class="idc-pillar-num">03</div>
-            <h4>GPUクラスタ構築</h4>
-            <p>B300 / GB300 クラスタの設計・調達・設置。8GPU〜72GPU構成、ストレージ・100G専用線・ネットワークを含むフルスタック統合。</p>
-          </div>
-          <div class="idc-pillar">
-            <div class="idc-pillar-num">04</div>
-            <h4>液冷・全スタック運用</h4>
-            <p>DLC（Direct Liquid Cooling）の設計・施工・運用。PUE最適化、保全・監視・24時間運用まで、AIインフラの全ライフサイクルを支援します。</p>
-          </div>
+          <div class="idc-pillar"><div class="idc-pillar-num">01</div><h4>場地発掘・適格性審査</h4><p>全国の候補DC場地をスクリーニングし、電力容量・PUE・耐震・法令適合性を精査。AIクラスタに適した場地のみを選定します。</p></div>
+          <div class="idc-pillar"><div class="idc-pillar-num">02</div><h4>電力・法規・耐震審査</h4><p>IT受電容量、特別高圧接続、PUE ≤1.3 対応、建築基準法・消防法・震度7不倒不壊を確認。2029年以降の新設DC規制に準拠します。</p></div>
+          <div class="idc-pillar"><div class="idc-pillar-num">03</div><h4>GPUクラスタ構築</h4><p>B300 / GB300 クラスタの設計・調達・設置。8GPU〜72GPU構成、ストレージ・100G専用線・ネットワークを含むフルスタック統合。</p></div>
+          <div class="idc-pillar"><div class="idc-pillar-num">04</div><h4>液冷・全スタック運用</h4><p>DLC（Direct Liquid Cooling）の設計・施工・運用。PUE最適化、保全・監視・24時間運用まで、AIインフラの全ライフサイクルを支援します。</p></div>
         </div>
 
         <div class="idc-cta">
@@ -544,7 +492,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       </div>
     </section>
 
-    <!-- DETAILS -->
     <div style="margin-top:120px">
       <div class="section-label">Details</div>
       <h2 class="section-title" data-i18n="details-title">サービス詳細</h2>
@@ -570,7 +517,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
               <div class="detail-item"><div class="k">(9) 統合マネジメントの検証</div><div class="v">プロジェクトの統合マネジメントの検証を行います。</div></div>
             </div>
           </div>
-
           <div class="detail-block">
             <h4>お客様へお渡しする物</h4>
             <div class="detail-list">
@@ -578,7 +524,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
               <div class="detail-item"><div class="k">(2) 各種検証報告書</div><div class="v">統合マネジメント、スコープ定義マネジメント、タイムマネジメント、コストマネジメント、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント、リスクマネジメント、調達マネジメントに関する報告書。</div></div>
             </div>
           </div>
-
           <div class="detail-block">
             <h4>サービス詳細 — 請負元のIT企業向け</h4>
             <div class="detail-list">
@@ -590,7 +535,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
               <div class="detail-item"><div class="k">PMO（スポット型）</div><div class="v">スポット対応。ご相談に応じ、必要な時期に実施します。</div></div>
             </div>
           </div>
-
           <div class="detail-block">
             <h4>サービス詳細 — 発注元のIT企業向け</h4>
             <div class="detail-list">
@@ -621,7 +565,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
               <div class="detail-item"><div class="k">(8) コンサルテーション支援</div><div class="v">具体的解決策をシステム化するプロセスとSEが設計する基本設計の検証を行います。</div></div>
             </div>
           </div>
-
           <div class="detail-block">
             <h4>サービス詳細</h4>
             <div class="detail-list">
@@ -632,7 +575,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
               <div class="detail-item"><div class="k">情報部門社内システム運用戦略計画</div><div class="v">情報管理部門の運用戦略計画を支援。</div></div>
             </div>
           </div>
-
           <div class="detail-block">
             <h4>お客様へお渡しする物</h4>
             <div class="detail-list">
@@ -675,7 +617,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="section" id="pricing" style="padding-top:60px">
   <div class="container">
     <div class="section-label">Pricing</div>
@@ -683,18 +624,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     <p class="section-desc" data-i18n="pricing-desc">プロジェクトの規模・期間・難易度に応じて最適なプランをご提案します。下記は標準的な月額料金の目安です。</p>
 
     <div class="pricing-grid">
-
       <div class="pricing-card" data-accent="cyan">
         <div class="pricing-head">
           <div class="pricing-head-num">01</div>
-          <div class="pricing-head-title">
-            プロジェクトマネジメントサービス
-            <small>Project Management</small>
-          </div>
-          <div class="pricing-head-range">
-            <span class="label">Monthly Range</span>
-            <span class="value">80万〜200万円</span>
-          </div>
+          <div class="pricing-head-title">プロジェクトマネジメントサービス<small>Project Management</small></div>
+          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value">80万〜200万円</span></div>
         </div>
         <ul class="pricing-list">
           <li class="pricing-row"><span class="pricing-name">プロジェクトマネジメント請負</span><span class="pricing-price">80万円〜<span class="note">月額</span></span></li>
@@ -712,14 +646,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="pricing-card" data-accent="violet">
         <div class="pricing-head">
           <div class="pricing-head-num">02</div>
-          <div class="pricing-head-title">
-            システムコンサルティングサービス
-            <small>System Consulting</small>
-          </div>
-          <div class="pricing-head-range">
-            <span class="label">Monthly Range</span>
-            <span class="value">50万〜200万円</span>
-          </div>
+          <div class="pricing-head-title">システムコンサルティングサービス<small>System Consulting</small></div>
+          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value">50万〜200万円</span></div>
         </div>
         <ul class="pricing-list">
           <li class="pricing-row"><span class="pricing-name">業務分析</span><span class="pricing-price">120万円〜<span class="note">月額</span></span></li>
@@ -733,14 +661,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="pricing-card" data-accent="green">
         <div class="pricing-head">
           <div class="pricing-head-num">03</div>
-          <div class="pricing-head-title">
-            システム運用支援サービス
-            <small>Operation Support</small>
-          </div>
-          <div class="pricing-head-range">
-            <span class="label">Monthly Range</span>
-            <span class="value">10万〜120万円</span>
-          </div>
+          <div class="pricing-head-title">システム運用支援サービス<small>Operation Support</small></div>
+          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value">10万〜120万円</span></div>
         </div>
         <ul class="pricing-list">
           <li class="pricing-row"><span class="pricing-name">現状分析支援サービス</span><span class="pricing-price">10万円〜<span class="note">月額</span></span></li>
@@ -755,7 +677,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <li class="pricing-row"><span class="pricing-name">システム相談受付サービス</span><span class="pricing-price">10万円〜<span class="note">月額 / 5インシデント月</span></span></li>
         </ul>
       </div>
-
     </div>
 
     <p style="margin-top:36px;font-size:12.5px;color:var(--muted);line-height:1.8">
@@ -765,7 +686,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   </div>
 </section>
 
-<!-- COMPANY -->
 <section class="section" id="company" style="padding-top:60px">
   <div class="container">
     <div class="section-label">Company</div>
@@ -774,47 +694,26 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
     <div class="company-grid">
       <div class="company-info">
-        <div class="company-row">
-          <div class="k">Company</div>
-          <div class="v">HASH FUTURE株式会社<br><span class="muted">HASH FUTURE Co., Ltd.</span></div>
-        </div>
-        <div class="company-row">
-          <div class="k">Representative</div>
-          <div class="v">代表取締役　高柳 順之/JUNJI TAKAYANAGI</div>
-        </div>
-        <div class="company-row">
-          <div class="k">Address</div>
-          <div class="v">〒251-0041<br>神奈川県藤沢市辻堂神台2丁目2番1号<br>アイクロス湘南 5階 E号室</div>
-        </div>
-        <div class="company-row">
-          <div class="k">Contact</div>
-          <div class="v"><a href="mailto:info@hash-future.com" style="color:var(--accent)">info@hash-future.com</a><br><a href="https://www.hash-future.com/" style="color:var(--muted-2)">https://www.hash-future.com/</a></div>
-        </div>
-        <div class="company-row">
-          <div class="k">Business</div>
-          <div class="v muted">
-            1. ITプロジェクト支援事業、アドバイス事業<br>
-            2. システムコンサルティングサービス事業<br>
-            3. AIデータセンター事業<br>
-            4. GPUクラウド事業<br>
-            5. 液冷冷却インフラ事業<br>
-            6. AIインフラ構築・運用<br>
-            7. システムインテグレーション<br>
-            8. ネットワークインフラ構築<br>
-            9. AIコンピューティングサービス<br>
-            10. 保全・監視・運用サービス<br>
-            11. その他IT関連事業
-          </div>
-        </div>
+        <div class="company-row"><div class="k">Company</div><div class="v">HASH FUTURE株式会社<br><span class="muted">HASH FUTURE Co., Ltd.</span></div></div>
+        <div class="company-row"><div class="k">Representative</div><div class="v">代表取締役　高柳 順之/JUNJI TAKAYANAGI</div></div>
+        <div class="company-row"><div class="k">Address</div><div class="v">〒251-0041<br>神奈川県藤沢市辻堂神台2丁目2番1号<br>アイクロス湘南 5階 E号室</div></div>
+        <div class="company-row"><div class="k">Contact</div><div class="v"><a href="mailto:info@hash-future.com" style="color:var(--accent)">info@hash-future.com</a><br><a href="https://www.hash-future.com/" style="color:var(--muted-2)">https://www.hash-future.com/</a></div></div>
+        <div class="company-row"><div class="k">Business</div><div class="v muted">
+          1. ITプロジェクト支援事業、アドバイス事業<br>
+          2. システムコンサルティングサービス事業<br>
+          3. AIデータセンター事業<br>
+          4. GPUクラウド事業<br>
+          5. 液冷冷却インフラ事業<br>
+          6. AIインフラ構築・運用<br>
+          7. システムインテグレーション<br>
+          8. ネットワークインフラ構築<br>
+          9. AIコンピューティングサービス<br>
+          10. 保全・監視・運用サービス<br>
+          11. その他IT関連事業
+        </div></div>
       </div>
       <div class="company-map">
-        <iframe
-          src="https://www.google.com/maps?q=神奈川県藤沢市辻堂神台2丁目2番1号アイクロス湘南&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="HASH FUTURE 所在地"
-          allowfullscreen>
-        </iframe>
+        <iframe src="https://www.google.com/maps?q=神奈川県藤沢市辻堂神台2丁目2番1号アイクロス湘南&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="HASH FUTURE 所在地" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -825,10 +724,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     <div>
       <div class="footer-brand">
         <div class="logo-mark">H</div>
-        <div class="logo-text">
-          <span class="main">HASH FUTURE</span>
-          <span class="sub">CO.,LTD</span>
-        </div>
+        <div class="logo-text"><span class="main">HASH FUTURE</span><span class="sub">CO.,LTD</span></div>
       </div>
       <p class="footer-desc">AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。</p>
     </div>
@@ -878,9 +774,10 @@ function closeContact(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContact();});
 
-document.getElementById('contactForm').addEventListener('submit', async e=>{
-  e.preventDefault();
-  const form=e.target;
+/* 提交按钮改用 type="button"，这里手动处理 */
+async function submitContact(ev){
+  if(ev) ev.preventDefault();
+  const form=document.getElementById('contactForm');
   const msg=document.getElementById('contactMsg');
   const btn=document.getElementById('contactSubmit');
   if(msg){msg.className='contact-msg';msg.textContent='';}
@@ -908,12 +805,12 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body:JSON.stringify(data)
     });
-  }catch(err){
-    console.warn('fetch error (ignored, showing success anyway):', err);
-  }
+  }catch(err){console.warn('fetch error (ignored):',err);}
 
-  // 无论 fetch 结果如何，都显示成功页
-  // 生成参考号
+  showContactSuccess();
+}
+
+function showContactSuccess(){
   try{
     const now=new Date();
     const ymd=now.getFullYear().toString()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
@@ -922,24 +819,21 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
     if(refEl) refEl.textContent='HF-'+ymd+'-'+seq;
   }catch(e){}
 
-  // 隐藏表单和头部
-  form.style.display='none';
+  const form=document.getElementById('contactForm');
   const header=document.querySelector('.contact-header');
+  const successEl=document.getElementById('contactSuccess');
+  const panel=document.querySelector('.contact-panel');
+
+  if(form) form.style.display='none';
   if(header) header.style.display='none';
 
-  // 显示成功页
-  const successEl=document.getElementById('contactSuccess');
   if(successEl){
     successEl.classList.remove('active');
-    // 强制重排，确保动画重新播放
     void successEl.offsetWidth;
     successEl.classList.add('active');
   }
-
-  // 滚动 panel 到顶部
-  const panel=document.querySelector('.contact-panel');
   if(panel) panel.scrollTop=0;
-});
+}
 
 /* ============================================================
    ACCORDION
@@ -947,7 +841,7 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
 function toggleAcc(id){document.getElementById(id).classList.toggle('open');}
 
 /* ============================================================
-   HERO NETWORK CANVAS
+   HERO CANVAS
    ============================================================ */
 const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.matchMedia('(max-width: 768px)').matches;
 const CITIES = [
@@ -974,13 +868,15 @@ class NetCanvas{
   }
   resize(){
     const r=this.canvas.getBoundingClientRect();
-    this.width=r.width;this.height=r.height;
-    this.canvas.width=this.width*this.dpr;this.canvas.height=this.height*this.dpr;
+    this.width=r.width||this.canvas.clientWidth||400;
+    this.height=r.height||this.canvas.clientHeight||400;
+    this.canvas.width=this.width*this.dpr;
+    this.canvas.height=this.height*this.dpr;
     this.ctx.setTransform(this.dpr,0,0,this.dpr,0,0);
     this.computeLayout();
   }
   project(lat,lng){
-    const padX=this.width*0.14,padY=this.height*0.18;
+    const padX=this.width*0.12,padY=this.height*0.16;
     const w=this.width-padX*2,h=this.height-padY*2;
     return {x:padX+((lng-BBOX.lngMin)/(BBOX.lngMax-BBOX.lngMin))*w,y:padY+((BBOX.latMax-lat)/(BBOX.latMax-BBOX.latMin))*h};
   }
@@ -1043,8 +939,13 @@ class NetCanvas{
   start(){let last=performance.now();const loop=now=>{const dt=Math.min((now-last)/1000,.05);last=now;if(this.running){this.update(dt);this.draw();}requestAnimationFrame(loop);};requestAnimationFrame(loop);}
 }
 
-const heroCanvas=new NetCanvas(document.getElementById('heroCanvas'));
+const heroCanvasEl=document.getElementById('heroCanvas');
+const heroCanvas=new NetCanvas(heroCanvasEl);
 heroCanvas.start();
+// 字体/图片加载完成后重新测量一次
+window.addEventListener('load',()=>heroCanvas.resize());
+setTimeout(()=>heroCanvas.resize(),300);
+
 let idx=0;
 setInterval(()=>{if(idx<CITIES.length){heroCanvas.activate(CITIES[idx].id);idx++;}},800);
 
@@ -1121,7 +1022,7 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 </script>
 
-<!-- ===== CONTACT MODAL ===== -->
+<!-- CONTACT MODAL -->
 <div class="contact-modal" id="contactModal" aria-hidden="true">
   <div class="contact-backdrop" onclick="closeContact()"></div>
   <div class="contact-panel" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
@@ -1133,7 +1034,7 @@ window.addEventListener('scroll',()=>{
       <p>以下の情報をご入力ください。担当者より2営業日以内にご連絡いたします。ご入力情報はお問い合わせ対応のみに使用いたします。</p>
     </div>
 
-    <form class="contact-form" id="contactForm" novalidate>
+    <form class="contact-form" id="contactForm" novalidate onsubmit="return false;">
       <div class="contact-field">
         <label>会社名 <span class="req">*</span></label>
         <input type="text" name="company" required placeholder="例：株式会社〇〇">
@@ -1187,7 +1088,7 @@ window.addEventListener('scroll',()=>{
           <span>個人情報の取り扱いに同意します。</span>
         </label>
       </div>
-      <button type="submit" class="btn btn-primary contact-submit" id="contactSubmit">送信する</button>
+      <button type="button" class="btn btn-primary contact-submit" id="contactSubmit" onclick="submitContact(event)">送信する</button>
       <div class="contact-msg" id="contactMsg"></div>
     </form>
 
