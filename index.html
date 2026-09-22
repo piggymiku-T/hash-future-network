@@ -144,8 +144,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .detail-item .v{color:var(--muted-2);font-size:13px;line-height:1.75}
 
 /* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
-.pricing-card{background:linear-gradient(180deg,rgba(14,23,39,.85),rgba(11,18,32,.6));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .35s;position:relative}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.pricing-card{background:linear-gradient(180deg,rgba(14,23,39,.85),rgba(11,18,32,.6));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .35s;position:relative;display:flex;flex-direction:column;height:100%}
 .pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
 .pricing-card[data-accent="violet"]::before{background:linear-gradient(90deg,transparent,var(--accent-2),transparent)}
 .pricing-card[data-accent="green"]::before{background:linear-gradient(90deg,transparent,var(--accent-3),transparent)}
@@ -161,7 +161,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .pricing-head-range .value{font-size:18px;color:var(--accent);font-weight:700;letter-spacing:-.5px}
 .pricing-card[data-accent="violet"] .pricing-head-range .value{color:var(--accent-2)}
 .pricing-card[data-accent="green"] .pricing-head-range .value{color:var(--accent-3)}
-.pricing-list{list-style:none;padding:8px 0}
+.pricing-list{list-style:none;padding:8px 0;flex:1}
 .pricing-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:14px 24px;border-bottom:1px solid rgba(26,39,64,.35);transition:background .2s;position:relative}
 .pricing-row:last-child{border-bottom:none}
 .pricing-row:hover{background:rgba(0,229,255,.03)}
@@ -384,6 +384,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .contact-header h3{font-size:19px}
   .contact-form{padding:22px 22px 26px}
   .contact-close{top:14px;right:14px}
+}
+.pricing-footer{padding:22px 24px 24px;border-top:1px solid var(--border);background:linear-gradient(180deg,transparent,rgba(0,229,255,.025));display:flex;flex-direction:column;gap:14px;margin-top:auto}
+.pricing-footer-note{font-size:11.5px;color:var(--muted);line-height:1.65;margin:0}
+.pricing-footer-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px;border-radius:8px;font-size:12.5px;font-weight:600;border:1px solid var(--border-2);color:var(--text-2);background:rgba(11,18,32,.4);transition:all .25s;font-family:inherit;cursor:pointer;width:100%;text-align:left}
+.pricing-footer-btn svg{width:14px;height:14px;flex-shrink:0;transition:transform .25s}
+.pricing-footer-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,229,255,.04)}
+.pricing-footer-btn:hover svg{transform:translateX(3px)}
+.pricing-card[data-accent="violet"] .pricing-footer-btn:hover{border-color:var(--accent-2);color:var(--accent-2);background:rgba(123,97,255,.04)}
+.pricing-card[data-accent="green"] .pricing-footer-btn:hover{border-color:var(--accent-3);color:var(--accent-3);background:rgba(0,255,163,.04)}
+@media (max-width:1024px){
+  .pricing-footer{padding:18px 22px 20px}
 }
 </style>
 </head>
@@ -705,6 +716,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <li class="pricing-row"><span class="pricing-name">プロジェクト計画支援</span><span class="pricing-price">50万円〜<span class="note">ご相談に応じて</span></span></li>
           <li class="pricing-row"><span class="pricing-name">プロジェクトマネジメント支援</span><span class="pricing-price">80万円〜<span class="note">月額</span></span></li>
         </ul>
+                <div class="pricing-footer">
+          <p class="pricing-footer-note">PMの常駐・スポット対応、トラブルプロジェクトの立て直しまで、規模に応じたお見積りをご提案します。</p>
+          <button type="button" class="pricing-footer-btn" onclick="openContact()">
+            <span>お問い合わせ・お見積り</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
       </div>
 
       <div class="pricing-card" data-accent="violet">
@@ -720,6 +738,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <li class="pricing-row"><span class="pricing-name">ITロードマップ（中長期計画策定）</span><span class="pricing-price">150万円〜<span class="note">月額</span></span></li>
           <li class="pricing-row"><span class="pricing-name">情報部門社内システム運用戦略計画</span><span class="pricing-price">50万円〜<span class="note">ご相談に応じて</span></span></li>
         </ul>
+                <div class="pricing-footer">
+          <p class="pricing-footer-note">業務分析からITロードマップ策定まで、経営戦略とITをリンクさせるご支援をいたします。</p>
+          <button type="button" class="pricing-footer-btn" onclick="openContact()">
+            <span>お問い合わせ・お見積り</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
       </div>
 
       <div class="pricing-card" data-accent="green">
@@ -740,6 +765,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv6）</span><span class="pricing-price">120万円<span class="note">月額 / 常駐型</span></span></li>
           <li class="pricing-row"><span class="pricing-name">システム相談受付サービス</span><span class="pricing-price">10万円〜<span class="note">月額 / 5インシデント月</span></span></li>
         </ul>
+                <div class="pricing-footer">
+          <p class="pricing-footer-note">オンサイト調査から運用設計まで、ご要望に応じた柔軟なプランをご用意しています。</p>
+          <button type="button" class="pricing-footer-btn" onclick="openContact()">
+            <span>お問い合わせ・お見積り</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
       </div>
     </div>
 
