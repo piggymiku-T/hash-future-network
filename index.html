@@ -51,7 +51,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 40px 80px;overflow:hidden}
-#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:.75}
+#heroCanvas{position:absolute;top:0;right:0;width:58%;height:100%;z-index:1;pointer-events:none}
 .hero-content{position:relative;z-index:2;max-width:1320px;width:100%;margin:0 auto;pointer-events:none}
 .hero-content{position:relative;z-index:2;max-width:1320px;width:100%;margin:0 auto;pointer-events:none}
 .hero-content::before{
@@ -295,6 +295,52 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 ... 你粘贴的所有内容 ...
 @media (max-width:768px){
   .idc-stat{padding:22px 20px}
+
+/* ===== CONTACT MODAL ===== */
+.contact-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.contact-modal.open{display:flex;animation:contactFade .25s ease}
+@keyframes contactFade{from{opacity:0}to{opacity:1}}
+.contact-backdrop{position:absolute;inset:0;background:rgba(3,6,12,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.contact-panel{position:relative;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:linear-gradient(180deg,#0E1727 0%,#0B1220 100%);border:1px solid var(--border-2);border-radius:var(--radius);box-shadow:0 40px 100px rgba(0,0,0,.6);animation:contactSlide .3s cubic-bezier(.4,0,.2,1)}
+@keyframes contactSlide{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.contact-panel::-webkit-scrollbar{width:8px}
+.contact-panel::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:4px}
+.contact-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:rgba(6,11,20,.6);color:var(--muted-2);font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:2;font-family:Arial,sans-serif}
+.contact-close:hover{border-color:var(--danger);color:var(--danger);background:rgba(255,84,112,.08)}
+.contact-header{padding:32px 36px 24px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.contact-header::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.6}
+.contact-header .section-label{margin-bottom:14px}
+.contact-header h3{font-size:22px;font-weight:700;letter-spacing:-.4px;margin-bottom:10px}
+.contact-header p{font-size:13px;color:var(--muted-2);line-height:1.7}
+.contact-form{padding:28px 36px 32px}
+.contact-field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+.contact-field label{font-size:12.5px;font-weight:600;color:var(--muted-2);display:flex;align-items:center;gap:6px}
+.contact-field label .req{color:var(--danger);font-size:14px;line-height:1}
+.contact-field label .hint{font-weight:400;font-size:11px;color:var(--muted);margin-left:auto;background:rgba(107,122,153,.15);padding:2px 8px;border-radius:4px}
+.contact-field input,.contact-field select,.contact-field textarea{width:100%;padding:11px 13px;background:rgba(6,11,20,.6);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:14px;font-family:inherit;transition:all .2s;outline:none}
+.contact-field textarea{resize:vertical;min-height:88px;line-height:1.6}
+.contact-field input:focus,.contact-field select:focus,.contact-field textarea:focus{border-color:var(--accent);background:rgba(0,229,255,.03);box-shadow:0 0 0 3px rgba(0,229,255,.1)}
+.contact-field input::placeholder,.contact-field textarea::placeholder{color:var(--muted);opacity:.55}
+.contact-field select{appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7A99' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:38px;cursor:pointer}
+.contact-submit{width:100%;justify-content:center;margin-top:8px;padding:15px 24px}
+.contact-submit:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
+.contact-msg{margin-top:14px;padding:11px 14px;border-radius:8px;font-size:12.5px;display:none;line-height:1.6}
+.contact-msg.err{display:block;background:rgba(255,84,112,.1);border:1px solid rgba(255,84,112,.3);color:#FF8FA3}
+.contact-success{padding:52px 36px;text-align:center;display:none}
+.contact-success.active{display:block}
+.contact-success .success-icon{width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:linear-gradient(135deg,rgba(0,255,163,.2),rgba(0,229,255,.1));border:2px solid var(--accent-3);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(0,255,163,.35)}
+.contact-success .success-icon svg{width:28px;height:28px;color:var(--accent-3)}
+.contact-success h4{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
+.contact-success p{font-size:13px;color:var(--muted-2);line-height:1.75;max-width:380px;margin:0 auto}
+
+@media (max-width:640px){
+  .contact-modal{padding:0;align-items:flex-end}
+  .contact-panel{max-width:100%;max-height:92vh;border-radius:var(--radius) var(--radius) 0 0}
+  .contact-header{padding:24px 22px 18px}
+  .contact-header h3{font-size:19px}
+  .contact-form{padding:22px 22px 26px}
+  .contact-close{top:14px;right:14px}
+}
 </style>
 </head>
 <body>
@@ -462,10 +508,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
             <h3 data-i18n="idc-cta-title">DC場地の提供をご検討の方へ</h3>
             <p data-i18n="idc-cta-desc">全国のDC場地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす場地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。</p>
           </div>
-          <a href="mailto:info@hash-future.com?subject=DC場地のご相談" class="btn btn-primary">
+                   <button type="button" class="btn btn-primary" onclick="openContact()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             <span data-i18n="idc-cta-btn">お問い合わせ</span>
-          </a>
+          </button>
         </div>
       </div>
     </section>
@@ -786,7 +832,71 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 </footer>
 
 <script>
-function toggleAcc(id){document.getElementById(id).classList.toggle('open');}
+/* ============================================================
+   CONFIG — Apps Script 部署后把 URL 填这里
+   ============================================================ */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/REPLACE_WITH_YOUR_DEPLOYMENT_ID/exec";
+
+/* ============================================================
+   CONTACT MODAL
+   ============================================================ */
+function openContact(){
+  const m=document.getElementById('contactModal');
+  m.classList.add('open');
+  m.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeContact(){
+  const m=document.getElementById('contactModal');
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeContact();});
+
+document.getElementById('contactForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const form=e.target;
+  const msg=document.getElementById('contactMsg');
+  const btn=document.getElementById('contactSubmit');
+  msg.className='contact-msg';msg.textContent='';
+
+  if(!form.checkValidity()){form.reportValidity();return;}
+
+  if(APPS_SCRIPT_URL.includes('REPLACE_WITH_YOUR')){
+    msg.className='contact-msg err';
+    msg.textContent='送信先URLが未設定です。管理者にお問い合わせください。';
+    return;
+  }
+
+  btn.disabled=true;btn.textContent='送信中...';
+
+  const data={_type:'contact'};
+  new FormData(form).forEach((v,k)=>{data[k]=(k==='confirm_truth')?'Yes':v;});
+  data._submitted_at=new Date().toISOString();
+  data._submitted_at_jst=new Date().toLocaleString('ja-JP',{timeZone:'Asia/Tokyo'});
+  data._page_url=location.href;
+  data._user_agent=navigator.userAgent;
+
+  try{
+    await fetch(APPS_SCRIPT_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(data)
+    });
+    form.style.display='none';
+    document.querySelector('.contact-header').style.display='none';
+    document.getElementById('contactSuccess').classList.add('active');
+  }catch(err){
+    console.error(err);
+    msg.className='contact-msg err';
+    msg.textContent='送信に失敗しました。ネットワークをご確認の上、再度お試しください。';
+    btn.disabled=false;btn.textContent='送信する';
+  }
+});
+
+  function toggleAcc(id){document.getElementById(id).classList.toggle('open');}
 
 const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.matchMedia('(max-width: 768px)').matches;
 const CITIES = [
@@ -957,6 +1067,87 @@ window.addEventListener('scroll',()=>{
   h.style.padding=window.scrollY>60?(IS_MOBILE?'10px 18px':'10px 40px'):(IS_MOBILE?'14px 20px':'18px 40px');
 },{passive:true});
 </script>
+
+
+<!-- ===== CONTACT MODAL ===== -->
+<div class="contact-modal" id="contactModal" aria-hidden="true">
+  <div class="contact-backdrop" onclick="closeContact()"></div>
+  <div class="contact-panel" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <button type="button" class="contact-close" onclick="closeContact()" aria-label="閉じる">×</button>
+
+    <div class="contact-header">
+      <div class="section-label">Contact</div>
+      <h3 id="contactTitle">お問い合わせ</h3>
+      <p>以下の情報をご入力ください。担当者より2営業日以内にご連絡いたします。ご入力情報はお問い合わせ対応のみに使用いたします。</p>
+    </div>
+
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="contact-field">
+        <label>会社名 <span class="req">*</span></label>
+        <input type="text" name="company" required placeholder="例：株式会社〇〇">
+      </div>
+      <div class="contact-field">
+        <label>ご担当者名 <span class="req">*</span></label>
+        <input type="text" name="contact_name" required placeholder="山田 太郎">
+      </div>
+      <div class="contact-field">
+        <label>メールアドレス <span class="req">*</span></label>
+        <input type="email" name="email" required placeholder="name@company.co.jp">
+      </div>
+      <div class="contact-field">
+        <label>電話番号 <span class="hint">任意</span></label>
+        <input type="tel" name="phone" placeholder="03-0000-0000">
+      </div>
+      <div class="contact-field">
+        <label>お問い合わせ種別 <span class="req">*</span></label>
+        <select name="inquiry_type" required>
+          <option value="">選択してください</option>
+          <option>DC場地の提供について</option>
+          <option>GPUクラウドについて</option>
+          <option>システムコンサルティングについて</option>
+          <option>プロジェクトマネジメントについて</option>
+          <option>システム運用支援について</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="contact-field">
+        <label>場地の所在地 <span class="hint">任意・DC場地の場合</span></label>
+        <input type="text" name="site_location" placeholder="例：北海道石狩市">
+      </div>
+      <div class="contact-field">
+        <label>想定規模 <span class="hint">任意</span></label>
+        <select name="scale">
+          <option value="">選択してください</option>
+          <option>未定</option>
+          <option>1MW 未満</option>
+          <option>1〜5MW</option>
+          <option>5〜10MW</option>
+          <option>10MW 以上</option>
+        </select>
+      </div>
+      <div class="contact-field">
+        <label>お問い合わせ内容 <span class="hint">任意</span></label>
+        <textarea name="message" placeholder="ご相談内容の概要をご記入ください"></textarea>
+      </div>
+      <div class="contact-field">
+        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:12px;font-weight:400;color:var(--muted-2)">
+          <input type="checkbox" name="confirm_truth" required style="width:16px;height:16px;accent-color:#00E5FF;margin-top:2px;flex-shrink:0">
+          <span>個人情報の取り扱いに同意します。</span>
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary contact-submit" id="contactSubmit">送信する</button>
+      <div class="contact-msg" id="contactMsg"></div>
+    </form>
+
+    <div class="contact-success" id="contactSuccess">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h4>送信完了</h4>
+      <p>お問い合わせありがとうございます。担当者より2営業日以内にご連絡いたします。</p>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
