@@ -383,6 +383,140 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .contact-form{padding:22px 22px 26px}
   .contact-close{top:14px;right:14px}
 }
+/* ===== CUSTOM CURSOR v2 ===== */
+@media (hover: hover) and (pointer: fine) {
+  body:not(.no-custom-cursor),
+  body:not(.no-custom-cursor) *{cursor:none !important}
+  body:not(.no-custom-cursor) input:not([type="submit"]):not([type="button"]):not([type="checkbox"]),
+  body:not(.no-custom-cursor) textarea{cursor:text !important}
+  body:not(.no-custom-cursor) input[type="checkbox"]{cursor:pointer !important}
+
+  .hf-cur{
+    position:fixed;left:0;top:0;
+    width:0;height:0;
+    pointer-events:none;
+    z-index:99998;
+    will-change:transform;
+    transition:opacity .2s;
+  }
+  .hf-cur-shape{
+    position:absolute;left:0;top:0;
+    width:30px;height:30px;
+    border:1.5px solid rgba(0,229,255,.85);
+    border-radius:4px;
+    transform:translate(-50%,-50%) rotate(45deg);
+    transition:width .35s cubic-bezier(.4,0,.2,1),
+               height .35s cubic-bezier(.4,0,.2,1),
+               border-radius .35s cubic-bezier(.4,0,.2,1),
+               transform .35s cubic-bezier(.4,0,.2,1),
+               border-color .35s,
+               box-shadow .35s,
+               background .35s;
+    box-shadow:0 0 14px rgba(0,229,255,.6),
+               inset 0 0 8px rgba(0,229,255,.3);
+    will-change:transform,width,height;
+    animation:hfSpin 8s linear infinite;
+  }
+  @keyframes hfSpin{
+    from{transform:translate(-50%,-50%) rotate(45deg)}
+    to{transform:translate(-50%,-50%) rotate(405deg)}
+  }
+  .hf-cur-shape::before,
+  .hf-cur-shape::after{
+    content:'';position:absolute;background:#00FFA3;
+    opacity:0;transition:opacity .3s,background .3s;
+    pointer-events:none;
+  }
+  .hf-cur-shape::before{
+    top:50%;left:24%;right:24%;height:1.5px;
+    transform:translateY(-50%);
+  }
+  .hf-cur-shape::after{
+    left:50%;top:24%;bottom:24%;width:1.5px;
+    transform:translateX(-50%);
+  }
+
+  .hf-cur-dot{
+    position:fixed;left:0;top:0;
+    width:4px;height:4px;
+    background:#00E5FF;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:99999;
+    box-shadow:0 0 8px #00E5FF,0 0 16px rgba(0,229,255,.6);
+    will-change:transform;
+    transition:background .3s,box-shadow .3s,opacity .2s;
+  }
+
+  /* Hover state */
+  .hf-cur.hf-hover .hf-cur-shape{
+    animation:none;
+    width:50px;height:50px;
+    border-radius:50%;
+    transform:translate(-50%,-50%) rotate(0deg);
+    border-color:rgba(0,255,163,.95);
+    background:rgba(0,255,163,.06);
+    box-shadow:0 0 28px rgba(0,255,163,.75),
+               inset 0 0 14px rgba(0,255,163,.35);
+  }
+  .hf-cur.hf-hover .hf-cur-shape::before,
+  .hf-cur.hf-hover .hf-cur-shape::after{opacity:1}
+  .hf-cur.hf-hover .hf-cur-dot{
+    background:#00FFA3;
+    box-shadow:0 0 12px #00FFA3,0 0 24px rgba(0,255,163,.65);
+  }
+
+  /* Click state */
+  .hf-cur.hf-click .hf-cur-shape{
+    transition:transform .12s ease;
+    transform:translate(-50%,-50%) rotate(0deg) scale(.8);
+  }
+  .hf-cur.hf-click.hf-hover .hf-cur-shape{
+    transform:translate(-50%,-50%) rotate(0deg) scale(.8);
+  }
+
+  /* Particle */
+  .hf-particle{
+    position:fixed;left:0;top:0;
+    width:5px;height:5px;
+    border-radius:50%;
+    background:#00FFA3;
+    box-shadow:0 0 10px #00FFA3,0 0 20px rgba(0,255,163,.6);
+    pointer-events:none;
+    z-index:100000;
+    transform:translate(-50%,-50%);
+    will-change:transform,opacity;
+    opacity:0;
+  }
+  .hf-particle.go{
+    animation:hfBurst .75s cubic-bezier(.15,.6,.3,1) forwards;
+  }
+  @keyframes hfBurst{
+    0%{transform:translate(-50%,-50%) scale(1);opacity:1}
+    100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15);opacity:0}
+  }
+
+  /* Shockwave */
+  .hf-shock{
+    position:fixed;left:0;top:0;
+    width:14px;height:14px;
+    border:2px solid #00FFA3;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:100001;
+    transform:translate(-50%,-50%) scale(.5);
+    opacity:0;
+    will-change:transform,opacity;
+  }
+  .hf-shock.go{
+    animation:hfShock .55s cubic-bezier(.15,.6,.3,1) forwards;
+  }
+  @keyframes hfShock{
+    0%{transform:translate(-50%,-50%) scale(.5);opacity:.9;border-width:2.5px}
+    100%{transform:translate(-50%,-50%) scale(3.6);opacity:0;border-width:.5px}
+  }
+}
 </style>
 </head>
 <body>
@@ -1062,6 +1196,102 @@ window.addEventListener('scroll',()=>{
   const h=document.querySelector('.site-header');
   h.style.padding=window.scrollY>60?(IS_MOBILE?'10px 18px':'10px 40px'):(IS_MOBILE?'14px 20px':'18px 40px');
 },{passive:true});
+/* ===== CUSTOM CURSOR v2 ===== */
+(function(){
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!hasMouse || reducedMotion) return;
+
+  // 创建元素
+  const cur = document.createElement('div');
+  cur.className = 'hf-cur';
+  const shape = document.createElement('div');
+  shape.className = 'hf-cur-shape';
+  cur.appendChild(shape);
+
+  const dot = document.createElement('div');
+  dot.className = 'hf-cur-dot';
+
+  document.body.appendChild(cur);
+  document.body.appendChild(dot);
+
+  let mx = -100, my = -100;
+  let cx = -100, cy = -100;
+  let firstMove = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    if (!firstMove) {
+      firstMove = true;
+      cx = mx; cy = my;
+    }
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cur.style.opacity = '0';
+    dot.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cur.style.opacity = '1';
+    dot.style.opacity = '1';
+  });
+
+  const INTERACTIVE = 'a, button, [role="button"], input[type="submit"], input[type="button"], input[type="checkbox"], .btn, .service-card, .pricing-row, .pricing-card, .pricing-footer-btn, .idc-pillar, .acc-header, .contact-close, .lang-switch button, .legal-nav a';
+  const TEXT_FIELD = 'input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], textarea';
+
+  document.addEventListener('mouseover', (e) => {
+    const t = e.target;
+    if (t.closest && t.closest(INTERACTIVE) && !t.closest(TEXT_FIELD)) {
+      cur.classList.add('hf-hover');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    const t = e.target;
+    if (t.closest && t.closest(INTERACTIVE)) {
+      cur.classList.remove('hf-hover');
+    }
+  });
+
+  document.addEventListener('mousedown', (e) => {
+    cur.classList.add('hf-click');
+    spawnBurst(e.clientX, e.clientY);
+  });
+  document.addEventListener('mouseup', () => cur.classList.remove('hf-click'));
+
+  function spawnBurst(x, y){
+    const count = 10;
+    for (let i = 0; i < count; i++){
+      const p = document.createElement('div');
+      p.className = 'hf-particle';
+      const angle = (Math.PI * 2 * i) / count + Math.random() * 0.4;
+      const dist = 42 + Math.random() * 34;
+      p.style.setProperty('--dx', (Math.cos(angle) * dist).toFixed(1) + 'px');
+      p.style.setProperty('--dy', (Math.sin(angle) * dist).toFixed(1) + 'px');
+      p.style.left = x + 'px';
+      p.style.top  = y + 'px';
+      document.body.appendChild(p);
+      requestAnimationFrame(() => p.classList.add('go'));
+      setTimeout(() => p.remove(), 800);
+    }
+    const shock = document.createElement('div');
+    shock.className = 'hf-shock';
+    shock.style.left = x + 'px';
+    shock.style.top  = y + 'px';
+    document.body.appendChild(shock);
+    requestAnimationFrame(() => shock.classList.add('go'));
+    setTimeout(() => shock.remove(), 650);
+  }
+
+  function loop(){
+    cx += (mx - cx) * 0.22;
+    cy += (my - cy) * 0.22;
+    cur.style.transform = `translate(${cx}px,${cy}px)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 </script>
 
 <div class="contact-modal" id="contactModal" aria-hidden="true">
