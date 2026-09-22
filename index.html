@@ -297,13 +297,13 @@ input,select,textarea{font-family:inherit}
 <section class="section" id="about">
   <div class="container">
     <div class="section-label">About Hash Future</div>
-    <h2 class="section-title" data-i18n="about-title">AIインフラを、日本のすみずみまで。</h2>
+    <h2 class="section-title" data-i18n="about-title">AIインフラを、日本の隅々まで。</h2>
     <p class="section-desc" data-i18n="about-desc">Hash Futureは、日本に拠点を置くAIインフラ統合企業です。GPUクラスタの展開に必要なDC場地の選定、法令・耐震・電力の適格性審査、リース交渉、全スタック運用までを一気通貫で提供します。</p>
     <div class="features">
       <div class="feature">
         <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
         <h3 data-i18n="f1-title">日本全域のサイト選定</h3>
-        <p data-i18n="f1-desc">北海道から九州まで、GPUクラスタに適したDC場地のスクリーニングと評価を実施します。</p>
+        <p data-i18n="f1-desc">北海道から九州まで、GPUクラスタに適したDCロケーションのスクリーニングと評価を実施します。</p>
       </div>
       <div class="feature">
         <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -323,7 +323,7 @@ input,select,textarea{font-family:inherit}
   <div class="container">
     <div class="section-label">Site Intake</div>
     <h2 class="section-title" data-i18n="form-title">Join the Hash Future Network</h2>
-    <p class="section-desc" data-i18n="form-desc">以下の情報をご提供いただくことで、貴社のDC場地がHash Futureの候補ネットワークに登録されます。全ての情報は機密として取り扱い、選定評価のみに使用いたします。</p>
+    <p class="section-desc" data-i18n="form-desc">以下の情報をご提供いただくことで、貴社のDCロケーションがHash Futureの候補ネットワークに登録されます。全ての情報は機密として取り扱い、選定評価のみに使用いたします。</p>
 
     <div class="form-wrap">
       <div class="form-visual">
@@ -361,17 +361,17 @@ input,select,textarea{font-family:inherit}
 
         <div class="step-body" data-step="2" data-node="n2">
           <div class="field-grid">
-            <div class="field"><label>場地名 <span class="req">*</span><span class="hint">Site Name</span></label><input type="text" name="site_name" required placeholder="〇〇データセンター"></div>
+            <div class="field"><label>ロケーション名 <span class="req">*</span><span class="hint">Site Name</span></label><input type="text" name="site_name" required placeholder="〇〇データセンター"></div>
             <div class="field"><label>所在地 <span class="req">*</span><span class="hint">Address</span></label><input type="text" name="site_address" required placeholder="北海道石狩市"></div>
-            <div class="field"><label>場地性質 <span class="req">*</span><span class="hint">Site Type</span></label>
-              <select name="site_type" required><option value="">選択してください</option><option>自社所有（Owned）</option><option>賃借（Leased）</option><option>工場跡地（Former Factory）</option><option>更地・毛坯（Land / Shell）</option></select>
+            <div class="field"><label>用地性質 <span class="req">*</span><span class="hint">Site Type</span></label>
+              <select name="site_type" required><option value="">選択してください</option><option>自社所有（Owned）</option><option>賃借（Leased）</option><option>工場跡地（Former Factory）</option><option>更地・現状渡し（Land / Shell）</option></select>
             </div>
             <div class="field"><label>DC可用面積（㎡）<span class="hint">Usable Area</span></label><input type="number" name="dc_area_sqm" step="0.01"></div>
             <div class="field"><label>設置可能ラック数 <span class="req">*</span><span class="hint">Racks</span></label><input type="number" name="rack_count" required></div>
             <div class="field"><label>ラックあたり電力密度（kW） <span class="req">*</span></label><input type="number" name="kw_per_rack" step="0.01" required></div>
             <div class="field"><label>賃貸期間（年） <span class="req">*</span><span class="hint">Lease (years)</span></label><input type="number" name="lease_years" step="0.5" required></div>
-            <div class="field"><label>免責期間（月）<span class="hint">Rent Free</span></label><input type="number" name="rent_free_months" step="1"></div>
-            <div class="field full"><label>更新・退出・原状回復条件</label><textarea name="lease_terms" placeholder="更新料、中途解約、原状回復義務など"></textarea></div>
+            <div class="field"><label>賃料免除・免責期間（月）<span class="hint">Rent Free</span></label><input type="number" name="rent_free_months" step="1"></div>
+            <div class="field full"><label>更新・終了・解約条件</label><textarea name="lease_terms" placeholder="更新料、中途解約、原状回復義務など"></textarea></div>
           </div>
         </div>
 
@@ -483,7 +483,7 @@ input,select,textarea{font-family:inherit}
         <div class="success-screen" id="successScreen">
           <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
           <h3>ご提出ありがとうございました</h3>
-          <p>貴社の場地ノードがHash Futureネットワークに追加されました。担当者より2営業日以内にご連絡いたします。</p>
+          <p>貴社のロケーションノードがHash Futureネットワークに追加されました。担当者より2営業日以内にご連絡いたします。</p>
           <div class="success-summary" id="successSummary"></div>
           <button type="button" class="btn-step back" id="btnDownload" style="padding:11px 22px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--muted-2);border:1px solid var(--border-2)">控えをダウンロード（JSON）</button>
         </div>
@@ -1033,8 +1033,8 @@ const I18N = {
     'cta-primary': 'Join the Network',
     'cta-secondary': 'Learn more',
     'about-title': 'AIインフラを、日本のすみずみまで。',
-    'about-desc': 'Hash Futureは、日本に拠点を置くAIインフラ統合企業です。GPUクラスタの展開に必要なDC場地の選定、法令・耐震・電力の適格性審査、リース交渉、全スタック運用までを一気通貫で提供します。',
-    'f1-title':'日本全域のサイト選定','f1-desc':'北海道から九州まで、GPUクラスタに適したDC場地のスクリーニングと評価を実施します。',
+    'about-desc': 'Hash Futureは、日本に拠点を置くAIインフラ統合企業です。GPUクラスタの展開に必要なDCロケーションの選定、法令・耐震・電力の適格性審査、リース交渉、全スタック運用までを一気通貫で提供します。',
+    'f1-title':'日本全域のサイト選定','f1-desc':'北海道から九州まで、GPUクラスタに適したDCロケーションのスクリーニングと評価を実施します。',
     'f2-title':'電力・PUE適格性審査','f2-desc':'IT受電容量、PUE、接電ステータス、再エネ比率を精査し、2029年以降の規制にも対応します。',
     'f3-title':'全スタック運用','f3-desc':'GPUサーバ、ストレージ、100G専用線、DLC冷却を含む全スタックの設計・調達・運用を代行します。',
     'form-title': 'Join the Hash Future Network',
