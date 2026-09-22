@@ -322,12 +322,52 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .contact-submit:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
 .contact-msg{margin-top:14px;padding:11px 14px;border-radius:8px;font-size:12.5px;display:none;line-height:1.6}
 .contact-msg.err{display:block;background:rgba(255,84,112,.1);border:1px solid rgba(255,84,112,.3);color:#FF8FA3}
-.contact-success{padding:52px 36px;text-align:center;display:none}
-.contact-success.active{display:block}
-.contact-success .success-icon{width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:linear-gradient(135deg,rgba(0,255,163,.2),rgba(0,229,255,.1));border:2px solid var(--accent-3);display:flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(0,255,163,.35)}
-.contact-success .success-icon svg{width:28px;height:28px;color:var(--accent-3)}
-.contact-success h4{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-.3px}
-.contact-success p{font-size:13px;color:var(--muted-2);line-height:1.75;max-width:380px;margin:0 auto}
+.contact-success{padding:52px 36px 44px;text-align:center;display:none}
+.contact-success.active{display:block;animation:successFadeIn .5s cubic-bezier(.4,0,.2,1)}
+@keyframes successFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Success Animation */
+.success-anim{width:130px;height:130px;margin:0 auto 26px;position:relative}
+.success-svg{width:100%;height:100%;position:relative;z-index:2;overflow:visible}
+.success-ring-bg{fill:none;stroke:rgba(0,255,163,.12);stroke-width:2}
+.success-ring{fill:none;stroke:var(--accent-3);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:277;stroke-dashoffset:277;transform:rotate(-90deg);transform-origin:50% 50%;filter:drop-shadow(0 0 8px rgba(0,255,163,.7))}
+.contact-success.active .success-ring{animation:successDraw 1s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes successDraw{to{stroke-dashoffset:0}}
+.success-check{fill:none;stroke:var(--accent-3);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;filter:drop-shadow(0 0 6px rgba(0,255,163,.9))}
+.contact-success.active .success-check{animation:successCheck .45s cubic-bezier(.65,0,.35,1) .8s forwards}
+@keyframes successCheck{to{stroke-dashoffset:0}}
+.success-glow{position:absolute;top:50%;left:50%;width:100%;height:100%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(0,255,163,.35) 0%,transparent 65%);opacity:0;z-index:1}
+.contact-success.active .success-glow{animation:successGlow 1.8s ease-out .5s infinite}
+@keyframes successGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}}
+
+/* Particles */
+.success-particles{position:absolute;top:50%;left:50%;width:0;height:0;z-index:1}
+.success-particles span{position:absolute;width:6px;height:6px;background:var(--accent-3);border-radius:50%;box-shadow:0 0 12px var(--accent-3);opacity:0;top:0;left:0}
+.contact-success.active .success-particles span{animation:particleBurst 1.4s cubic-bezier(.15,.6,.3,1) .7s forwards}
+.success-particles span:nth-child(1){--tx:60px;--ty:0px}
+.success-particles span:nth-child(2){--tx:-60px;--ty:0px}
+.success-particles span:nth-child(3){--tx:0px;--ty:60px}
+.success-particles span:nth-child(4){--tx:0px;--ty:-60px}
+.success-particles span:nth-child(5){--tx:42px;--ty:42px}
+.success-particles span:nth-child(6){--tx:-42px;--ty:42px}
+.success-particles span:nth-child(7){--tx:42px;--ty:-42px}
+.success-particles span:nth-child(8){--tx:-42px;--ty:-42px}
+@keyframes particleBurst{
+  0%{opacity:1;transform:translate(0,0) scale(1)}
+  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.2)}
+}
+
+.contact-success h4{font-size:22px;font-weight:700;margin-bottom:14px;letter-spacing:-.3px;background:linear-gradient(135deg,#fff 0%,var(--accent-3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0}
+.contact-success.active h4{animation:successTextIn .5s ease .3s forwards}
+@keyframes successTextIn{to{opacity:1}}
+.contact-success p{font-size:13.5px;color:var(--muted-2);line-height:1.8;max-width:400px;margin:0 auto;opacity:0}
+.contact-success.active p{animation:successTextIn .5s ease .45s forwards}
+
+/* Reference badge */
+.success-ref{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:10px 18px;background:rgba(0,255,163,.06);border:1px solid rgba(0,255,163,.25);border-radius:10px;opacity:0}
+.contact-success.active .success-ref{animation:successTextIn .5s ease .6s forwards}
+.success-ref .ref-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-3);letter-spacing:2px;font-weight:600}
+.success-ref .ref-value{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--text);font-weight:600;letter-spacing:.5px}
 
 @media (max-width:640px){
   .contact-modal{padding:0;align-items:flex-end}
@@ -354,7 +394,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     <a href="#idc">AIインフラ</a>
     <a href="#pricing">料金</a>
     <a href="#company">会社情報</a>
-    <a href="legal.html">法務</a>
+    <a href="javascript:void(0)" onclick="openContact()">お問い合わせ</a>
   </nav>
   <div class="lang-switch">
     <button class="active" data-lang="ja">JP</button>
@@ -881,9 +921,16 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body:JSON.stringify(data)
     });
-    form.style.display='none';
+        form.style.display='none';
     document.querySelector('.contact-header').style.display='none';
+    // 生成参考号
+    const now=new Date();
+    const ymd=now.getFullYear().toString()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
+    const seq=String(Math.floor(Math.random()*900)+100);
+    document.getElementById('successRef').textContent=`HF-${ymd}-${seq}`;
     document.getElementById('contactSuccess').classList.add('active');
+    // 滚动 modal 到顶部，避免长表单后成功页显示在滚动位置下方
+    document.querySelector('.contact-panel').scrollTop=0;
   }catch(err){
     console.error(err);
     msg.className='contact-msg err';
@@ -1135,15 +1182,26 @@ window.addEventListener('scroll',()=>{
       <div class="contact-msg" id="contactMsg"></div>
     </form>
 
-    <div class="contact-success" id="contactSuccess">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+       <div class="contact-success" id="contactSuccess">
+      <div class="success-anim">
+        <div class="success-glow"></div>
+        <svg class="success-svg" viewBox="0 0 100 100">
+          <circle class="success-ring-bg" cx="50" cy="50" r="44" />
+          <circle class="success-ring" cx="50" cy="50" r="44" />
+          <path class="success-check" d="M30 52 L45 66 L72 38" />
+        </svg>
+        <div class="success-particles">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
       </div>
       <h4>送信完了</h4>
-      <p>お問い合わせありがとうございます。担当者より2営業日以内にご連絡いたします。</p>
+      <p>お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。</p>
+      <div class="success-ref">
+        <span class="ref-label">REFERENCE</span>
+        <span class="ref-value" id="successRef">HF-000000-000</span>
+      </div>
     </div>
-  </div>
-</div>
 
 </body>
 </html>
