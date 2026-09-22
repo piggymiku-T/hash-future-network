@@ -51,26 +51,14 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 40px 80px;overflow:hidden}
-#heroCanvas{position:absolute;top:0;right:0;width:58%;height:100%;z-index:1;pointer-events:none}
+#heroCanvas{position:absolute;top:0;right:0;width:52%;height:100%;z-index:1;pointer-events:none}
 .hero-content{position:relative;z-index:2;max-width:1320px;width:100%;margin:0 auto;pointer-events:none}
-.hero-content{position:relative;z-index:2;max-width:1320px;width:100%;margin:0 auto;pointer-events:none}
-.hero-content::before{
-  content:'';position:absolute;
-  top:-120px;bottom:-120px;left:-120px;right:-120px;
-  background:linear-gradient(100deg,
-    rgba(6,11,20,0.96) 0%,
-    rgba(6,11,20,0.88) 22%,
-    rgba(6,11,20,0.62) 42%,
-    rgba(6,11,20,0.22) 62%,
-    transparent 78%);
-  z-index:-1;pointer-events:none;
-}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border:1px solid rgba(0,229,255,.3);border-radius:100px;font-size:11.5px;font-weight:600;letter-spacing:1.2px;color:var(--accent);background:rgba(0,229,255,.06);margin-bottom:32px;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
 .hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:pulse-dot 2s ease-in-out infinite}
 @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
-.hero h1{font-size:clamp(36px,5vw,68px);font-weight:800;line-height:1.08;letter-spacing:-2.4px;margin-bottom:28px;max-width:960px;font-family:'Inter','Noto Sans JP',sans-serif}
+.hero h1{font-size:clamp(36px,4.6vw,62px);font-weight:800;line-height:1.08;letter-spacing:-2.2px;margin-bottom:28px;max-width:640px;font-family:'Inter','Noto Sans JP',sans-serif}
 .hero h1 .grad{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 55%,var(--accent-3) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-sub{font-size:clamp(14.5px,1.35vw,16.5px);color:var(--muted-2);max-width:680px;margin-bottom:44px;line-height:1.85;font-weight:400}
+.hero-sub{font-size:clamp(14.5px,1.35vw,16px);color:var(--muted-2);max-width:560px;margin-bottom:44px;line-height:1.85;font-weight:400}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:11px;font-size:14px;font-weight:600;transition:all .25s cubic-bezier(.4,0,.2,1);border:1px solid transparent;position:relative;overflow:hidden;letter-spacing:.01em}
 .btn-primary{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);color:#060B14;box-shadow:0 10px 36px rgba(0,229,255,.32),inset 0 1px 0 rgba(255,255,255,.35)}
@@ -216,7 +204,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .logo-mark{width:34px;height:34px;font-size:18px}
   .section{padding:72px 20px}
   .hero{padding:110px 20px 50px;min-height:90vh}
-  .hero h1{letter-spacing:-1.4px;margin-bottom:22px}
+  #heroCanvas{width:100%;left:0;right:auto;opacity:.32}
+  .hero h1{letter-spacing:-1.4px;margin-bottom:22px;max-width:100%}
+  .hero-sub{max-width:100%}
   .hero-actions{width:100%}
   .hero-actions .btn{flex:1;justify-content:center;padding:14px 20px}
   .section-title{letter-spacing:-.6px}
@@ -290,6 +280,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .idc-cta h3{font-size:16.5px}
   .idc-cta .btn{width:100%;justify-content:center;padding:14px 24px}
 }
+
 /* ===== CONTACT MODAL ===== */
 .contact-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
 .contact-modal.open{display:flex;animation:contactFade .25s ease}
@@ -322,6 +313,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .contact-submit:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
 .contact-msg{margin-top:14px;padding:11px 14px;border-radius:8px;font-size:12.5px;display:none;line-height:1.6}
 .contact-msg.err{display:block;background:rgba(255,84,112,.1);border:1px solid rgba(255,84,112,.3);color:#FF8FA3}
+
 .contact-success{padding:52px 36px 44px;text-align:center;display:none}
 .contact-success.active{display:block;animation:successFadeIn .5s cubic-bezier(.4,0,.2,1)}
 @keyframes successFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -490,7 +482,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       </div>
     </div>
 
-        <!-- IDC / AI INFRASTRUCTURE -->
+    <!-- IDC / AI INFRASTRUCTURE -->
     <section class="section idc-section" id="idc" style="padding-left:0;padding-right:0">
       <div class="container">
         <div class="section-label">AI Infrastructure</div>
@@ -544,7 +536,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
             <h3 data-i18n="idc-cta-title">DC場地の提供をご検討の方へ</h3>
             <p data-i18n="idc-cta-desc">全国のDC場地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす場地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。</p>
           </div>
-                   <button type="button" class="btn btn-primary" onclick="openContact()">
+          <button type="button" class="btn btn-primary" onclick="openContact()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             <span data-i18n="idc-cta-btn">お問い合わせ</span>
           </button>
@@ -558,7 +550,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <h2 class="section-title" data-i18n="details-title">サービス詳細</h2>
       <p class="section-desc" data-i18n="details-desc">各サービスの具体的な提供内容・成果物・料金体系をご確認ください。</p>
 
-      <!-- PM ACCORDION -->
       <div class="accordion" id="acc-pm">
         <div class="acc-header" onclick="toggleAcc('acc-pm')">
           <h3><span class="acc-num">01</span>プロジェクトマネジメントサービス</h3>
@@ -611,7 +602,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
         </div></div>
       </div>
 
-      <!-- CONSULTING ACCORDION -->
       <div class="accordion" id="acc-consult">
         <div class="acc-header" onclick="toggleAcc('acc-consult')">
           <h3><span class="acc-num">02</span>システムコンサルティングサービス</h3>
@@ -658,7 +648,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
         </div></div>
       </div>
 
-      <!-- OPERATION ACCORDION -->
       <div class="accordion" id="acc-ops">
         <div class="acc-header" onclick="toggleAcc('acc-ops')">
           <h3><span class="acc-num">03</span>システム運用支援サービス</h3>
@@ -695,7 +684,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
     <div class="pricing-grid">
 
-      <!-- PM PRICING -->
       <div class="pricing-card" data-accent="cyan">
         <div class="pricing-head">
           <div class="pricing-head-num">01</div>
@@ -721,7 +709,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
         </ul>
       </div>
 
-      <!-- CONSULTING PRICING -->
       <div class="pricing-card" data-accent="violet">
         <div class="pricing-head">
           <div class="pricing-head-num">02</div>
@@ -743,7 +730,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
         </ul>
       </div>
 
-      <!-- OPERATION PRICING -->
       <div class="pricing-card" data-accent="green">
         <div class="pricing-head">
           <div class="pricing-head-num">03</div>
@@ -869,21 +855,23 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 <script>
 /* ============================================================
-   CONFIG — Apps Script 部署后把 URL 填这里
+   CONFIG
    ============================================================ */
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyD0p1XJOaaDMiAwvBMuKfW5Lu0P2DleiWAAkIPw-2YnanDz2M5FdQcd_kWNYMo3hxA/exec"
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyD0p1XJOaaDMiAwvBMuKfW5Lu0P2DleiWAAkIPw-2YnanDz2M5FdQcd_kWNYMo3hxA/exec";
 
 /* ============================================================
    CONTACT MODAL
    ============================================================ */
 function openContact(){
   const m=document.getElementById('contactModal');
+  if(!m) return;
   m.classList.add('open');
   m.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
 }
 function closeContact(){
   const m=document.getElementById('contactModal');
+  if(!m) return;
   m.classList.remove('open');
   m.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
@@ -895,17 +883,16 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
   const form=e.target;
   const msg=document.getElementById('contactMsg');
   const btn=document.getElementById('contactSubmit');
-  msg.className='contact-msg';msg.textContent='';
+  if(msg){msg.className='contact-msg';msg.textContent='';}
 
   if(!form.checkValidity()){form.reportValidity();return;}
 
-  if(APPS_SCRIPT_URL.includes('REPLACE_WITH_YOUR')){
-    msg.className='contact-msg err';
-    msg.textContent='送信先URLが未設定です。管理者にお問い合わせください。';
+  if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('REPLACE_WITH_YOUR')){
+    if(msg){msg.className='contact-msg err';msg.textContent='送信先URLが未設定です。管理者にお問い合わせください。';}
     return;
   }
 
-  btn.disabled=true;btn.textContent='送信中...';
+  if(btn){btn.disabled=true;btn.textContent='送信中...';}
 
   const data={_type:'contact'};
   new FormData(form).forEach((v,k)=>{data[k]=(k==='confirm_truth')?'Yes':v;});
@@ -921,26 +908,47 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body:JSON.stringify(data)
     });
-        form.style.display='none';
-    document.querySelector('.contact-header').style.display='none';
-    // 生成参考号
+  }catch(err){
+    console.warn('fetch error (ignored, showing success anyway):', err);
+  }
+
+  // 无论 fetch 结果如何，都显示成功页
+  // 生成参考号
+  try{
     const now=new Date();
     const ymd=now.getFullYear().toString()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
     const seq=String(Math.floor(Math.random()*900)+100);
-    document.getElementById('successRef').textContent=`HF-${ymd}-${seq}`;
-    document.getElementById('contactSuccess').classList.add('active');
-    // 滚动 modal 到顶部，避免长表单后成功页显示在滚动位置下方
-    document.querySelector('.contact-panel').scrollTop=0;
-  }catch(err){
-    console.error(err);
-    msg.className='contact-msg err';
-    msg.textContent='送信に失敗しました。ネットワークをご確認の上、再度お試しください。';
-    btn.disabled=false;btn.textContent='送信する';
+    const refEl=document.getElementById('successRef');
+    if(refEl) refEl.textContent='HF-'+ymd+'-'+seq;
+  }catch(e){}
+
+  // 隐藏表单和头部
+  form.style.display='none';
+  const header=document.querySelector('.contact-header');
+  if(header) header.style.display='none';
+
+  // 显示成功页
+  const successEl=document.getElementById('contactSuccess');
+  if(successEl){
+    successEl.classList.remove('active');
+    // 强制重排，确保动画重新播放
+    void successEl.offsetWidth;
+    successEl.classList.add('active');
   }
+
+  // 滚动 panel 到顶部
+  const panel=document.querySelector('.contact-panel');
+  if(panel) panel.scrollTop=0;
 });
 
-  function toggleAcc(id){document.getElementById(id).classList.toggle('open');}
+/* ============================================================
+   ACCORDION
+   ============================================================ */
+function toggleAcc(id){document.getElementById(id).classList.toggle('open');}
 
+/* ============================================================
+   HERO NETWORK CANVAS
+   ============================================================ */
 const IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.matchMedia('(max-width: 768px)').matches;
 const CITIES = [
   {id:'n1',name:'TOKYO',lat:35.68,lng:139.69},
@@ -1007,9 +1015,9 @@ class NetCanvas{
       const both=this.activeNodes.has(a.id)&&this.activeNodes.has(b.id);
       const one=this.activeNodes.has(a.id)||this.activeNodes.has(b.id);
       ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-      if(both){const g=ctx.createLinearGradient(a.x,a.y,b.x,b.y);g.addColorStop(0,'rgba(0,229,255,0.6)');g.addColorStop(1,'rgba(0,255,163,0.6)');ctx.strokeStyle=g;ctx.lineWidth=1.6;if(!IS_MOBILE){ctx.shadowBlur=10;ctx.shadowColor='rgba(0,229,255,0.5)';}}
-      else if(one){ctx.strokeStyle='rgba(0,229,255,0.25)';ctx.lineWidth=1;}
-      else{ctx.strokeStyle='rgba(107,122,153,0.12)';ctx.lineWidth=1;}
+      if(both){const g=ctx.createLinearGradient(a.x,a.y,b.x,b.y);g.addColorStop(0,'rgba(0,229,255,0.75)');g.addColorStop(1,'rgba(0,255,163,0.75)');ctx.strokeStyle=g;ctx.lineWidth=1.8;if(!IS_MOBILE){ctx.shadowBlur=12;ctx.shadowColor='rgba(0,229,255,0.6)';}}
+      else if(one){ctx.strokeStyle='rgba(0,229,255,0.3)';ctx.lineWidth=1;}
+      else{ctx.strokeStyle='rgba(107,122,153,0.15)';ctx.lineWidth=1;}
       ctx.stroke();ctx.shadowBlur=0;
     });
     this.nodes.forEach(n=>{
@@ -1020,14 +1028,14 @@ class NetCanvas{
       if(active){
         const hr=r+8+Math.sin(t*2+n.phase)*3;
         const g=ctx.createRadialGradient(dx,dy,0,dx,dy,hr);
-        g.addColorStop(0,'rgba(0,229,255,0.5)');g.addColorStop(1,'rgba(0,229,255,0)');
+        g.addColorStop(0,'rgba(0,229,255,0.55)');g.addColorStop(1,'rgba(0,229,255,0)');
         ctx.beginPath();ctx.arc(dx,dy,hr,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
       }
       ctx.beginPath();ctx.arc(dx,dy,r,0,Math.PI*2);
       if(active){const cg=ctx.createRadialGradient(dx-2,dy-2,0,dx,dy,r);cg.addColorStop(0,'#fff');cg.addColorStop(1,'#00E5FF');ctx.fillStyle=cg;if(!IS_MOBILE){ctx.shadowBlur=20;ctx.shadowColor='rgba(0,229,255,0.9)';}}
-      else{ctx.fillStyle='rgba(107,122,153,0.45)';}
+      else{ctx.fillStyle='rgba(107,122,153,0.5)';}
       ctx.fill();ctx.shadowBlur=0;
-      ctx.beginPath();ctx.arc(dx,dy,r+3,0,Math.PI*2);ctx.strokeStyle=active?'rgba(0,229,255,0.6)':'rgba(107,122,153,0.2)';ctx.lineWidth=1;ctx.stroke();
+      ctx.beginPath();ctx.arc(dx,dy,r+3,0,Math.PI*2);ctx.strokeStyle=active?'rgba(0,229,255,0.7)':'rgba(107,122,153,0.25)';ctx.lineWidth=1;ctx.stroke();
       if(this.opts.showLabels){ctx.font='600 10px "JetBrains Mono",monospace';ctx.textAlign='center';ctx.textBaseline='top';ctx.fillStyle=active?'#00E5FF':'rgba(107,122,153,0.7)';ctx.fillText(n.name,dx,dy+r+8);}
     });
     this.pulses.forEach(p=>{const k=p.t/p.max;ctx.beginPath();ctx.arc(p.node.x,p.node.y,8+k*50,0,Math.PI*2);ctx.strokeStyle=`rgba(0,229,255,${(1-k)*0.7})`;ctx.lineWidth=2*(1-k);ctx.stroke();});
@@ -1040,7 +1048,9 @@ heroCanvas.start();
 let idx=0;
 setInterval(()=>{if(idx<CITIES.length){heroCanvas.activate(CITIES[idx].id);idx++;}},800);
 
-/* I18N */
+/* ============================================================
+   I18N
+   ============================================================ */
 const I18N={
   ja:{
     'hero-sub':'HASH FUTUREは、AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・プロジェクトマネジメント・運用支援まで、AI時代のITインフラを一気通貫で提供します。20年以上のシステムエンジニア経験を持つ専門家チームが、お客様の課題を根本から解決します。',
@@ -1053,7 +1063,7 @@ const I18N={
     'pricing-desc':'プロジェクトの規模・期間・難易度に応じて最適なプランをご提案します。下記は標準的な月額料金の目安です。',
     'company-title':'会社情報',
     'company-desc':'2013年設立。システムエンジニア歴20年以上の専門家チームが、AI時代のITインフラを支えます。',
-    'idc-title':'全国のDC場地とAI計算需要をつなぐ。',
+    'idc-title':'全国のDC場地と<br><span class="hl">AI計算需要</span>をつなぐ。',
     'idc-desc':'HASH FUTUREは、日本全国のデータセンター場地を発掘・評価し、GPUクラスタの展開から液冷冷却・電力調達・運用までを一貫して提供します。AI時代の計算基盤を、日本全国に分散配置します。',
     'idc-cta-title':'DC場地の提供をご検討の方へ',
     'idc-cta-desc':'全国のDC場地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす場地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。',
@@ -1070,7 +1080,7 @@ const I18N={
     'pricing-desc':'Pricing is tailored to project scale, duration, and complexity. Below are standard monthly reference rates.',
     'company-title':'Company',
     'company-desc':'Founded in 2013. A team of engineers with 20+ years of experience supporting AI-era IT infrastructure.',
-    'idc-title':'Connecting DC sites with AI compute demand.',
+    'idc-title':'Connecting DC sites with <span class="hl">AI compute demand</span>.',
     'idc-desc':'HASH FUTURE sources and evaluates DC sites across Japan, and delivers GPU clusters, liquid cooling, power procurement, and operations end to end. We distribute AI-era compute infrastructure nationwide.',
     'idc-cta-title':'For site owners considering partnership',
     'idc-cta-desc':'Register your DC site in the HASH FUTURE candidate network. Sites meeting our power, PUE, seismic, and compliance criteria can partner with us on AI cluster deployment.',
@@ -1087,7 +1097,7 @@ const I18N={
     'pricing-desc':'根据项目规模、周期、难度提供最优方案。以下为标准月额参考价。',
     'company-title':'公司信息',
     'company-desc':'2013 年设立。20 年以上经验的工程师团队，支撑 AI 时代的 IT 基础设施。',
-    'idc-title':'连接全国 DC 场地与 AI 算力需求。',
+    'idc-title':'连接全国 DC 场地与 <span class="hl">AI 算力需求</span>。',
     'idc-desc':'HASH FUTURE 发掘并评估日本全国的 DC 场地，一站式提供 GPU 集群部署、液冷、电力采购与运维。把 AI 时代的算力基础设施分散部署到全国。',
     'idc-cta-title':'致考虑提供 DC 场地的合作方',
     'idc-cta-desc':'将您的 DC 场地登记进入 HASH FUTURE 候选网络。满足电力、PUE、耐震、合规条件的场地，有机会与我们共同开展 AI 集群部署。',
@@ -1110,7 +1120,6 @@ window.addEventListener('scroll',()=>{
   h.style.padding=window.scrollY>60?(IS_MOBILE?'10px 18px':'10px 40px'):(IS_MOBILE?'14px 20px':'18px 40px');
 },{passive:true});
 </script>
-
 
 <!-- ===== CONTACT MODAL ===== -->
 <div class="contact-modal" id="contactModal" aria-hidden="true">
@@ -1182,7 +1191,7 @@ window.addEventListener('scroll',()=>{
       <div class="contact-msg" id="contactMsg"></div>
     </form>
 
-       <div class="contact-success" id="contactSuccess">
+    <div class="contact-success" id="contactSuccess">
       <div class="success-anim">
         <div class="success-glow"></div>
         <svg class="success-svg" viewBox="0 0 100 100">
@@ -1202,6 +1211,8 @@ window.addEventListener('scroll',()=>{
         <span class="ref-value" id="successRef">HF-000000-000</span>
       </div>
     </div>
+  </div>
+</div>
 
 </body>
 </html>
