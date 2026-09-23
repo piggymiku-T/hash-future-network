@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#060B14">
-<title>法務情報 | HASH FUTURE株式会社</title>
+<title>コンプライアンス | HASH FUTURE株式会社</title>
 <meta name="description" content="HASH FUTURE株式会社の個人情報保護方針、情報セキュリティ方針、アクセシビリティガイドライン、サイトの利用条件を掲載しています。">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -40,8 +40,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .site-nav a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .site-nav a:hover{color:var(--accent)}
 .site-nav a:hover::after{transform:scaleX(1)}
+.lang-switch{display:flex;gap:2px;padding:3px;border:1px solid var(--border);border-radius:8px;font-size:11px;font-weight:600;background:rgba(11,18,32,.6)}
+.lang-switch button{padding:5px 11px;border-radius:5px;color:var(--muted);transition:all .2s;font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+.lang-switch button.active{background:var(--accent);color:#060B14}
 
-/* PAGE HEADER */
+/* PAGE HERO */
 .page-hero{padding:180px 40px 60px;position:relative;z-index:1}
 .page-hero-inner{max-width:900px;margin:0 auto}
 .page-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding:5px 12px;border:1px solid rgba(0,229,255,.22);border-radius:6px;background:rgba(0,229,255,.04)}
@@ -52,7 +55,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 /* LAYOUT */
 .legal-layout{max-width:1200px;margin:0 auto;padding:0 40px 120px;display:grid;grid-template-columns:240px 1fr;gap:60px;position:relative;z-index:1}
 
-/* SIDEBAR NAV */
+/* SIDEBAR */
 .legal-nav{position:sticky;top:120px;align-self:start;border-left:1px solid var(--border);padding-left:24px}
 .legal-nav h4{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:18px}
 .legal-nav a{display:block;font-size:13px;color:var(--muted-2);padding:8px 0;line-height:1.5;transition:all .2s;position:relative}
@@ -79,7 +82,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .legal-block ol{counter-reset:li}
 .legal-block ol li::before{counter-increment:li;content:counter(li,decimal-leading-zero);position:absolute;left:0;top:11px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.5px}
 .legal-block ul li::before{content:'';position:absolute;left:8px;top:20px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.5}
-.legal-block ul li:hover::before{opacity:1}
 
 /* TABLE */
 .info-table{width:100%;border-collapse:collapse;font-size:13.5px;background:rgba(14,23,39,.6);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-top:16px}
@@ -122,28 +124,51 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .footer-inner{grid-template-columns:1fr;gap:32px}
   .footer-bottom{flex-direction:column;text-align:center;gap:10px;font-size:11px}
 }
+
+/* CUSTOM CURSOR */
+@media (hover: hover) and (pointer: fine) {
+  body:not(.no-custom-cursor),body:not(.no-custom-cursor) *{cursor:none !important}
+  body:not(.no-custom-cursor) input,body:not(.no-custom-cursor) textarea{cursor:text !important}
+  .hf-cur{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;z-index:99998;will-change:transform;transition:opacity .2s}
+  .hf-cur-shape{position:absolute;left:0;top:0;width:30px;height:30px;border:1.5px solid rgba(0,229,255,.85);border-radius:4px;transform:translate(-50%,-50%) rotate(45deg);transition:width .35s cubic-bezier(.4,0,.2,1),height .35s cubic-bezier(.4,0,.2,1),border-radius .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1),border-color .35s,box-shadow .35s,background .35s;box-shadow:0 0 14px rgba(0,229,255,.6),inset 0 0 8px rgba(0,229,255,.3);will-change:transform,width,height;animation:hfSpin 8s linear infinite}
+  @keyframes hfSpin{from{transform:translate(-50%,-50%) rotate(45deg)}to{transform:translate(-50%,-50%) rotate(405deg)}}
+  .hf-cur-shape::before,.hf-cur-shape::after{content:'';position:absolute;background:#00FFA3;opacity:0;transition:opacity .3s}
+  .hf-cur-shape::before{top:50%;left:24%;right:24%;height:1.5px;transform:translateY(-50%)}
+  .hf-cur-shape::after{left:50%;top:24%;bottom:24%;width:1.5px;transform:translateX(-50%)}
+  .hf-cur-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#00E5FF;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:99999;box-shadow:0 0 8px #00E5FF;will-change:transform;transition:background .3s}
+  .hf-cur.hf-hover .hf-cur-shape{animation:none;width:50px;height:50px;border-radius:50%;transform:translate(-50%,-50%) rotate(0);border-color:rgba(0,255,163,.95);background:rgba(0,255,163,.06);box-shadow:0 0 28px rgba(0,255,163,.75)}
+  .hf-cur.hf-hover .hf-cur-shape::before,.hf-cur.hf-hover .hf-cur-shape::after{opacity:1}
+  .hf-cur.hf-hover .hf-cur-dot{background:#00FFA3}
+  .hf-cur.hf-click .hf-cur-shape{transform:translate(-50%,-50%) rotate(0) scale(.8)}
+}
 </style>
 </head>
 <body>
+
 
 <header class="site-header">
   <a href="index.html" class="logo">
     <img src="assets/logo.png" alt="HASH FUTURE" class="logo-img">
   </a>
   <nav class="site-nav">
-    <a href="index.html#services">サービス</a>
-    <a href="index.html#idc">AIインフラ</a>
-    <a href="index.html#pricing">料金</a>
-    <a href="index.html#company">会社情報</a>
-    <a href="index.html#contact">お問い合わせ</a>
+    <a href="index.html#services" data-i18n="nav-services">サービス</a>
+    <a href="index.html#idc" data-i18n="nav-idc">AIインフラ</a>
+    <a href="index.html#pricing" data-i18n="nav-pricing">料金</a>
+    <a href="index.html#company" data-i18n="nav-company">会社情報</a>
+    <a href="index.html#contact" data-i18n="nav-contact">お問い合わせ</a>
   </nav>
+  <div class="lang-switch">
+    <button class="active" data-lang="ja">JP</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="cn">CN</button>
+  </div>
 </header>
 
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-eyebrow">Legal</div>
-    <h1>法務情報</h1>
-    <p>HASH FUTURE株式会社が事業活動を行う上で遵守する基本方針をまとめています。個人情報の保護、情報セキュリティ、アクセシビリティ、サイト利用条件についてご確認いただけます。</p>
+    <div class="page-eyebrow" data-i18n="page-eyebrow">Legal</div>
+    <h1 data-i18n="page-title">法務情報</h1>
+    <p data-i18n="page-desc">HASH FUTURE株式会社が事業活動を行う上で遵守する基本方針をまとめています。個人情報の保護、情報セキュリティ、アクセシビリティ、サイト利用条件についてご確認いただけます。</p>
   </div>
 </section>
 
@@ -151,186 +176,166 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
   <nav class="legal-nav">
     <h4>Contents</h4>
-    <a href="#privacy">個人情報保護方針</a>
-    <a href="#security">情報セキュリティ方針</a>
-    <a href="#accessibility">アクセシビリティ</a>
-    <a href="#terms">サイトの利用条件</a>
+    <a href="#privacy" data-i18n="nav-privacy">個人情報保護方針</a>
+    <a href="#security" data-i18n="nav-security">情報セキュリティ方針</a>
+    <a href="#accessibility" data-i18n="nav-accessibility">アクセシビリティ</a>
+    <a href="#terms" data-i18n="nav-terms">サイトの利用条件</a>
   </nav>
 
   <div class="legal-content">
 
-    <!-- 1. 個人情報保護方針 -->
+    <!-- 1. PRIVACY -->
     <section class="legal-section" id="privacy">
-      <h2><span class="num">01</span>個人情報保護方針</h2>
-      <span class="updated">Privacy Policy</span>
+      <h2><span class="num">01</span><span data-i18n="privacy-title">個人情報保護方針</span></h2>
+      <span class="updated" data-i18n="privacy-sub">Privacy Policy</span>
 
-      <p class="intro">当社は、事業活動を通じて取得した個人情報の保護に努めることを社会的責務と認識し、以下の方針に基づく個人情報の保護に努めます。</p>
+      <p class="intro" data-i18n="privacy-intro">当社は、事業活動を通じて取得した個人情報の保護に努めることを社会的責務と認識し、以下の方針に基づく個人情報の保護に努めます。</p>
 
       <div class="legal-block">
-        <h3><span class="dot"></span>1. 個人情報の取得について</h3>
-        <p>当社は、適法かつ公正な手段によって、個人情報を取得致します。</p>
+        <h3><span class="dot"></span><span data-i18n="privacy-h1">1. 個人情報の取得について</span></h3>
+        <p data-i18n="privacy-p1">当社は、適法かつ公正な手段によって、個人情報を取得致します。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>2. 個人情報の利用について</h3>
+        <h3><span class="dot"></span><span data-i18n="privacy-h2">2. 個人情報の利用について</span></h3>
         <ol>
-          <li>当社は、個人情報を取得の際に示した利用目的の範囲内で、業務の遂行上必要な限りにおいて、利用します。</li>
-          <li>当社は、個人情報を第三者との間で共同利用し、又は、個人情報の取扱いを第三者に委託する場合には、当該第三者につき厳正な調査を行ったうえ、秘密を保持させるために、適正な監督を行います。</li>
+          <li data-i18n="privacy-o2-1">当社は、個人情報を取得の際に示した利用目的の範囲内で、業務の遂行上必要な限りにおいて、利用します。</li>
+          <li data-i18n="privacy-o2-2">当社は、個人情報を第三者との間で共同利用し、又は、個人情報の取扱いを第三者に委託する場合には、当該第三者につき厳正な調査を行ったうえ、秘密を保持させるために、適正な監督を行います。</li>
         </ol>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>3. 個人情報の第三者提供について</h3>
-        <p>当社は、法令に定める場合を除き、個人情報を、事前に本人の同意を得ることなく、第三者に提供致しません。</p>
+        <h3><span class="dot"></span><span data-i18n="privacy-h3">3. 個人情報の第三者提供について</span></h3>
+        <p data-i18n="privacy-p3">当社は、法令に定める場合を除き、個人情報を、事前に本人の同意を得ることなく、第三者に提供致しません。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>4. 個人情報の管理について</h3>
+        <h3><span class="dot"></span><span data-i18n="privacy-h4">4. 個人情報の管理について</span></h3>
         <ol>
-          <li>当社は、個人情報の正確性を保ち、これを安全に管理致します。</li>
-          <li>当社は、個人情報の紛失、破壊、改ざん及び漏えいなどを防止するための対策を講じます。</li>
-          <li>当社は、個人情報を持ち出し、外部へ送信する等により漏えいさせません。</li>
+          <li data-i18n="privacy-o4-1">当社は、個人情報の正確性を保ち、これを安全に管理致します。</li>
+          <li data-i18n="privacy-o4-2">当社は、個人情報の紛失、破壊、改ざん及び漏えいなどを防止するための対策を講じます。</li>
+          <li data-i18n="privacy-o4-3">当社は、個人情報を持ち出し、外部へ送信する等により漏えいさせません。</li>
         </ol>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>5. 個人情報の開示・訂正・利用停止・消去について</h3>
-        <p>当社は、本人が自己の個人情報について、開示・訂正・利用停止・消去等を求める権利を有していることを確認し、これらの要求がある場合には、誠実に対応します。</p>
+        <h3><span class="dot"></span><span data-i18n="privacy-h5">5. 個人情報の開示・訂正・利用停止・消去について</span></h3>
+        <p data-i18n="privacy-p5">当社は、本人が自己の個人情報について、開示・訂正・利用停止・消去等を求める権利を有していることを確認し、これらの要求がある場合には、誠実に対応します。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>お問い合わせ窓口</h3>
+        <h3><span class="dot"></span><span data-i18n="privacy-contact-h">お問い合わせ窓口</span></h3>
         <table class="info-table">
-          <tr><td>窓口</td><td>HASH FUTURE株式会社 個人情報保護担当</td></tr>
+          <tr><td data-i18n="privacy-contact-k1">窓口</td><td data-i18n="privacy-contact-v1">HASH FUTURE株式会社 個人情報保護担当</td></tr>
           <tr><td>E-MAIL</td><td>info@hash-future.com</td></tr>
         </table>
       </div>
     </section>
 
-    <!-- 2. 情報セキュリティ方針 -->
+    <!-- 2. SECURITY -->
     <section class="legal-section" id="security">
-      <h2><span class="num">02</span>情報セキュリティ方針</h2>
-      <span class="updated">Information Security Policy</span>
+      <h2><span class="num">02</span><span data-i18n="security-title">情報セキュリティ方針</span></h2>
+      <span class="updated" data-i18n="security-sub">Information Security Policy</span>
 
       <div class="legal-block">
-        <h3><span class="dot"></span>1. 情報セキュリティへの取組み</h3>
-        <p>当社は、「情報セキュリティは、当社の経営上及び事業上の最重要課題のひとつである。」との認識のもとにこれに取組む。</p>
+        <h3><span class="dot"></span><span data-i18n="security-h1">1. 情報セキュリティへの取組み</span></h3>
+        <p data-i18n="security-p1">当社は、「情報セキュリティは、当社の経営上及び事業上の最重要課題のひとつである。」との認識のもとにこれに取組む。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>2. 情報資産の保護</h3>
-        <p>当社は、情報資産の機密性、完全性及び可用性に対する脅威から情報資産を確実に保護するため、業務内容に応じた適切な管理策を講じる。</p>
+        <h3><span class="dot"></span><span data-i18n="security-h2">2. 情報資産の保護</span></h3>
+        <p data-i18n="security-p2">当社は、情報資産の機密性、完全性及び可用性に対する脅威から情報資産を確実に保護するため、業務内容に応じた適切な管理策を講じる。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>3. コンプライアンス・プログラム</h3>
-        <p>当社は、役員及び従業員に情報資産保護の重要性を認識させ、情報セキュリティマネジメントシステムを確立・徹底するためのコンプライアンス・プログラムを策定し、これを実施し、維持し及び継続的に改善する。</p>
+        <h3><span class="dot"></span><span data-i18n="security-h3">3. コンプライアンス・プログラム</span></h3>
+        <p data-i18n="security-p3">当社は、役員及び従業員に情報資産保護の重要性を認識させ、情報セキュリティマネジメントシステムを確立・徹底するためのコンプライアンス・プログラムを策定し、これを実施し、維持し及び継続的に改善する。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>4. 法令等の遵守</h3>
-        <p>当社は、コンプライアンス・プログラムを情報セキュリティに関する法令、規格その他の規範に準拠・適合させるとともに、これらの法令、規格その他の規範を遵守する。</p>
+        <h3><span class="dot"></span><span data-i18n="security-h4">4. 法令等の遵守</span></h3>
+        <p data-i18n="security-p4">当社は、コンプライアンス・プログラムを情報セキュリティに関する法令、規格その他の規範に準拠・適合させるとともに、これらの法令、規格その他の規範を遵守する。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>5. 教育・訓練</h3>
-        <p>当社は、役員及び従業員の情報セキュリティへの意識向上を図るとともに、情報セキュリティ、コンプライアンス・プログラムについての教育・訓練を行なう。</p>
+        <h3><span class="dot"></span><span data-i18n="security-h5">5. 教育・訓練</span></h3>
+        <p data-i18n="security-p5">当社は、役員及び従業員の情報セキュリティへの意識向上を図るとともに、情報セキュリティ、コンプライアンス・プログラムについての教育・訓練を行なう。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>6. 事故発生予防と対応</h3>
-        <p>当社は、情報セキュリティ事故の発生予防に努めるとともに、万一、事故が発生した場合には、再発防止策を含む適切な対策を速やかに講じる。</p>
+        <h3><span class="dot"></span><span data-i18n="security-h6">6. 事故発生予防と対応</span></h3>
+        <p data-i18n="security-p6">当社は、情報セキュリティ事故の発生予防に努めるとともに、万一、事故が発生した場合には、再発防止策を含む適切な対策を速やかに講じる。</p>
       </div>
     </section>
 
-    <!-- 3. アクセシビリティ -->
+    <!-- 3. ACCESSIBILITY -->
     <section class="legal-section" id="accessibility">
-      <h2><span class="num">03</span>アクセシビリティガイドライン</h2>
-      <span class="updated">Accessibility Guideline</span>
+      <h2><span class="num">03</span><span data-i18n="accessibility-title">アクセシビリティガイドライン</span></h2>
+      <span class="updated" data-i18n="accessibility-sub">Accessibility Guideline</span>
 
-      <p class="intro">Webサイトは生活に必要な多様な役割を果たすようになってきており、企業のWebサイトにおける情報発信の重要性が高まっています。そこで当社は当サイトをアクセシブルにすることは企業としての責任と考え、次の3点を策定の際の基準としました。</p>
+      <p class="intro" data-i18n="accessibility-intro">Webサイトは生活に必要な多様な役割を果たすようになってきており、企業のWebサイトにおける情報発信の重要性が高まっています。そこで当社は当サイトをアクセシブルにすることは企業としての責任と考え、次の3点を策定の際の基準としました。</p>
 
       <div class="legal-block">
-        <h3><span class="dot"></span>1. 項目の重要性</h3>
-        <p>その項目を守らないことによる影響が大きいかどうか。</p>
+        <h3><span class="dot"></span><span data-i18n="accessibility-h1">1. 項目の重要性</span></h3>
+        <p data-i18n="accessibility-p1">その項目を守らないことによる影響が大きいかどうか。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>2. 実現および確認の容易性</h3>
-        <p>現在の技術・情報で容易に実施できるかどうか。</p>
+        <h3><span class="dot"></span><span data-i18n="accessibility-h2">2. 実現および確認の容易性</span></h3>
+        <p data-i18n="accessibility-p2">現在の技術・情報で容易に実施できるかどうか。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>3. ユーザーの意見</h3>
-        <p>ユーザーの利用状況に即したものかどうか。</p>
+        <h3><span class="dot"></span><span data-i18n="accessibility-h3">3. ユーザーの意見</span></h3>
+        <p data-i18n="accessibility-p3">ユーザーの利用状況に即したものかどうか。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>対応方針</h3>
-        <p>当社は、WCAG 2.1（Web Content Accessibility Guidelines）Level AA を参考基準として、当サイトの継続的な改善に努めます。アクセシビリティに関するご意見・ご要望は、下記の窓口までお寄せください。</p>
+        <h3><span class="dot"></span><span data-i18n="accessibility-h4">対応方針</span></h3>
+        <p data-i18n="accessibility-p4">当社は、WCAG 2.1（Web Content Accessibility Guidelines）Level AA を参考基準として、当サイトの継続的な改善に努めます。アクセシビリティに関するご意見・ご要望は、下記の窓口までお寄せください。</p>
         <table class="info-table">
-          <tr><td>窓口</td><td>HASH FUTURE株式会社 Web担当</td></tr>
+          <tr><td data-i18n="accessibility-contact-k1">窓口</td><td data-i18n="accessibility-contact-v1">HASH FUTURE株式会社 Web担当</td></tr>
           <tr><td>E-MAIL</td><td>info@hash-future.com</td></tr>
         </table>
       </div>
     </section>
 
-    <!-- 4. サイトの利用条件 -->
+    <!-- 4. TERMS -->
     <section class="legal-section" id="terms">
-      <h2><span class="num">04</span>サイトの利用条件</h2>
-      <span class="updated">Terms of Use</span>
+      <h2><span class="num">04</span><span data-i18n="terms-title">サイトの利用条件</span></h2>
+      <span class="updated" data-i18n="terms-sub">Terms of Use</span>
 
-      <p class="intro">HASH FUTURE株式会社（以下「当社」）が運営するWebサイト（以下「本サイト」）をご利用いただく際の条件を定めます。本サイトをご利用いただいた場合、本条件に同意したものとみなします。</p>
+      <p class="intro" data-i18n="terms-intro">HASH FUTURE株式会社（以下「当社」）が運営するWebサイト（以下「本サイト」）をご利用いただく際の条件を定めます。本サイトをご利用いただいた場合、本条件に同意したものとみなします。</p>
 
       <div class="legal-block">
-        <h3><span class="dot"></span>第1条（著作権・商標）</h3>
-        <p>本サイトに掲載されている文章、画像、動画、ロゴ、デザインその他一切のコンテンツに関する著作権、商標権その他の知的財産権は、当社または正当な権利を有する第三者に帰属します。私的利用の範囲を超える複製、転載、改変、頒布、公衆送信等の行為は、当社の事前の書面による承諾なく行うことはできません。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h1">第1条（著作権・商標）</span></h3>
+        <p data-i18n="terms-p1">本サイトに掲載されている文章、画像、動画、ロゴ、デザインその他一切のコンテンツに関する著作権、商標権その他の知的財産権は、当社または正当な権利を有する第三者に帰属します。私的利用の範囲を超える複製、転載、改変、頒布、公衆送信等の行為は、当社の事前の書面による承諾なく行うことはできません。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>第2条（免責事項）</h3>
-        <p>当社は、本サイトに掲載する情報について、その正確性、完全性、有用性、最新性等について細心の注意を払っておりますが、これらの内容を保証するものではありません。本サイトのご利用により生じたいかなる損害についても、当社は一切の責任を負いかねます。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h2">第2条（免責事項）</span></h3>
+        <p data-i18n="terms-p2">当社は、本サイトに掲載する情報について、その正確性、完全性、有用性、最新性等について細心の注意を払っておりますが、これらの内容を保証するものではありません。本サイトのご利用により生じたいかなる損害についても、当社は一切の責任を負いかねます。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>第3条（サービスの変更・中断・終了）</h3>
-        <p>当社は、予告なく本サイトの内容を変更し、または提供を中断・終了することがあります。これにより利用者に生じたいかなる損害についても、当社は一切の責任を負いかねます。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h3">第3条（サービスの変更・中断・終了）</span></h3>
+        <p data-i18n="terms-p3">当社は、予告なく本サイトの内容を変更し、または提供を中断・終了することがあります。これにより利用者に生じたいかなる損害についても、当社は一切の責任を負いかねます。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>第4条（リンクについて）</h3>
-        <p>本サイトからリンクする第三者のWebサイト、および本サイトへリンクする第三者のWebサイトの内容については、当社は一切の責任を負いかねます。リンクの設定は、各サイトの利用条件に従って行ってください。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h4">第4条（リンクについて）</span></h3>
+        <p data-i18n="terms-p4">本サイトからリンクする第三者のWebサイト、および本サイトへリンクする第三者のWebサイトの内容については、当社は一切の責任を負いかねます。リンクの設定は、各サイトの利用条件に従って行ってください。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>第5条（禁止事項）</h3>
-        <p>本サイトのご利用にあたり、以下の行為を禁止します。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h5">第5条（禁止事項）</span></h3>
+        <p data-i18n="terms-p5">本サイトのご利用にあたり、以下の行為を禁止します。</p>
         <ul>
-          <li>当社または第三者の著作権、商標権その他の知的財産権を侵害する行為</li>
-          <li>当社または第三者の財産、プライバシー等を侵害する行為</li>
-          <li>本サイトの運営を妨害する行為、またはそのおそれのある行為</li>
-          <li>虚偽の情報を送信する行為</li>
-          <li>法令または公序良俗に違反する行為</li>
-          <li>その他、当社が不適切と判断する行為</li>
+          <li data-i18n="terms-u1">当社または第三者の著作権、商標権その他の知的財産権を侵害する行為</li>
+          <li data-i18n="terms-u2">当社または第三者の財産、プライバシー等を侵害する行為</li>
+          <li data-i18n="terms-u3">本サイトの運営を妨害する行為、またはそのおそれのある行為</li>
+          <li data-i18n="terms-u4">虚偽の情報を送信する行為</li>
+          <li data-i18n="terms-u5">法令または公序良俗に違反する行為</li>
+          <li data-i18n="terms-u6">その他、当社が不適切と判断する行為</li>
         </ul>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>第6条（準拠法・管轄裁判所）</h3>
-        <p>本サイトのご利用および本条件の解釈については、日本法を準拠法とします。本サイトに関連して生じた紛争については、横浜地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h6">第6条（準拠法・管轄裁判所）</span></h3>
+        <p data-i18n="terms-p6">本サイトのご利用および本条件の解釈については、日本法を準拠法とします。本サイトに関連して生じた紛争については、横浜地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>第7条（本条件の変更）</h3>
-        <p>当社は、本条件を予告なく変更することがあります。変更後の本条件は、本サイト上に掲載した時点から効力を生じるものとします。</p>
+        <h3><span class="dot"></span><span data-i18n="terms-h7">第7条（本条件の変更）</span></h3>
+        <p data-i18n="terms-p7">当社は、本条件を予告なく変更することがあります。変更後の本条件は、本サイト上に掲載した時点から効力を生じるものとします。</p>
       </div>
-
       <div class="legal-block">
-        <h3><span class="dot"></span>制定日</h3>
+        <h3><span class="dot"></span><span data-i18n="terms-h8">制定日</span></h3>
         <table class="info-table">
-          <tr><td>制定</td><td>2013年5月27日</td></tr>
-          <tr><td>最終改定</td><td>2026年4月1日</td></tr>
-          <tr><td>運営</td><td>HASH FUTURE株式会社<br>〒251-0041 神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</td></tr>
+          <tr><td data-i18n="terms-d1-k">制定</td><td data-i18n="terms-d1-v">2013年5月27日</td></tr>
+          <tr><td data-i18n="terms-d2-k">最終改定</td><td data-i18n="terms-d2-v">2026年4月1日</td></tr>
+          <tr><td data-i18n="terms-d3-k">運営</td><td data-i18n="terms-d3-v">HASH FUTURE株式会社<br>〒251-0041 神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</td></tr>
         </table>
       </div>
     </section>
@@ -344,31 +349,31 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="footer-brand">
         <img src="assets/logo.png" alt="HASH FUTURE" class="logo-img">
       </div>
-      <p class="footer-desc">AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。</p>
+      <p class="footer-desc" data-i18n="footer-desc">AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
-      <a href="index.html#services">プロジェクトマネジメント</a>
-      <a href="index.html#services">システムコンサルティング</a>
-      <a href="index.html#services">システム運用支援</a>
-      <a href="index.html#pricing">各種サービス料金</a>
+      <a href="index.html#services" data-i18n="footer-link1">プロジェクトマネジメント</a>
+      <a href="index.html#services" data-i18n="footer-link2">システムコンサルティング</a>
+      <a href="index.html#services" data-i18n="footer-link3">システム運用支援</a>
+      <a href="index.html#pricing" data-i18n="footer-link4">各種サービス料金</a>
     </div>
     <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="#privacy">個人情報保護方針</a>
-      <a href="#security">情報セキュリティ方針</a>
-      <a href="#accessibility">アクセシビリティ</a>
-      <a href="#terms">サイトの利用条件</a>
+      <h4 data-i18n="footer-legal-h">Legal</h4>
+      <a href="#privacy" data-i18n="footer-link5">個人情報保護方針</a>
+      <a href="#security" data-i18n="footer-link6">情報セキュリティ方針</a>
+      <a href="#accessibility" data-i18n="footer-link7">アクセシビリティ</a>
+      <a href="#terms" data-i18n="footer-link8">サイトの利用条件</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2013–2026 HASH FUTURE Co., Ltd. All rights reserved.</span>
-    <span>神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</span>
+    <span data-i18n="footer-address">神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</span>
   </div>
 </footer>
 
 <script>
-/* Smooth scroll with header offset handled by scroll-margin-top in CSS */
+/* Smooth scroll */
 document.querySelectorAll('.legal-nav a').forEach(a=>{
   a.addEventListener('click',e=>{
     const id=a.getAttribute('href');
@@ -379,6 +384,192 @@ document.querySelectorAll('.legal-nav a').forEach(a=>{
     }
   });
 });
+
+/* ============ I18N ============ */
+const I18N = {
+  ja: {
+    'nav-services':'サービス','nav-idc':'AIインフラ','nav-pricing':'料金','nav-company':'会社情報','nav-contact':'お問い合わせ',
+    'page-eyebrow':'Legal','page-title':'法務情報','page-desc':'HASH FUTURE株式会社が事業活動を行う上で遵守する基本方針をまとめています。個人情報の保護、情報セキュリティ、アクセシビリティ、サイト利用条件についてご確認いただけます。',
+    'nav-privacy':'個人情報保護方針','nav-security':'情報セキュリティ方針','nav-accessibility':'アクセシビリティ','nav-terms':'サイトの利用条件',
+    'privacy-title':'個人情報保護方針','privacy-sub':'Privacy Policy','privacy-intro':'当社は、事業活動を通じて取得した個人情報の保護に努めることを社会的責務と認識し、以下の方針に基づく個人情報の保護に努めます。',
+    'privacy-h1':'1. 個人情報の取得について','privacy-p1':'当社は、適法かつ公正な手段によって、個人情報を取得致します。',
+    'privacy-h2':'2. 個人情報の利用について','privacy-o2-1':'当社は、個人情報を取得の際に示した利用目的の範囲内で、業務の遂行上必要な限りにおいて、利用します。','privacy-o2-2':'当社は、個人情報を第三者との間で共同利用し、又は、個人情報の取扱いを第三者に委託する場合には、当該第三者につき厳正な調査を行ったうえ、秘密を保持させるために、適正な監督を行います。',
+    'privacy-h3':'3. 個人情報の第三者提供について','privacy-p3':'当社は、法令に定める場合を除き、個人情報を、事前に本人の同意を得ることなく、第三者に提供致しません。',
+    'privacy-h4':'4. 個人情報の管理について','privacy-o4-1':'当社は、個人情報の正確性を保ち、これを安全に管理致します。','privacy-o4-2':'当社は、個人情報の紛失、破壊、改ざん及び漏えいなどを防止するための対策を講じます。','privacy-o4-3':'当社は、個人情報を持ち出し、外部へ送信する等により漏えいさせません。',
+    'privacy-h5':'5. 個人情報の開示・訂正・利用停止・消去について','privacy-p5':'当社は、本人が自己の個人情報について、開示・訂正・利用停止・消去等を求める権利を有していることを確認し、これらの要求がある場合には、誠実に対応します。',
+    'privacy-contact-h':'お問い合わせ窓口','privacy-contact-k1':'窓口','privacy-contact-v1':'HASH FUTURE株式会社 個人情報保護担当',
+    'security-title':'情報セキュリティ方針','security-sub':'Information Security Policy',
+    'security-h1':'1. 情報セキュリティへの取組み','security-p1':'当社は、「情報セキュリティは、当社の経営上及び事業上の最重要課題のひとつである。」との認識のもとにこれに取組む。',
+    'security-h2':'2. 情報資産の保護','security-p2':'当社は、情報資産の機密性、完全性及び可用性に対する脅威から情報資産を確実に保護するため、業務内容に応じた適切な管理策を講じる。',
+    'security-h3':'3. コンプライアンス・プログラム','security-p3':'当社は、役員及び従業員に情報資産保護の重要性を認識させ、情報セキュリティマネジメントシステムを確立・徹底するためのコンプライアンス・プログラムを策定し、これを実施し、維持し及び継続的に改善する。',
+    'security-h4':'4. 法令等の遵守','security-p4':'当社は、コンプライアンス・プログラムを情報セキュリティに関する法令、規格その他の規範に準拠・適合させるとともに、これらの法令、規格その他の規範を遵守する。',
+    'security-h5':'5. 教育・訓練','security-p5':'当社は、役員及び従業員の情報セキュリティへの意識向上を図るとともに、情報セキュリティ、コンプライアンス・プログラムについての教育・訓練を行なう。',
+    'security-h6':'6. 事故発生予防と対応','security-p6':'当社は、情報セキュリティ事故の発生予防に努めるとともに、万一、事故が発生した場合には、再発防止策を含む適切な対策を速やかに講じる。',
+    'accessibility-title':'アクセシビリティガイドライン','accessibility-sub':'Accessibility Guideline',
+    'accessibility-intro':'Webサイトは生活に必要な多様な役割を果たすようになってきており、企業のWebサイトにおける情報発信の重要性が高まっています。そこで当社は当サイトをアクセシブルにすることは企業としての責任と考え、次の3点を策定の際の基準としました。',
+    'accessibility-h1':'1. 項目の重要性','accessibility-p1':'その項目を守らないことによる影響が大きいかどうか。',
+    'accessibility-h2':'2. 実現および確認の容易性','accessibility-p2':'現在の技術・情報で容易に実施できるかどうか。',
+    'accessibility-h3':'3. ユーザーの意見','accessibility-p3':'ユーザーの利用状況に即したものかどうか。',
+    'accessibility-h4':'対応方針','accessibility-p4':'当社は、WCAG 2.1（Web Content Accessibility Guidelines）Level AA を参考基準として、当サイトの継続的な改善に努めます。アクセシビリティに関するご意見・ご要望は、下記の窓口までお寄せください。',
+    'accessibility-contact-k1':'窓口','accessibility-contact-v1':'HASH FUTURE株式会社 Web担当',
+    'terms-title':'サイトの利用条件','terms-sub':'Terms of Use',
+    'terms-intro':'HASH FUTURE株式会社（以下「当社」）が運営するWebサイト（以下「本サイト」）をご利用いただく際の条件を定めます。本サイトをご利用いただいた場合、本条件に同意したものとみなします。',
+    'terms-h1':'第1条（著作権・商標）','terms-p1':'本サイトに掲載されている文章、画像、動画、ロゴ、デザインその他一切のコンテンツに関する著作権、商標権その他の知的財産権は、当社または正当な権利を有する第三者に帰属します。私的利用の範囲を超える複製、転載、改変、頒布、公衆送信等の行為は、当社の事前の書面による承諾なく行うことはできません。',
+    'terms-h2':'第2条（免責事項）','terms-p2':'当社は、本サイトに掲載する情報について、その正確性、完全性、有用性、最新性等について細心の注意を払っておりますが、これらの内容を保証するものではありません。本サイトのご利用により生じたいかなる損害についても、当社は一切の責任を負いかねます。',
+    'terms-h3':'第3条（サービスの変更・中断・終了）','terms-p3':'当社は、予告なく本サイトの内容を変更し、または提供を中断・終了することがあります。これにより利用者に生じたいかなる損害についても、当社は一切の責任を負いかねます。',
+    'terms-h4':'第4条（リンクについて）','terms-p4':'本サイトからリンクする第三者のWebサイト、および本サイトへリンクする第三者のWebサイトの内容については、当社は一切の責任を負いかねます。リンクの設定は、各サイトの利用条件に従って行ってください。',
+    'terms-h5':'第5条（禁止事項）','terms-p5':'本サイトのご利用にあたり、以下の行為を禁止します。',
+    'terms-u1':'当社または第三者の著作権、商標権その他の知的財産権を侵害する行為','terms-u2':'当社または第三者の財産、プライバシー等を侵害する行為','terms-u3':'本サイトの運営を妨害する行為、またはそのおそれのある行為','terms-u4':'虚偽の情報を送信する行為','terms-u5':'法令または公序良俗に違反する行為','terms-u6':'その他、当社が不適切と判断する行為',
+    'terms-h6':'第6条（準拠法・管轄裁判所）','terms-p6':'本サイトのご利用および本条件の解釈については、日本法を準拠法とします。本サイトに関連して生じた紛争については、横浜地方裁判所を第一審の専属的合意管轄裁判所とします。',
+    'terms-h7':'第7条（本条件の変更）','terms-p7':'当社は、本条件を予告なく変更することがあります。変更後の本条件は、本サイト上に掲載した時点から効力を生じるものとします。',
+    'terms-h8':'制定日','terms-d1-k':'制定','terms-d1-v':'2013年5月27日','terms-d2-k':'最終改定','terms-d2-v':'2026年4月1日','terms-d3-k':'運営','terms-d3-v':'HASH FUTURE株式会社<br>〒251-0041 神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室',
+    'footer-desc':'AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。',
+    'footer-legal-h':'Legal','footer-link1':'プロジェクトマネジメント','footer-link2':'システムコンサルティング','footer-link3':'システム運用支援','footer-link4':'各種サービス料金','footer-link5':'個人情報保護方針','footer-link6':'情報セキュリティ方針','footer-link7':'アクセシビリティ','footer-link8':'サイトの利用条件','footer-address':'神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室'
+  },
+  en: {
+    'nav-services':'Services','nav-idc':'AI Infrastructure','nav-pricing':'Pricing','nav-company':'Company','nav-contact':'Contact',
+    'page-eyebrow':'Legal','page-title':'Legal Information','page-desc':'This page summarizes the basic policies HASH FUTURE Co., Ltd. adheres to in its business activities. Please review our personal information protection, information security, accessibility, and terms of use.',
+    'nav-privacy':'Privacy Policy','nav-security':'Information Security Policy','nav-accessibility':'Accessibility','nav-terms':'Terms of Use',
+    'privacy-title':'Privacy Policy','privacy-sub':'Privacy Policy','privacy-intro':'We recognize that protecting personal information obtained through our business activities is a social responsibility, and we strive to protect personal information based on the following policy.',
+    'privacy-h1':'1. Acquisition of Personal Information','privacy-p1':'We acquire personal information through lawful and fair means.',
+    'privacy-h2':'2. Use of Personal Information','privacy-o2-1':'We use personal information within the scope of the purpose of use indicated at the time of acquisition and only to the extent necessary for the performance of our business.','privacy-o2-2':'When we share personal information with third parties or entrust the handling of personal information to a third party, we conduct a rigorous investigation of such third party and exercise appropriate supervision to ensure confidentiality.',
+    'privacy-h3':'3. Provision of Personal Information to Third Parties','privacy-p3':'Except as required by law, we will not provide personal information to third parties without the prior consent of the individual.',
+    'privacy-h4':'4. Management of Personal Information','privacy-o4-1':'We maintain the accuracy of personal information and manage it safely.','privacy-o4-2':'We take measures to prevent loss, destruction, alteration, and leakage of personal information.','privacy-o4-3':'We will not leak personal information by removing or transmitting it externally.',
+    'privacy-h5':'5. Disclosure, Correction, Suspension of Use, and Deletion of Personal Information','privacy-p5':'We confirm that individuals have the right to request disclosure, correction, suspension of use, deletion, etc. of their personal information, and we respond in good faith to such requests.',
+    'privacy-contact-h':'Contact','privacy-contact-k1':'Department','privacy-contact-v1':'HASH FUTURE Co., Ltd. Personal Information Protection Manager',
+    'security-title':'Information Security Policy','security-sub':'Information Security Policy',
+    'security-h1':'1. Commitment to Information Security','security-p1':'We recognize that information security is one of the most important management and business issues for our company, and we address it based on this recognition.',
+    'security-h2':'2. Protection of Information Assets','security-p2':'In order to reliably protect information assets from threats to their confidentiality, integrity, and availability, we implement appropriate controls according to the nature of our operations.',
+    'security-h3':'3. Compliance Program','security-p3':'We raise awareness of the importance of information asset protection among our officers and employees, establish and enforce an information security management system, formulate a compliance program, implement, maintain, and continuously improve it.',
+    'security-h4':'4. Compliance with Laws and Regulations','security-p4':'We ensure our compliance program conforms and adheres to laws, standards, and other norms related to information security, and comply with these laws, standards, and other norms.',
+    'security-h5':'5. Education and Training','security-p5':'We promote awareness of information security among our officers and employees, and conduct education and training on information security and our compliance program.',
+    'security-h6':'6. Incident Prevention and Response','security-p6':'We strive to prevent information security incidents, and in the unlikely event that an incident occurs, we promptly take appropriate measures including recurrence prevention.',
+    'accessibility-title':'Accessibility Guideline','accessibility-sub':'Accessibility Guideline',
+    'accessibility-intro':'Websites now play diverse roles essential to daily life, and the importance of information dissemination through corporate websites is increasing. We consider making our site accessible to be a corporate responsibility, and have established the following three points as our standards.',
+    'accessibility-h1':'1. Importance of the Item','accessibility-p1':'Whether the impact of not observing the item is significant.',
+    'accessibility-h2':'2. Ease of Implementation and Verification','accessibility-p2':'Whether it can be easily implemented with current technology and information.',
+    'accessibility-h3':'3. User Feedback','accessibility-p3':'Whether it aligns with users\' actual usage conditions.',
+    'accessibility-h4':'Our Approach','accessibility-p4':'We aim for continuous improvement of our site, referencing WCAG 2.1 (Web Content Accessibility Guidelines) Level AA as a standard. Please direct any accessibility feedback or requests to the contact below.',
+    'accessibility-contact-k1':'Department','accessibility-contact-v1':'HASH FUTURE Co., Ltd. Web Team',
+    'terms-title':'Terms of Use','terms-sub':'Terms of Use',
+    'terms-intro':'These terms set forth the conditions for using the website operated by HASH FUTURE Co., Ltd. (the "Company"). By using this site, you are deemed to have agreed to these terms.',
+    'terms-h1':'Article 1 (Copyright and Trademarks)','terms-p1':'Copyrights, trademark rights, and other intellectual property rights relating to all text, images, videos, logos, designs, and other content posted on this site belong to the Company or legitimate third-party rights holders. Reproduction, reprinting, modification, distribution, public transmission, or similar acts beyond the scope of private use may not be performed without the prior written consent of the Company.',
+    'terms-h2':'Article 2 (Disclaimer)','terms-p2':'The Company takes the utmost care regarding the accuracy, completeness, usefulness, and recency of information posted on this site, but does not guarantee such content. The Company shall not be liable for any damages arising from the use of this site.',
+    'terms-h3':'Article 3 (Change, Suspension, or Termination of Service)','terms-p3':'The Company may change, suspend, or terminate the content of this site without notice. The Company shall not be liable for any damages arising to users as a result.',
+    'terms-h4':'Article 4 (Links)','terms-p4':'The Company shall not be liable for the content of third-party websites linked from this site or third-party websites linking to this site. Links should be set in accordance with the terms of use of each website.',
+    'terms-h5':'Article 5 (Prohibited Acts)','terms-p5':'The following acts are prohibited when using this site.',
+    'terms-u1':'Acts that infringe the copyrights, trademark rights, or other intellectual property rights of the Company or third parties','terms-u2':'Acts that infringe the property, privacy, etc. of the Company or third parties','terms-u3':'Acts that interfere with, or may interfere with, the operation of this site','terms-u4':'Acts of transmitting false information','terms-u5':'Acts that violate laws or public order and morals','terms-u6':'Other acts that the Company deems inappropriate',
+    'terms-h6':'Article 6 (Governing Law and Jurisdiction)','terms-p6':'The use of this site and the interpretation of these terms shall be governed by the laws of Japan. Any disputes arising in connection with this site shall be subject to the exclusive jurisdiction of the Yokohama District Court as the court of first instance.',
+    'terms-h7':'Article 7 (Changes to These Terms)','terms-p7':'The Company may change these terms without notice. The revised terms shall take effect from the time they are posted on this site.',
+    'terms-h8':'Effective Date','terms-d1-k':'Enacted','terms-d1-v':'May 27, 2013','terms-d2-k':'Last Revised','terms-d2-v':'April 1, 2026','terms-d3-k':'Operator','terms-d3-v':'HASH FUTURE Co., Ltd.<br>Aicros Shonan 5F-E, 2-2-1 Tsujidokandai, Fujisawa, Kanagawa 251-0041, Japan',
+    'footer-desc':'Experts in AI infrastructure and system integration. Founded in 2013 in Fujisawa, Kanagawa. We provide end-to-end AI data centers, GPU clusters, liquid cooling, system consulting, PM, and operations support.',
+    'footer-legal-h':'Legal','footer-link1':'Project Management','footer-link2':'System Consulting','footer-link3':'Operation Support','footer-link4':'Pricing','footer-link5':'Privacy Policy','footer-link6':'Information Security Policy','footer-link7':'Accessibility','footer-link8':'Terms of Use','footer-address':'Aicros Shonan 5F-E, 2-2-1 Tsujidokandai, Fujisawa, Kanagawa 251-0041, Japan'
+  },
+  cn: {
+    'nav-services':'服务','nav-idc':'AI 基础设施','nav-pricing':'价格','nav-company':'公司信息','nav-contact':'联系我们',
+    'page-eyebrow':'法务','page-title':'法务信息','page-desc':'本页汇总了 HASH FUTURE 株式会社在开展业务活动时遵守的基本方针。您可以查阅个人信息保护、信息安全、无障碍及网站使用条款等内容。',
+    'nav-privacy':'个人信息保护方针','nav-security':'信息安全方针','nav-accessibility':'无障碍','nav-terms':'网站使用条款',
+    'privacy-title':'个人信息保护方针','privacy-sub':'Privacy Policy','privacy-intro':'我们认识到保护通过业务活动获取的个人信息是社会责任，并基于以下方针努力保护个人信息。',
+    'privacy-h1':'1. 关于个人信息的获取','privacy-p1':'我们通过合法公正的手段获取个人信息。',
+    'privacy-h2':'2. 关于个人信息的使用','privacy-o2-1':'我们在获取时明示的使用目的范围内，仅在执行业务所必需的限度内使用个人信息。','privacy-o2-2':'当我们将个人信息与第三方共同使用，或委托第三方处理个人信息时，我们将对该第三方进行严格调查，并为确保其保密性实施适当监督。',
+    'privacy-h3':'3. 关于向第三方提供个人信息','privacy-p3':'除法律法规规定的情形外，未经本人事先同意，我们不会将个人信息提供给第三方。',
+    'privacy-h4':'4. 关于个人信息的管理','privacy-o4-1':'我们保持个人信息的准确性，并对其进行安全管理。','privacy-o4-2':'我们采取对策防止个人信息的丢失、破坏、篡改及泄露等。','privacy-o4-3':'我们不会通过携带外出、向外发送等方式泄露个人信息。',
+    'privacy-h5':'5. 关于个人信息的披露、订正、停止使用、删除','privacy-p5':'我们确认本人对自己个人信息享有披露、订正、停止使用、删除等权利，在收到上述请求时将诚实应对。',
+    'privacy-contact-h':'咨询窗口','privacy-contact-k1':'窗口','privacy-contact-v1':'HASH FUTURE 株式会社 个人信息保护负责人',
+    'security-title':'信息安全方针','security-sub':'Information Security Policy',
+    'security-h1':'1. 对信息安全的承诺','security-p1':'我们认识到"信息安全是本公司经营及业务上最重要的课题之一"，并基于此认识开展工作。',
+    'security-h2':'2. 信息资产的保护','security-p2':'为切实保护信息资产免受机密性、完整性及可用性方面的威胁，我们根据业务内容采取适当的管理措施。',
+    'security-h3':'3. 合规计划','security-p3':'我们使董事及员工认识到信息资产保护的重要性，建立并贯彻信息安全管理体系，制定合规计划，并实施、维持和持续改进。',
+    'security-h4':'4. 遵守法令等','security-p4':'我们使合规计划符合信息安全相关的法令、标准及其他规范，并遵守这些法令、标准及其他规范。',
+    'security-h5':'5. 教育与培训','security-p5':'我们致力于提高董事及员工的信息安全意识，并就信息安全、合规计划开展教育与培训。',
+    'security-h6':'6. 事故预防与应对','security-p6':'我们努力预防信息安全事件的发生，万一发生事故，将迅速采取包括防止再次发生在内的适当对策。',
+    'accessibility-title':'无障碍指南','accessibility-sub':'Accessibility Guideline',
+    'accessibility-intro':'网站已在生活中发挥多种必要作用，企业网站信息发布的重要性日益提高。我们将使本网站无障碍化视为企业的责任，并将以下 3 点作为制定时的标准。',
+    'accessibility-h1':'1. 项目的重要性','accessibility-p1':'不遵守该项目所造成的影响是否重大。',
+    'accessibility-h2':'2. 实现和确认的容易性','accessibility-p2':'用当前技术和信息是否容易实施。',
+    'accessibility-h3':'3. 用户意见','accessibility-p3':'是否符合用户的实际使用情况。',
+    'accessibility-h4':'应对方针','accessibility-p4':'我们以 WCAG 2.1（Web Content Accessibility Guidelines）Level AA 为参考基准，努力持续改进本网站。有关无障碍的意见和要求，请通过以下窗口联系我们。',
+    'accessibility-contact-k1':'窗口','accessibility-contact-v1':'HASH FUTURE 株式会社 Web 负责人',
+    'terms-title':'网站使用条款','terms-sub':'Terms of Use',
+    'terms-intro':'本条款规定使用 HASH FUTURE 株式会社（以下简称"本公司"）运营的网站（以下简称"本网站"）时的条件。使用本网站即视为同意本条款。',
+    'terms-h1':'第 1 条（著作权与商标）','terms-p1':'本网站登载的文章、图片、视频、标志、设计及其他一切内容相关的著作权、商标权及其他知识产权，归本公司或拥有正当权利的第三方所有。超出私人使用范围的复制、转载、修改、发布、公开传播等行为，未经本公司事先书面同意不得进行。',
+    'terms-h2':'第 2 条（免责事项）','terms-p2':'本公司对本网站登载信息的准确性、完整性、有用性、时效性等给予充分注意，但不保证这些内容。因使用本网站而产生的任何损害，本公司概不承担责任。',
+    'terms-h3':'第 3 条（服务的变更、中断、终止）','terms-p3':'本公司可能不经预告变更本网站内容，或中断、终止提供服务。由此对用户造成的任何损害，本公司概不承担责任。',
+    'terms-h4':'第 4 条（关于链接）','terms-p4':'对于本网站链接的第三方网站，以及链接到本网站的第三方网站的内容，本公司概不承担责任。设置链接请遵循各网站的使用条款。',
+    'terms-h5':'第 5 条（禁止事项）','terms-p5':'使用本网站时，禁止以下行为。',
+    'terms-u1':'侵害本公司或第三方著作权、商标权及其他知识产权的行为','terms-u2':'侵害本公司或第三方财产、隐私等的行为','terms-u3':'妨碍本网站运营，或有可能妨碍本网站运营的行为','terms-u4':'发送虚假信息的行为','terms-u5':'违反法令或公序良俗的行为','terms-u6':'其他本公司判断为不当的行为',
+    'terms-h6':'第 6 条（准据法与管辖法院）','terms-p6':'本网站的使用及本条款的解释以日本法为准据法。因本网站产生的纠纷，以横滨地方法院为第一审专属合意管辖法院。',
+    'terms-h7':'第 7 条（本条款的变更）','terms-p7':'本公司可能不经预告变更本条款。变更后的本条款自本网站登载之时起生效。',
+    'terms-h8':'制定日期','terms-d1-k':'制定','terms-d1-v':'2013 年 5 月 27 日','terms-d2-k':'最终修订','terms-d2-v':'2026 年 4 月 1 日','terms-d3-k':'运营','terms-d3-v':'HASH FUTURE 株式会社<br>日本神奈川县藤泽市辻堂神台2-2-1 アイクロス湘南5F-E',
+    'footer-desc':'AI 基础设施与系统整合专家。2013 年设立于神奈川县藤泽市。一站式提供 AI 数据中心、GPU 集群、液冷、系统咨询、PM 与运维支持。',
+    'footer-legal-h':'法务','footer-link1':'项目管理','footer-link2':'系统咨询','footer-link3':'系统运维支持','footer-link4':'服务费用','footer-link5':'个人信息保护方针','footer-link6':'信息安全方针','footer-link7':'无障碍','footer-link8':'网站使用条款','footer-address':'日本神奈川县藤泽市辻堂神台2-2-1 アイクロス湘南5F-E'
+  }
+};
+
+/* 语言切换 */
+document.querySelectorAll('.lang-switch button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const l=btn.dataset.lang;
+    document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b===btn));
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k=el.dataset.i18n;
+      if(I18N[l] && I18N[l][k] !== undefined){
+        el.innerHTML = I18N[l][k];
+      }
+    });
+    document.documentElement.lang = l==='cn' ? 'zh' : l;
+    try{ localStorage.setItem('hf_lang',l); }catch(e){}
+  });
+});
+try{
+  const sl = localStorage.getItem('hf_lang');
+  if(sl && I18N[sl]){
+    const b = document.querySelector('.lang-switch button[data-lang="'+sl+'"]');
+    if(b) b.click();
+  }
+}catch(e){}
+
+/* CUSTOM CURSOR */
+(function(){
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!hasMouse || reducedMotion) return;
+  const cur = document.createElement('div');
+  cur.className = 'hf-cur';
+  const shape = document.createElement('div');
+  shape.className = 'hf-cur-shape';
+  cur.appendChild(shape);
+  const dot = document.createElement('div');
+  dot.className = 'hf-cur-dot';
+  document.body.appendChild(cur);
+  document.body.appendChild(dot);
+  let mx = -100, my = -100, cx = -100, cy = -100, firstMove = false;
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+    if (!firstMove) { firstMove = true; cx = mx; cy = my; }
+  });
+  document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; dot.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; dot.style.opacity = '1'; });
+  const INTERACTIVE = 'a, button, [role="button"], .lang-switch button';
+  document.addEventListener('mouseover', (e) => {
+    const t = e.target;
+    if (t.closest && t.closest(INTERACTIVE)) cur.classList.add('hf-hover');
+  });
+  document.addEventListener('mouseout', (e) => {
+    const t = e.target;
+    if (t.closest && t.closest(INTERACTIVE)) cur.classList.remove('hf-hover');
+  });
+  document.addEventListener('mousedown', () => cur.classList.add('hf-click'));
+  document.addEventListener('mouseup', () => cur.classList.remove('hf-click'));
+  function loop(){
+    cx += (mx - cx) * 0.22;
+    cy += (my - cy) * 0.22;
+    cur.style.transform = `translate(${cx}px,${cy}px)`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 </script>
 
 </body>
