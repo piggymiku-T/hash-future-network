@@ -383,139 +383,30 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .contact-form{padding:22px 22px 26px}
   .contact-close{top:14px;right:14px}
 }
-/* ===== CUSTOM CURSOR v2 ===== */
+
+/* CUSTOM CURSOR */
 @media (hover: hover) and (pointer: fine) {
-  body:not(.no-custom-cursor),
-  body:not(.no-custom-cursor) *{cursor:none !important}
-  body:not(.no-custom-cursor) input:not([type="submit"]):not([type="button"]):not([type="checkbox"]),
-  body:not(.no-custom-cursor) textarea{cursor:text !important}
+  body:not(.no-custom-cursor),body:not(.no-custom-cursor) *{cursor:none !important}
+  body:not(.no-custom-cursor) input:not([type="submit"]):not([type="button"]):not([type="checkbox"]),body:not(.no-custom-cursor) textarea{cursor:text !important}
   body:not(.no-custom-cursor) input[type="checkbox"]{cursor:pointer !important}
-
-  .hf-cur{
-    position:fixed;left:0;top:0;
-    width:0;height:0;
-    pointer-events:none;
-    z-index:99998;
-    will-change:transform;
-    transition:opacity .2s;
-  }
-  .hf-cur-shape{
-    position:absolute;left:0;top:0;
-    width:30px;height:30px;
-    border:1.5px solid rgba(0,229,255,.85);
-    border-radius:4px;
-    transform:translate(-50%,-50%) rotate(45deg);
-    transition:width .35s cubic-bezier(.4,0,.2,1),
-               height .35s cubic-bezier(.4,0,.2,1),
-               border-radius .35s cubic-bezier(.4,0,.2,1),
-               transform .35s cubic-bezier(.4,0,.2,1),
-               border-color .35s,
-               box-shadow .35s,
-               background .35s;
-    box-shadow:0 0 14px rgba(0,229,255,.6),
-               inset 0 0 8px rgba(0,229,255,.3);
-    will-change:transform,width,height;
-    animation:hfSpin 8s linear infinite;
-  }
-  @keyframes hfSpin{
-    from{transform:translate(-50%,-50%) rotate(45deg)}
-    to{transform:translate(-50%,-50%) rotate(405deg)}
-  }
-  .hf-cur-shape::before,
-  .hf-cur-shape::after{
-    content:'';position:absolute;background:#00FFA3;
-    opacity:0;transition:opacity .3s,background .3s;
-    pointer-events:none;
-  }
-  .hf-cur-shape::before{
-    top:50%;left:24%;right:24%;height:1.5px;
-    transform:translateY(-50%);
-  }
-  .hf-cur-shape::after{
-    left:50%;top:24%;bottom:24%;width:1.5px;
-    transform:translateX(-50%);
-  }
-
-  .hf-cur-dot{
-    position:fixed;left:0;top:0;
-    width:4px;height:4px;
-    background:#00E5FF;
-    border-radius:50%;
-    transform:translate(-50%,-50%);
-    pointer-events:none;
-    z-index:99999;
-    box-shadow:0 0 8px #00E5FF,0 0 16px rgba(0,229,255,.6);
-    will-change:transform;
-    transition:background .3s,box-shadow .3s,opacity .2s;
-  }
-
-  /* Hover state */
-  .hf-cur.hf-hover .hf-cur-shape{
-    animation:none;
-    width:50px;height:50px;
-    border-radius:50%;
-    transform:translate(-50%,-50%) rotate(0deg);
-    border-color:rgba(0,255,163,.95);
-    background:rgba(0,255,163,.06);
-    box-shadow:0 0 28px rgba(0,255,163,.75),
-               inset 0 0 14px rgba(0,255,163,.35);
-  }
-  .hf-cur.hf-hover .hf-cur-shape::before,
-  .hf-cur.hf-hover .hf-cur-shape::after{opacity:1}
-  .hf-cur.hf-hover .hf-cur-dot{
-    background:#00FFA3;
-    box-shadow:0 0 12px #00FFA3,0 0 24px rgba(0,255,163,.65);
-  }
-
-  /* Click state */
-  .hf-cur.hf-click .hf-cur-shape{
-    transition:transform .12s ease;
-    transform:translate(-50%,-50%) rotate(0deg) scale(.8);
-  }
-  .hf-cur.hf-click.hf-hover .hf-cur-shape{
-    transform:translate(-50%,-50%) rotate(0deg) scale(.8);
-  }
-
-  /* Particle */
-  .hf-particle{
-    position:fixed;left:0;top:0;
-    width:5px;height:5px;
-    border-radius:50%;
-    background:#00FFA3;
-    box-shadow:0 0 10px #00FFA3,0 0 20px rgba(0,255,163,.6);
-    pointer-events:none;
-    z-index:100000;
-    transform:translate(-50%,-50%);
-    will-change:transform,opacity;
-    opacity:0;
-  }
-  .hf-particle.go{
-    animation:hfBurst .75s cubic-bezier(.15,.6,.3,1) forwards;
-  }
-  @keyframes hfBurst{
-    0%{transform:translate(-50%,-50%) scale(1);opacity:1}
-    100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15);opacity:0}
-  }
-
-  /* Shockwave */
-  .hf-shock{
-    position:fixed;left:0;top:0;
-    width:14px;height:14px;
-    border:2px solid #00FFA3;
-    border-radius:50%;
-    pointer-events:none;
-    z-index:100001;
-    transform:translate(-50%,-50%) scale(.5);
-    opacity:0;
-    will-change:transform,opacity;
-  }
-  .hf-shock.go{
-    animation:hfShock .55s cubic-bezier(.15,.6,.3,1) forwards;
-  }
-  @keyframes hfShock{
-    0%{transform:translate(-50%,-50%) scale(.5);opacity:.9;border-width:2.5px}
-    100%{transform:translate(-50%,-50%) scale(3.6);opacity:0;border-width:.5px}
-  }
+  .hf-cur{position:fixed;left:0;top:0;width:0;height:0;pointer-events:none;z-index:99998;will-change:transform;transition:opacity .2s}
+  .hf-cur-shape{position:absolute;left:0;top:0;width:30px;height:30px;border:1.5px solid rgba(0,229,255,.85);border-radius:4px;transform:translate(-50%,-50%) rotate(45deg);transition:width .35s cubic-bezier(.4,0,.2,1),height .35s cubic-bezier(.4,0,.2,1),border-radius .35s cubic-bezier(.4,0,.2,1),transform .35s cubic-bezier(.4,0,.2,1),border-color .35s,box-shadow .35s,background .35s;box-shadow:0 0 14px rgba(0,229,255,.6),inset 0 0 8px rgba(0,229,255,.3);will-change:transform,width,height;animation:hfSpin 8s linear infinite}
+  @keyframes hfSpin{from{transform:translate(-50%,-50%) rotate(45deg)}to{transform:translate(-50%,-50%) rotate(405deg)}}
+  .hf-cur-shape::before,.hf-cur-shape::after{content:'';position:absolute;background:#00FFA3;opacity:0;transition:opacity .3s,background .3s;pointer-events:none}
+  .hf-cur-shape::before{top:50%;left:24%;right:24%;height:1.5px;transform:translateY(-50%)}
+  .hf-cur-shape::after{left:50%;top:24%;bottom:24%;width:1.5px;transform:translateX(-50%)}
+  .hf-cur-dot{position:fixed;left:0;top:0;width:4px;height:4px;background:#00E5FF;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:99999;box-shadow:0 0 8px #00E5FF,0 0 16px rgba(0,229,255,.6);will-change:transform;transition:background .3s,box-shadow .3s,opacity .2s}
+  .hf-cur.hf-hover .hf-cur-shape{animation:none;width:50px;height:50px;border-radius:50%;transform:translate(-50%,-50%) rotate(0deg);border-color:rgba(0,255,163,.95);background:rgba(0,255,163,.06);box-shadow:0 0 28px rgba(0,255,163,.75),inset 0 0 14px rgba(0,255,163,.35)}
+  .hf-cur.hf-hover .hf-cur-shape::before,.hf-cur.hf-hover .hf-cur-shape::after{opacity:1}
+  .hf-cur.hf-hover .hf-cur-dot{background:#00FFA3;box-shadow:0 0 12px #00FFA3,0 0 24px rgba(0,255,163,.65)}
+  .hf-cur.hf-click .hf-cur-shape{transition:transform .12s ease;transform:translate(-50%,-50%) rotate(0deg) scale(.8)}
+  .hf-cur.hf-click.hf-hover .hf-cur-shape{transform:translate(-50%,-50%) rotate(0deg) scale(.8)}
+  .hf-particle{position:fixed;left:0;top:0;width:5px;height:5px;border-radius:50%;background:#00FFA3;box-shadow:0 0 10px #00FFA3,0 0 20px rgba(0,255,163,.6);pointer-events:none;z-index:100000;transform:translate(-50%,-50%);will-change:transform,opacity;opacity:0}
+  .hf-particle.go{animation:hfBurst .75s cubic-bezier(.15,.6,.3,1) forwards}
+  @keyframes hfBurst{0%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.15);opacity:0}}
+  .hf-shock{position:fixed;left:0;top:0;width:14px;height:14px;border:2px solid #00FFA3;border-radius:50%;pointer-events:none;z-index:100001;transform:translate(-50%,-50%) scale(.5);opacity:0;will-change:transform,opacity}
+  .hf-shock.go{animation:hfShock .55s cubic-bezier(.15,.6,.3,1) forwards}
+  @keyframes hfShock{0%{transform:translate(-50%,-50%) scale(.5);opacity:.9;border-width:2.5px}100%{transform:translate(-50%,-50%) scale(3.6);opacity:0;border-width:.5px}}
 }
 </style>
 </head>
@@ -526,11 +417,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     <img src="assets/logo.png" alt="HASH FUTURE" class="logo-img">
   </a>
   <nav class="site-nav">
-    <a href="#services">サービス</a>
-    <a href="#idc">AIインフラ</a>
-    <a href="#pricing">料金</a>
-    <a href="#company">会社情報</a>
-    <a href="javascript:void(0)" onclick="openContact()">お問い合わせ</a>
+    <a href="#services" data-i18n="nav-services">サービス</a>
+    <a href="#idc" data-i18n="nav-idc">AIインフラ</a>
+    <a href="#pricing" data-i18n="nav-pricing">料金</a>
+    <a href="#company" data-i18n="nav-company">会社情報</a>
+    <a href="javascript:void(0)" onclick="openContact()" data-i18n="nav-contact">お問い合わせ</a>
   </nav>
   <div class="lang-switch">
     <button class="active" data-lang="ja">JP</button>
@@ -543,7 +434,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   <canvas id="heroCanvas"></canvas>
   <div class="hero-content">
     <div class="hero-eyebrow">HASH FUTURE Co., Ltd. — Est. 2013</div>
-    <h1>AIインフラと<br><span class="grad">システム統合の専門家。</span></h1>
+    <h1 data-i18n="hero-h1">AIインフラと<br><span class="grad">システム統合の専門家。</span></h1>
     <p class="hero-sub" data-i18n="hero-sub">HASH FUTUREは、AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・プロジェクトマネジメント・運用支援まで、AI時代のITインフラを一気通貫で提供します。20年以上のシステムエンジニア経験を持つ専門家チームが、お客様の課題を根本から解決します。</p>
     <div class="hero-actions">
       <a href="#services" class="btn btn-primary">
@@ -568,13 +459,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <div class="service-num">01</div>
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
           <div class="service-en">Project Management</div>
-          <h3>プロジェクトマネジメントサービス</h3>
-          <p>プロジェクトを必ず成功に導くため、確実で適正な手法で計画・実行・検証を支援します。</p>
+          <h3 data-i18n="svc-pm-title">プロジェクトマネジメントサービス</h3>
+          <p data-i18n="svc-pm-desc">プロジェクトを必ず成功に導くため、確実で適正な手法で計画・実行・検証を支援します。</p>
           <ul class="service-list">
-            <li>プロジェクトマネジメント請負</li>
-            <li>PMO（常駐型・スポット型）</li>
-            <li>プロジェクト監査・計画支援</li>
-            <li>トラブルプロジェクトの立て直し</li>
+            <li data-i18n="svc-pm-li1">プロジェクトマネジメント請負</li>
+            <li data-i18n="svc-pm-li2">PMO（常駐型・スポット型）</li>
+            <li data-i18n="svc-pm-li3">プロジェクト監査・計画支援</li>
+            <li data-i18n="svc-pm-li4">トラブルプロジェクトの立て直し</li>
           </ul>
         </div>
       </div>
@@ -585,13 +476,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <div class="service-num">02</div>
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
           <div class="service-en">System Consulting</div>
-          <h3>システムコンサルティングサービス</h3>
-          <p>問題定義から問題解決までのプロセスを正確に捉え、適正なアウトプットを完成させます。</p>
+          <h3 data-i18n="svc-consult-title">システムコンサルティングサービス</h3>
+          <p data-i18n="svc-consult-desc">問題定義から問題解決までのプロセスを正確に捉え、適正なアウトプットを完成させます。</p>
           <ul class="service-list">
-            <li>業務分析・IT化企画</li>
-            <li>RFP代行・ベンダー選定支援</li>
-            <li>ITロードマップ策定</li>
-            <li>情報部門社内システム運用戦略</li>
+            <li data-i18n="svc-consult-li1">業務分析・IT化企画</li>
+            <li data-i18n="svc-consult-li2">RFP代行・ベンダー選定支援</li>
+            <li data-i18n="svc-consult-li3">ITロードマップ策定</li>
+            <li data-i18n="svc-consult-li4">情報部門社内システム運用戦略</li>
           </ul>
         </div>
       </div>
@@ -602,23 +493,23 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
           <div class="service-num">03</div>
           <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
           <div class="service-en">Operation Support</div>
-          <h3>システム運用支援サービス</h3>
-          <p>運用の悩みを即座に解決。社内に新しい仕組みを導入する場合も最適な方法を提示します。</p>
+          <h3 data-i18n="svc-ops-title">システム運用支援サービス</h3>
+          <p data-i18n="svc-ops-desc">運用の悩みを即座に解決。社内に新しい仕組みを導入する場合も最適な方法を提示します。</p>
           <ul class="service-list">
-            <li>現状分析支援・RFP作成支援</li>
-            <li>ベンダー選定支援</li>
-            <li>運用相談受付 Lv1〜Lv6</li>
-            <li>システム相談受付サービス</li>
+            <li data-i18n="svc-ops-li1">現状分析支援・RFP作成支援</li>
+            <li data-i18n="svc-ops-li2">ベンダー選定支援</li>
+            <li data-i18n="svc-ops-li3">運用相談受付 Lv1〜Lv6</li>
+            <li data-i18n="svc-ops-li4">システム相談受付サービス</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="stats">
-      <div class="stat-cell"><div class="stat-num">2013<span class="unit">年</span></div><div class="stat-label">Founded</div></div>
-      <div class="stat-cell"><div class="stat-num">20<span class="unit">年+</span></div><div class="stat-label">Experience</div></div>
-      <div class="stat-cell"><div class="stat-num">11<span class="unit">事業</span></div><div class="stat-label">Business Lines</div></div>
-      <div class="stat-cell"><div class="stat-num">3<span class="unit">拠点</span></div><div class="stat-label">Core Services</div></div>
+      <div class="stat-cell"><div class="stat-num">2013<span class="unit" data-i18n="stat-1-unit">年</span></div><div class="stat-label" data-i18n="stat-1-label">Founded</div></div>
+      <div class="stat-cell"><div class="stat-num">20<span class="unit" data-i18n="stat-2-unit">年+</span></div><div class="stat-label" data-i18n="stat-2-label">Experience</div></div>
+      <div class="stat-cell"><div class="stat-num">11<span class="unit" data-i18n="stat-3-unit">事業</span></div><div class="stat-label" data-i18n="stat-3-label">Business Lines</div></div>
+      <div class="stat-cell"><div class="stat-num">3<span class="unit" data-i18n="stat-4-unit">拠点</span></div><div class="stat-label" data-i18n="stat-4-label">Core Services</div></div>
     </div>
   </div>
 </section>
@@ -632,55 +523,43 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   </div>
   <div class="container">
     <div class="section-label">AI Infrastructure</div>
-    <h2 class="section-title" data-i18n="idc-title">全国のDC場地と<br><span class="hl">AI計算需要</span>をつなぐ。</h2>
-    <p class="section-desc" data-i18n="idc-desc">HASH FUTUREは、日本全国のデータセンター場地を発掘・評価し、GPUクラスタの展開から液冷冷却・電力調達・運用までを一貫して提供します。AI時代の計算基盤を、日本全国に分散配置します。</p>
+    <h2 class="section-title" data-i18n="idc-title">全国のDC用地と<br><span class="hl">AI計算需要</span>をつなぐ。</h2>
+    <p class="section-desc" data-i18n="idc-desc">HASH FUTUREは、日本全国のデータセンター用地を発掘・評価し、GPUクラスタの展開から液冷冷却・電力調達・運用までを一貫して提供します。AI時代の計算基盤を、日本全国に分散配置します。</p>
 
     <div class="idc-stats">
-      <div class="idc-stat"><div class="idc-stat-label">Candidate Network</div><div class="idc-stat-value">47<span class="unit">都道府県</span></div></div>
-      <div class="idc-stat"><div class="idc-stat-label">Target PUE</div><div class="idc-stat-value">≤1.3<span class="unit">2029年規制対応</span></div></div>
-      <div class="idc-stat"><div class="idc-stat-label">Cooling</div><div class="idc-stat-value">DLC<span class="unit">液冷対応</span></div></div>
-      <div class="idc-stat"><div class="idc-stat-label">GPU Platform</div><div class="idc-stat-value">B300<span class="unit">/ GB300</span></div></div>
+      <div class="idc-stat"><div class="idc-stat-label" data-i18n="idc-s1-label">Candidate Network</div><div class="idc-stat-value">47<span class="unit" data-i18n="idc-s1-unit">都道府県</span></div></div>
+      <div class="idc-stat"><div class="idc-stat-label" data-i18n="idc-s2-label">Target PUE</div><div class="idc-stat-value">≤1.3<span class="unit" data-i18n="idc-s2-unit">2029年規制対応</span></div></div>
+      <div class="idc-stat"><div class="idc-stat-label" data-i18n="idc-s3-label">Cooling</div><div class="idc-stat-value">DLC<span class="unit" data-i18n="idc-s3-unit">液冷対応</span></div></div>
+      <div class="idc-stat"><div class="idc-stat-label" data-i18n="idc-s4-label">GPU Platform</div><div class="idc-stat-value">B300<span class="unit" data-i18n="idc-s4-unit">/ GB300</span></div></div>
     </div>
 
     <div class="idc-pillars">
       <div class="idc-pillar">
-        <div class="idc-pillar-head">
-          <div class="idc-pillar-icon"><img src="assets/pillar-01.webp" alt=""></div>
-          <div class="idc-pillar-num">01</div>
-        </div>
-        <h4>場地発掘・適格性審査</h4>
-        <p>全国の候補DC場地をスクリーニングし、電力容量・PUE・耐震・法令適合性を精査。AIクラスタに適した場地のみを選定します。</p>
+        <div class="idc-pillar-head"><div class="idc-pillar-icon"><img src="assets/pillar-01.webp" alt=""></div><div class="idc-pillar-num">01</div></div>
+        <h4 data-i18n="idc-p1-h">用地発掘・適格性審査</h4>
+        <p data-i18n="idc-p1-p">全国の候補DC用地をスクリーニングし、電力容量・PUE・耐震・法令適合性を精査。AIクラスタに適した用地のみを選定します。</p>
       </div>
       <div class="idc-pillar">
-        <div class="idc-pillar-head">
-          <div class="idc-pillar-icon"><img src="assets/pillar-02.webp" alt=""></div>
-          <div class="idc-pillar-num">02</div>
-        </div>
-        <h4>電力・法規・耐震審査</h4>
-        <p>IT受電容量、特別高圧接続、PUE ≤1.3 対応、建築基準法・消防法・震度7不倒不壊を確認。2029年以降の新設DC規制に準拠します。</p>
+        <div class="idc-pillar-head"><div class="idc-pillar-icon"><img src="assets/pillar-02.webp" alt=""></div><div class="idc-pillar-num">02</div></div>
+        <h4 data-i18n="idc-p2-h">電力・法規・耐震審査</h4>
+        <p data-i18n="idc-p2-p">IT受電容量、特別高圧接続、PUE ≤1.3 対応、建築基準法・消防法・震度7不倒不壊を確認。2029年以降の新設DC規制に準拠します。</p>
       </div>
       <div class="idc-pillar">
-        <div class="idc-pillar-head">
-          <div class="idc-pillar-icon"><img src="assets/pillar-03.webp" alt=""></div>
-          <div class="idc-pillar-num">03</div>
-        </div>
-        <h4>GPUクラスタ構築</h4>
-        <p>B300 / GB300 クラスタの設計・調達・設置。8GPU〜72GPU構成、ストレージ・100G専用線・ネットワークを含むフルスタック統合。</p>
+        <div class="idc-pillar-head"><div class="idc-pillar-icon"><img src="assets/pillar-03.webp" alt=""></div><div class="idc-pillar-num">03</div></div>
+        <h4 data-i18n="idc-p3-h">GPUクラスタ構築</h4>
+        <p data-i18n="idc-p3-p">B300 / GB300 クラスタの設計・調達・設置。8GPU〜72GPU構成、ストレージ・100G専用線・ネットワークを含むフルスタック統合。</p>
       </div>
       <div class="idc-pillar">
-        <div class="idc-pillar-head">
-          <div class="idc-pillar-icon"><img src="assets/pillar-04.webp" alt=""></div>
-          <div class="idc-pillar-num">04</div>
-        </div>
-        <h4>液冷・全スタック運用</h4>
-        <p>DLC（Direct Liquid Cooling）の設計・施工・運用。PUE最適化、保全・監視・24時間運用まで、AIインフラの全ライフサイクルを支援します。</p>
+        <div class="idc-pillar-head"><div class="idc-pillar-icon"><img src="assets/pillar-04.webp" alt=""></div><div class="idc-pillar-num">04</div></div>
+        <h4 data-i18n="idc-p4-h">液冷・全スタック運用</h4>
+        <p data-i18n="idc-p4-p">DLC（Direct Liquid Cooling）の設計・施工・運用。PUE最適化、保全・監視・24時間運用まで、AIインフラの全ライフサイクルを支援します。</p>
       </div>
     </div>
 
     <div class="idc-cta">
       <div>
-        <h3 data-i18n="idc-cta-title">DC場地の提供をご検討の方へ</h3>
-        <p data-i18n="idc-cta-desc">全国のDC場地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす場地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。</p>
+        <h3 data-i18n="idc-cta-title">DC用地の提供をご検討の方へ</h3>
+        <p data-i18n="idc-cta-desc">全国のDC用地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす用地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。</p>
       </div>
       <button type="button" class="btn btn-primary" onclick="openContact()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -690,6 +569,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   </div>
 </section>
 
+
 <section class="section" id="services-details">
   <div class="container">
     <div class="section-label">Details</div>
@@ -698,48 +578,48 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
     <div class="accordion" id="acc-pm">
       <div class="acc-header" onclick="toggleAcc('acc-pm')">
-        <h3><span class="acc-num">01</span>プロジェクトマネジメントサービス</h3>
+        <h3><span class="acc-num">01</span><span data-i18n="pm-acc-title">プロジェクトマネジメントサービス</span></h3>
         <div class="acc-toggle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
       </div>
       <div class="acc-body"><div class="acc-inner">
         <div class="detail-block">
-          <h4>サービス概要</h4>
+          <h4 data-i18n="pm-b1-h">サービス概要</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">(1) プロジェクト計画の策定</div><div class="v">お客様と弊社と合同でプロジェクト計画を策定します。</div></div>
-            <div class="detail-item"><div class="k">(2) スコープ定義の検証</div><div class="v">お客様の業務及びシステムのスコープ定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(3) コスト定義の検証</div><div class="v">プロジェクトに必要なコスト定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(4) 品質定義の検証</div><div class="v">納品システムに必要な品質定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(5) 人的資源定義の検証</div><div class="v">プロジェクトに必要な人的資源の定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(6) コミュニケーション定義の検証</div><div class="v">コミュニケーションに必要な定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(7) リスク定義の検証</div><div class="v">プロジェクトリスクの定義に必要な定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(8) 調達定義の検証</div><div class="v">納品システムに必要な調達定義の検証を行います。</div></div>
-            <div class="detail-item"><div class="k">(9) 統合マネジメントの検証</div><div class="v">プロジェクトの統合マネジメントの検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d1-k">(1) プロジェクト計画の策定</div><div class="v" data-i18n="pm-d1-v">お客様と弊社と合同でプロジェクト計画を策定します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d2-k">(2) スコープ定義の検証</div><div class="v" data-i18n="pm-d2-v">お客様の業務及びシステムのスコープ定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d3-k">(3) コスト定義の検証</div><div class="v" data-i18n="pm-d3-v">プロジェクトに必要なコスト定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d4-k">(4) 品質定義の検証</div><div class="v" data-i18n="pm-d4-v">納品システムに必要な品質定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d5-k">(5) 人的資源定義の検証</div><div class="v" data-i18n="pm-d5-v">プロジェクトに必要な人的資源の定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d6-k">(6) コミュニケーション定義の検証</div><div class="v" data-i18n="pm-d6-v">コミュニケーションに必要な定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d7-k">(7) リスク定義の検証</div><div class="v" data-i18n="pm-d7-v">プロジェクトリスクの定義に必要な定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d8-k">(8) 調達定義の検証</div><div class="v" data-i18n="pm-d8-v">納品システムに必要な調達定義の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d9-k">(9) 統合マネジメントの検証</div><div class="v" data-i18n="pm-d9-v">プロジェクトの統合マネジメントの検証を行います。</div></div>
           </div>
         </div>
         <div class="detail-block">
-          <h4>お客様へお渡しする物</h4>
+          <h4 data-i18n="pm-b2-h">お客様へお渡しする物</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">(1) プロジェクト計画書</div><div class="v">SEが完成した各ドキュメントを整備し、これを検証してお客様にお渡しします。ドキュメントの構成内容は、スコープ定義書、タイムマネジメント、コストマネジメント、プロジェクト管理会計、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント定義書、リスクマネジメント計画書、調達マネジメント計画書などを含みます。</div></div>
-            <div class="detail-item"><div class="k">(2) 各種検証報告書</div><div class="v">統合マネジメント、スコープ定義マネジメント、タイムマネジメント、コストマネジメント、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント、リスクマネジメント、調達マネジメントに関する報告書。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d10-k">(1) プロジェクト計画書</div><div class="v" data-i18n="pm-d10-v">SEが完成した各ドキュメントを整備し、これを検証してお客様にお渡しします。ドキュメントの構成内容は、スコープ定義書、タイムマネジメント、コストマネジメント、プロジェクト管理会計、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント定義書、リスクマネジメント計画書、調達マネジメント計画書などを含みます。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d11-k">(2) 各種検証報告書</div><div class="v" data-i18n="pm-d11-v">統合マネジメント、スコープ定義マネジメント、タイムマネジメント、コストマネジメント、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント、リスクマネジメント、調達マネジメントに関する報告書。</div></div>
           </div>
         </div>
         <div class="detail-block">
-          <h4>サービス詳細 — 請負元のIT企業向け</h4>
+          <h4 data-i18n="pm-b3-h">サービス詳細 — 請負元のIT企業向け</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">プロジェクトマネジメント請負</div><div class="v">プロジェクトマネージャーの代行サービス。</div></div>
-            <div class="detail-item"><div class="k">PM請負（トラブルプロジェクト）</div><div class="v">トラブルプロジェクトの立て直しを含むPM代行。</div></div>
-            <div class="detail-item"><div class="k">プロジェクトマネージャー支援</div><div class="v">PMの支援を行います。</div></div>
-            <div class="detail-item"><div class="k">PM支援（トラブルプロジェクト）</div><div class="v">トラブルプロジェクトの立て直しを支援。</div></div>
-            <div class="detail-item"><div class="k">PMO（常駐型）</div><div class="v">複数のプロジェクトを平準化した基準で管理・指導します。</div></div>
-            <div class="detail-item"><div class="k">PMO（スポット型）</div><div class="v">スポット対応。ご相談に応じ、必要な時期に実施します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d12-k">プロジェクトマネジメント請負</div><div class="v" data-i18n="pm-d12-v">プロジェクトマネージャーの代行サービス。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d13-k">PM請負（トラブルプロジェクト）</div><div class="v" data-i18n="pm-d13-v">トラブルプロジェクトの立て直しを含むPM代行。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d14-k">プロジェクトマネージャー支援</div><div class="v" data-i18n="pm-d14-v">PMの支援を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d15-k">PM支援（トラブルプロジェクト）</div><div class="v" data-i18n="pm-d15-v">トラブルプロジェクトの立て直しを支援。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d16-k">PMO（常駐型）</div><div class="v" data-i18n="pm-d16-v">複数のプロジェクトを平準化した基準で管理・指導します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d17-k">PMO（スポット型）</div><div class="v" data-i18n="pm-d17-v">スポット対応。ご相談に応じ、必要な時期に実施します。</div></div>
           </div>
         </div>
         <div class="detail-block">
-          <h4>サービス詳細 — 発注元のIT企業向け</h4>
+          <h4 data-i18n="pm-b4-h">サービス詳細 — 発注元のIT企業向け</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">プロジェクト監査</div><div class="v">開発を行っているIT企業のプロジェクト監査を行います。問題点や課題、リスク等を分析し指導致します。</div></div>
-            <div class="detail-item"><div class="k">プロジェクト計画支援</div><div class="v">プロジェクトの目的やゴール、スコープ、コストマネジメントについて計画策定の支援を行います。</div></div>
-            <div class="detail-item"><div class="k">プロジェクトマネジメント支援</div><div class="v">お客様内のPMの支援を行います。計画や資料作成、進捗管理、ベンダー交渉等、プロジェクトで必要となる全ての支援を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d18-k">プロジェクト監査</div><div class="v" data-i18n="pm-d18-v">開発を行っているIT企業のプロジェクト監査を行います。問題点や課題、リスク等を分析し指導致します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d19-k">プロジェクト計画支援</div><div class="v" data-i18n="pm-d19-v">プロジェクトの目的やゴール、スコープ、コストマネジメントについて計画策定の支援を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="pm-d20-k">プロジェクトマネジメント支援</div><div class="v" data-i18n="pm-d20-v">お客様内のPMの支援を行います。計画や資料作成、進捗管理、ベンダー交渉等、プロジェクトで必要となる全ての支援を行います。</div></div>
           </div>
         </div>
       </div></div>
@@ -747,43 +627,43 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
     <div class="accordion" id="acc-consult">
       <div class="acc-header" onclick="toggleAcc('acc-consult')">
-        <h3><span class="acc-num">02</span>システムコンサルティングサービス</h3>
+        <h3><span class="acc-num">02</span><span data-i18n="conc-acc-title">システムコンサルティングサービス</span></h3>
         <div class="acc-toggle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
       </div>
       <div class="acc-body"><div class="acc-inner">
         <div class="detail-block">
-          <h4>サービス概要</h4>
+          <h4 data-i18n="conc-b1-h">サービス概要</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">(1) プロジェクトの立ち上げ</div><div class="v">お客様と弊社と合同でプロジェクト計画を策定し、実施します。</div></div>
-            <div class="detail-item"><div class="k">(2) 現状調査</div><div class="v">お客様の業務及びシステムの現状とその問題点を調査します。</div></div>
-            <div class="detail-item"><div class="k">(3) 調査結果の整理、問題提起</div><div class="v">調査結果を整理して、不要なデータは排除します。調査結果から真の問題は何かを提起します。</div></div>
-            <div class="detail-item"><div class="k">(4) 現状分析</div><div class="v">提起した問題からお客様の現状を業務の視点、システムの視点から分析します。</div></div>
-            <div class="detail-item"><div class="k">(5) 解決策作成</div><div class="v">分析結果を元に業務的解決又はシステム的解決案を作成し、これを提示します。</div></div>
-            <div class="detail-item"><div class="k">(6) 解決策作成、検討</div><div class="v">解決策についてお客様の承認が得られた時点から具体的な解決策を作成し、主要な方と検討します。</div></div>
-            <div class="detail-item"><div class="k">(7) お客様の問題意識との整合</div><div class="v">最終的にお客様が抱えた問題意識と具体的解決策のずれがないかを全員で精査いたします。</div></div>
-            <div class="detail-item"><div class="k">(8) コンサルテーション支援</div><div class="v">具体的解決策をシステム化するプロセスとSEが設計する基本設計の検証を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d1-k">(1) プロジェクトの立ち上げ</div><div class="v" data-i18n="conc-d1-v">お客様と弊社と合同でプロジェクト計画を策定し、実施します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d2-k">(2) 現状調査</div><div class="v" data-i18n="conc-d2-v">お客様の業務及びシステムの現状とその問題点を調査します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d3-k">(3) 調査結果の整理、問題提起</div><div class="v" data-i18n="conc-d3-v">調査結果を整理して、不要なデータは排除します。調査結果から真の問題は何かを提起します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d4-k">(4) 現状分析</div><div class="v" data-i18n="conc-d4-v">提起した問題からお客様の現状を業務の視点、システムの視点から分析します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d5-k">(5) 解決策作成</div><div class="v" data-i18n="conc-d5-v">分析結果を元に業務的解決又はシステム的解決案を作成し、これを提示します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d6-k">(6) 解決策作成、検討</div><div class="v" data-i18n="conc-d6-v">解決策についてお客様の承認が得られた時点から具体的な解決策を作成し、主要な方と検討します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d7-k">(7) お客様の問題意識との整合</div><div class="v" data-i18n="conc-d7-v">最終的にお客様が抱えた問題意識と具体的解決策のずれがないかを全員で精査いたします。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d8-k">(8) コンサルテーション支援</div><div class="v" data-i18n="conc-d8-v">具体的解決策をシステム化するプロセスとSEが設計する基本設計の検証を行います。</div></div>
           </div>
         </div>
         <div class="detail-block">
-          <h4>サービス詳細</h4>
+          <h4 data-i18n="conc-b2-h">サービス詳細</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">業務分析</div><div class="v">日常業務を分析し、目に見える形で整理（業務可視化、数値化）。</div></div>
-            <div class="detail-item"><div class="k">IT化企画</div><div class="v">経営面や業務面での不都合や不満点を整理し、IT化テーマを明確化。</div></div>
-            <div class="detail-item"><div class="k">RFP代行</div><div class="v">新システムの全体像を纏め各社ベンダーに提案依頼書（RFP）を作成代行。</div></div>
-            <div class="detail-item"><div class="k">ITロードマップ（中長期計画策定）</div><div class="v">選び出されたテーマを、その重要度、緊急度に応じて優先度をつけ、システムの中長期計画をサポート。</div></div>
-            <div class="detail-item"><div class="k">情報部門社内システム運用戦略計画</div><div class="v">情報管理部門の運用戦略計画を支援。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d9-k">業務分析</div><div class="v" data-i18n="conc-d9-v">日常業務を分析し、目に見える形で整理（業務可視化、数値化）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d10-k">IT化企画</div><div class="v" data-i18n="conc-d10-v">経営面や業務面での不都合や不満点を整理し、IT化テーマを明確化。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d11-k">RFP代行</div><div class="v" data-i18n="conc-d11-v">新システムの全体像を纏め各社ベンダーに提案依頼書（RFP）を作成代行。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d12-k">ITロードマップ（中長期計画策定）</div><div class="v" data-i18n="conc-d12-v">選び出されたテーマを、その重要度、緊急度に応じて優先度をつけ、システムの中長期計画をサポート。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d13-k">情報部門社内システム運用戦略計画</div><div class="v" data-i18n="conc-d13-v">情報管理部門の運用戦略計画を支援。</div></div>
           </div>
         </div>
         <div class="detail-block">
-          <h4>お客様へお渡しする物</h4>
+          <h4 data-i18n="conc-b3-h">お客様へお渡しする物</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">(1) システム化計画書</div><div class="v">経営戦略に基づくIT化の計画を記述します。</div></div>
-            <div class="detail-item"><div class="k">(2) 資源計画書</div><div class="v">システム化に必要な資源計画を記述します。</div></div>
-            <div class="detail-item"><div class="k">(3) コスト計画書</div><div class="v">システム化に必要な人件費、設備費のコスト計画を記述します。</div></div>
-            <div class="detail-item"><div class="k">(4) 要員計画書</div><div class="v">システム化に必要な要員計画を記述します。</div></div>
-            <div class="detail-item"><div class="k">(5) 新業務フロー</div><div class="v">BPRを行った後のお客様の業務フローを記述します。</div></div>
-            <div class="detail-item"><div class="k">(6) 論理設計書</div><div class="v">システム化の論理図を記述します。</div></div>
-            <div class="detail-item"><div class="k">(7) 各種分析書</div><div class="v">費用と収益の分析などを記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d14-k">(1) システム化計画書</div><div class="v" data-i18n="conc-d14-v">経営戦略に基づくIT化の計画を記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d15-k">(2) 資源計画書</div><div class="v" data-i18n="conc-d15-v">システム化に必要な資源計画を記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d16-k">(3) コスト計画書</div><div class="v" data-i18n="conc-d16-v">システム化に必要な人件費、設備費のコスト計画を記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d17-k">(4) 要員計画書</div><div class="v" data-i18n="conc-d17-v">システム化に必要な要員計画を記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d18-k">(5) 新業務フロー</div><div class="v" data-i18n="conc-d18-v">BPRを行った後のお客様の業務フローを記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d19-k">(6) 論理設計書</div><div class="v" data-i18n="conc-d19-v">システム化の論理図を記述します。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="conc-d20-k">(7) 各種分析書</div><div class="v" data-i18n="conc-d20-v">費用と収益の分析などを記述します。</div></div>
           </div>
         </div>
       </div></div>
@@ -791,23 +671,23 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
     <div class="accordion" id="acc-ops">
       <div class="acc-header" onclick="toggleAcc('acc-ops')">
-        <h3><span class="acc-num">03</span>システム運用支援サービス</h3>
+        <h3><span class="acc-num">03</span><span data-i18n="ops-acc-title">システム運用支援サービス</span></h3>
         <div class="acc-toggle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></div>
       </div>
       <div class="acc-body"><div class="acc-inner">
         <div class="detail-block">
-          <h4>サービス詳細</h4>
+          <h4 data-i18n="ops-b1-h">サービス詳細</h4>
           <div class="detail-list">
-            <div class="detail-item"><div class="k">現状分析支援サービス</div><div class="v">システムの現状分析の支援を行います（オンサイトでの調査5回程度を含んでおります）。</div></div>
-            <div class="detail-item"><div class="k">RFP作成支援サービス</div><div class="v">お客様のご要望に沿ったRFPを作成します（オンサイトでの打ち合わせ3回程度を含んでおります）。</div></div>
-            <div class="detail-item"><div class="k">ベンダー選定支援サービス</div><div class="v">ベンダー選定で必須となる資料の作成、選定基準の支援を行います。</div></div>
-            <div class="detail-item"><div class="k">運用相談受付サービス（Lv1）</div><div class="v">システムの運用方法についてのサポートを電話で行います（例：ウィルス対策はどうすればいいのか？等）。</div></div>
-            <div class="detail-item"><div class="k">運用相談受付サービス（Lv2）</div><div class="v">システムの運用方法についてのサポートを現地で行います（例：社員教育、その他現地でのサポート）。</div></div>
-            <div class="detail-item"><div class="k">運用相談受付サービス（Lv3）</div><div class="v">システムの運用方法についてのサポートを現地で行います（例：システム担当者サポート業務全般）。</div></div>
-            <div class="detail-item"><div class="k">運用相談受付サービス（Lv4）</div><div class="v">システムの運用方法についての改善を現地で行います（例：システム管理ツールの導入検討等）。</div></div>
-            <div class="detail-item"><div class="k">運用相談受付サービス（Lv5）</div><div class="v">システムの運用設計を指導します（新規・見直し）。</div></div>
-            <div class="detail-item"><div class="k">運用相談受付サービス（Lv6）</div><div class="v">システムの運用設計を行います（新規・見直し）。</div></div>
-            <div class="detail-item"><div class="k">システム相談受付サービス</div><div class="v">新規システム案件・既存システムの改造案件等の準備に関するサポートを電話で行います（例：システムを構築するがどの製品がいいか？等）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d1-k">現状分析支援サービス</div><div class="v" data-i18n="ops-d1-v">システムの現状分析の支援を行います（オンサイトでの調査5回程度を含んでおります）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d2-k">RFP作成支援サービス</div><div class="v" data-i18n="ops-d2-v">お客様のご要望に沿ったRFPを作成します（オンサイトでの打ち合わせ3回程度を含んでおります）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d3-k">ベンダー選定支援サービス</div><div class="v" data-i18n="ops-d3-v">ベンダー選定で必須となる資料の作成、選定基準の支援を行います。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d4-k">運用相談受付サービス（Lv1）</div><div class="v" data-i18n="ops-d4-v">システムの運用方法についてのサポートを電話で行います（例：ウィルス対策はどうすればいいのか？等）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d5-k">運用相談受付サービス（Lv2）</div><div class="v" data-i18n="ops-d5-v">システムの運用方法についてのサポートを現地で行います（例：社員教育、その他現地でのサポート）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d6-k">運用相談受付サービス（Lv3）</div><div class="v" data-i18n="ops-d6-v">システムの運用方法についてのサポートを現地で行います（例：システム担当者サポート業務全般）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d7-k">運用相談受付サービス（Lv4）</div><div class="v" data-i18n="ops-d7-v">システムの運用方法についての改善を現地で行います（例：システム管理ツールの導入検討等）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d8-k">運用相談受付サービス（Lv5）</div><div class="v" data-i18n="ops-d8-v">システムの運用設計を指導します（新規・見直し）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d9-k">運用相談受付サービス（Lv6）</div><div class="v" data-i18n="ops-d9-v">システムの運用設計を行います（新規・見直し）。</div></div>
+            <div class="detail-item"><div class="k" data-i18n="ops-d10-k">システム相談受付サービス</div><div class="v" data-i18n="ops-d10-v">新規システム案件・既存システムの改造案件等の準備に関するサポートを電話で行います（例：システムを構築するがどの製品がいいか？等）。</div></div>
           </div>
         </div>
       </div></div>
@@ -825,24 +705,24 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="pricing-card" data-accent="cyan">
         <div class="pricing-head">
           <div class="pricing-head-num">01</div>
-          <div class="pricing-head-title">プロジェクトマネジメントサービス<small>Project Management</small></div>
-          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value">80万〜200万円</span></div>
+          <div class="pricing-head-title"><span data-i18n="pc1-title">プロジェクトマネジメントサービス</span><small>Project Management</small></div>
+          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value" data-i18n="pc1-range">80万〜200万円</span></div>
         </div>
         <ul class="pricing-list">
-          <li class="pricing-row"><span class="pricing-name">プロジェクトマネジメント請負</span><span class="pricing-price">80万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">プロジェクトマネジメント請負（トラブルプロジェクト）</span><span class="pricing-price">120万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">プロジェクトマネージャー支援</span><span class="pricing-price">70万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">プロジェクトマネージャー支援（トラブルプロジェクト）</span><span class="pricing-price">100万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">PMO（常駐型）</span><span class="pricing-price">80万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">PMO（スポット型）</span><span class="pricing-price">50万円〜<span class="note">ご相談に応じて</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">プロジェクト監査</span><span class="pricing-price">50万円〜<span class="note">ご相談に応じて</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">プロジェクト計画支援</span><span class="pricing-price">50万円〜<span class="note">ご相談に応じて</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">プロジェクトマネジメント支援</span><span class="pricing-price">80万円〜<span class="note">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r1-n">プロジェクトマネジメント請負</span><span class="pricing-price">80万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r2-n">プロジェクトマネジメント請負（トラブルプロジェクト）</span><span class="pricing-price">120万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r3-n">プロジェクトマネージャー支援</span><span class="pricing-price">70万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r4-n">プロジェクトマネージャー支援（トラブルプロジェクト）</span><span class="pricing-price">100万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r5-n">PMO（常駐型）</span><span class="pricing-price">80万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r6-n">PMO（スポット型）</span><span class="pricing-price">50万円〜<span class="note" data-i18n="note-consult">ご相談に応じて</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r7-n">プロジェクト監査</span><span class="pricing-price">50万円〜<span class="note" data-i18n="note-consult">ご相談に応じて</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r8-n">プロジェクト計画支援</span><span class="pricing-price">50万円〜<span class="note" data-i18n="note-consult">ご相談に応じて</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc1-r9-n">プロジェクトマネジメント支援</span><span class="pricing-price">80万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
         </ul>
         <div class="pricing-footer">
-          <p class="pricing-footer-note">PMの常駐・スポット対応、トラブルプロジェクトの立て直しまで、規模に応じたお見積りをご提案します。</p>
+          <p class="pricing-footer-note" data-i18n="pc1-foot-note">PMの常駐・スポット対応、トラブルプロジェクトの立て直しまで、規模に応じたお見積りをご提案します。</p>
           <button type="button" class="pricing-footer-btn" onclick="openContact()">
-            <span>お問い合わせ・お見積り</span>
+            <span data-i18n="pc-foot-btn">お問い合わせ・お見積り</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
@@ -851,20 +731,20 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="pricing-card" data-accent="violet">
         <div class="pricing-head">
           <div class="pricing-head-num">02</div>
-          <div class="pricing-head-title">システムコンサルティングサービス<small>System Consulting</small></div>
-          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value">50万〜200万円</span></div>
+          <div class="pricing-head-title"><span data-i18n="pc2-title">システムコンサルティングサービス</span><small>System Consulting</small></div>
+          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value" data-i18n="pc2-range">50万〜200万円</span></div>
         </div>
         <ul class="pricing-list">
-          <li class="pricing-row"><span class="pricing-name">業務分析</span><span class="pricing-price">120万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">IT化計画</span><span class="pricing-price">200万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">RFP代行</span><span class="pricing-price">80万円〜<span class="note">ご相談に応じて</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">ITロードマップ（中長期計画策定）</span><span class="pricing-price">150万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">情報部門社内システム運用戦略計画</span><span class="pricing-price">50万円〜<span class="note">ご相談に応じて</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc2-r1-n">業務分析</span><span class="pricing-price">120万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc2-r2-n">IT化計画</span><span class="pricing-price">200万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc2-r3-n">RFP代行</span><span class="pricing-price">80万円〜<span class="note" data-i18n="note-consult">ご相談に応じて</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc2-r4-n">ITロードマップ（中長期計画策定）</span><span class="pricing-price">150万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc2-r5-n">情報部門社内システム運用戦略計画</span><span class="pricing-price">50万円〜<span class="note" data-i18n="note-consult">ご相談に応じて</span></span></li>
         </ul>
         <div class="pricing-footer">
-          <p class="pricing-footer-note">業務分析からITロードマップ策定まで、経営戦略とITをリンクさせるご支援をいたします。</p>
+          <p class="pricing-footer-note" data-i18n="pc2-foot-note">業務分析からITロードマップ策定まで、経営戦略とITをリンクさせるご支援をいたします。</p>
           <button type="button" class="pricing-footer-btn" onclick="openContact()">
-            <span>お問い合わせ・お見積り</span>
+            <span data-i18n="pc-foot-btn">お問い合わせ・お見積り</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
@@ -873,32 +753,32 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="pricing-card" data-accent="green">
         <div class="pricing-head">
           <div class="pricing-head-num">03</div>
-          <div class="pricing-head-title">システム運用支援サービス<small>Operation Support</small></div>
-          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value">10万〜120万円</span></div>
+          <div class="pricing-head-title"><span data-i18n="pc3-title">システム運用支援サービス</span><small>Operation Support</small></div>
+          <div class="pricing-head-range"><span class="label">Monthly Range</span><span class="value" data-i18n="pc3-range">10万〜120万円</span></div>
         </div>
         <ul class="pricing-list">
-          <li class="pricing-row"><span class="pricing-name">現状分析支援サービス</span><span class="pricing-price">10万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">RFP作成支援サービス</span><span class="pricing-price">30万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">ベンダー選定支援サービス</span><span class="pricing-price">15万円〜<span class="note">月額</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv1）</span><span class="pricing-price">10万円<span class="note">月額 / 5インシデント月</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv2）</span><span class="pricing-price">40万円<span class="note">月額 / 5インシデント月</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv3）</span><span class="pricing-price">80万円<span class="note">月額 / 常駐型</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv4）</span><span class="pricing-price">100万円<span class="note">月額 / 常駐型</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv5）</span><span class="pricing-price">80万円<span class="note">月額 / 非常駐型</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">運用相談受付サービス（Lv6）</span><span class="pricing-price">120万円<span class="note">月額 / 常駐型</span></span></li>
-          <li class="pricing-row"><span class="pricing-name">システム相談受付サービス</span><span class="pricing-price">10万円〜<span class="note">月額 / 5インシデント月</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r1-n">現状分析支援サービス</span><span class="pricing-price">10万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r2-n">RFP作成支援サービス</span><span class="pricing-price">30万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r3-n">ベンダー選定支援サービス</span><span class="pricing-price">15万円〜<span class="note" data-i18n="note-monthly">月額</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r4-n">運用相談受付サービス（Lv1）</span><span class="pricing-price">10万円<span class="note" data-i18n="note-5inc">月額 / 5インシデント月</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r5-n">運用相談受付サービス（Lv2）</span><span class="pricing-price">40万円<span class="note" data-i18n="note-5inc">月額 / 5インシデント月</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r6-n">運用相談受付サービス（Lv3）</span><span class="pricing-price">80万円<span class="note" data-i18n="note-resident">月額 / 常駐型</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r7-n">運用相談受付サービス（Lv4）</span><span class="pricing-price">100万円<span class="note" data-i18n="note-resident">月額 / 常駐型</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r8-n">運用相談受付サービス（Lv5）</span><span class="pricing-price">80万円<span class="note" data-i18n="note-nonresident">月額 / 非常駐型</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r9-n">運用相談受付サービス（Lv6）</span><span class="pricing-price">120万円<span class="note" data-i18n="note-resident">月額 / 常駐型</span></span></li>
+          <li class="pricing-row"><span class="pricing-name" data-i18n="pc3-r10-n">システム相談受付サービス</span><span class="pricing-price">10万円〜<span class="note" data-i18n="note-5inc">月額 / 5インシデント月</span></span></li>
         </ul>
         <div class="pricing-footer">
-          <p class="pricing-footer-note">オンサイト調査から運用設計まで、ご要望に応じた柔軟なプランをご用意しています。</p>
+          <p class="pricing-footer-note" data-i18n="pc3-foot-note">オンサイト調査から運用設計まで、ご要望に応じた柔軟なプランをご用意しています。</p>
           <button type="button" class="pricing-footer-btn" onclick="openContact()">
-            <span>お問い合わせ・お見積り</span>
+            <span data-i18n="pc-foot-btn">お問い合わせ・お見積り</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </div>
       </div>
     </div>
 
-    <p style="margin-top:36px;font-size:12.5px;color:var(--muted);line-height:1.8">
+    <p style="margin-top:36px;font-size:12.5px;color:var(--muted);line-height:1.8" data-i18n="pricing-note">
       ※ 上記は標準的な月額料金の目安です。実際のご料金は、プロジェクトの規模・期間・難易度・稼働形態によりお見積もりいたします。<br>
       ※ 表示価格はすべて税抜です。別途消費税を申し受けます。
     </p>
@@ -914,11 +794,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     <div class="company-grid">
       <div class="company-info">
         <div class="company-cover"><img src="assets/company-cover.webp" alt="" loading="lazy"></div>
-        <div class="company-row"><div class="k">Company</div><div class="v">HASH FUTURE株式会社<br><span class="muted">HASH FUTURE Co., Ltd.</span></div></div>
-        <div class="company-row"><div class="k">Representative</div><div class="v">代表取締役　高柳 順之 / JUNJI TAKAYANAGI</div></div>
-        <div class="company-row"><div class="k">Address</div><div class="v">〒251-0041<br>神奈川県藤沢市辻堂神台2丁目2番1号<br>アイクロス湘南 5階 E号室</div></div>
-        <div class="company-row"><div class="k">Contact</div><div class="v"><a href="mailto:info@hash-future.com" style="color:var(--accent)">info@hash-future.com</a><br><a href="https://www.hash-future.com/" style="color:var(--muted-2)">https://www.hash-future.com/</a></div></div>
-        <div class="company-row"><div class="k">Business</div><div class="v muted">
+        <div class="company-row"><div class="k" data-i18n="co-k1">Company</div><div class="v" data-i18n="co-v1">HASH FUTURE株式会社<br><span class="muted">HASH FUTURE Co., Ltd.</span></div></div>
+        <div class="company-row"><div class="k" data-i18n="co-k2">Representative</div><div class="v" data-i18n="co-v2">代表取締役　高柳 順之 / JUNJI TAKAYANAGI</div></div>
+        <div class="company-row"><div class="k" data-i18n="co-k3">Address</div><div class="v" data-i18n="co-v3">〒251-0041<br>神奈川県藤沢市辻堂神台2丁目2番1号<br>アイクロス湘南 5階 E号室</div></div>
+        <div class="company-row"><div class="k" data-i18n="co-k4">Contact</div><div class="v"><a href="mailto:info@hash-future.com" style="color:var(--accent)">info@hash-future.com</a><br><a href="https://www.hash-future.com/" style="color:var(--muted-2)">https://www.hash-future.com/</a></div></div>
+        <div class="company-row"><div class="k" data-i18n="co-k5">Business</div><div class="v muted" data-i18n="co-v5">
           1. ITプロジェクト支援事業、アドバイス事業<br>
           2. システムコンサルティングサービス事業<br>
           3. AIデータセンター事業<br>
@@ -945,26 +825,26 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <div class="footer-brand">
         <img src="assets/logo.png" alt="HASH FUTURE" class="logo-img">
       </div>
-      <p class="footer-desc">AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。</p>
+      <p class="footer-desc" data-i18n="footer-desc">AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。</p>
     </div>
     <div class="footer-col">
       <h4>Services</h4>
-      <a href="#services">プロジェクトマネジメント</a>
-      <a href="#services">システムコンサルティング</a>
-      <a href="#services">システム運用支援</a>
-      <a href="#pricing">各種サービス料金</a>
+      <a href="#services" data-i18n="footer-link1">プロジェクトマネジメント</a>
+      <a href="#services" data-i18n="footer-link2">システムコンサルティング</a>
+      <a href="#services" data-i18n="footer-link3">システム運用支援</a>
+      <a href="#pricing" data-i18n="footer-link4">各種サービス料金</a>
     </div>
     <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="legal.html#privacy">個人情報保護方針</a>
-      <a href="legal.html#security">情報セキュリティ方針</a>
-      <a href="legal.html#accessibility">アクセシビリティ</a>
-      <a href="legal.html#terms">サイトの利用条件</a>
+      <h4 data-i18n="footer-legal-h">Legal</h4>
+      <a href="legal.html#privacy" data-i18n="footer-link5">個人情報保護方針</a>
+      <a href="legal.html#security" data-i18n="footer-link6">情報セキュリティ方針</a>
+      <a href="legal.html#accessibility" data-i18n="footer-link7">アクセシビリティ</a>
+      <a href="legal.html#terms" data-i18n="footer-link8">サイトの利用条件</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2013–2026 HASH FUTURE Co., Ltd. All rights reserved.</span>
-    <span>神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</span>
+    <span data-i18n="footer-address">神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室</span>
   </div>
 </footer>
 
@@ -1136,73 +1016,226 @@ setTimeout(()=>heroCanvas.resize(),300);
 let idx=0;
 setInterval(()=>{if(idx<CITIES.length){heroCanvas.activate(CITIES[idx].id);idx++;}},800);
 
-/* I18N */
-const I18N={
-  ja:{
+/* ============ I18N ============ */
+const I18N = {
+  ja: {
+    'nav-services':'サービス','nav-idc':'AIインフラ','nav-pricing':'料金','nav-company':'会社情報','nav-contact':'お問い合わせ',
+    'hero-h1':'AIインフラと<br><span class="grad">システム統合の専門家。</span>',
     'hero-sub':'HASH FUTUREは、AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・プロジェクトマネジメント・運用支援まで、AI時代のITインフラを一気通貫で提供します。20年以上のシステムエンジニア経験を持つ専門家チームが、お客様の課題を根本から解決します。',
     'cta-services':'サービスを見る','cta-company':'会社情報',
-    'services-title':'3つの柱で、ITプロジェクトを成功に導く。',
+    'services-title':'3つの柱で、<span class="hl">ITプロジェクトを成功</span>に導く。',
     'services-desc':'HASH FUTUREは、プロジェクトマネジメント・システムコンサルティング・システム運用支援の3サービスを軸に、ITプロジェクトのあらゆるフェーズを支援します。',
+    'svc-pm-title':'プロジェクトマネジメントサービス','svc-pm-desc':'プロジェクトを必ず成功に導くため、確実で適正な手法で計画・実行・検証を支援します。',
+    'svc-pm-li1':'プロジェクトマネジメント請負','svc-pm-li2':'PMO（常駐型・スポット型）','svc-pm-li3':'プロジェクト監査・計画支援','svc-pm-li4':'トラブルプロジェクトの立て直し',
+    'svc-consult-title':'システムコンサルティングサービス','svc-consult-desc':'問題定義から問題解決までのプロセスを正確に捉え、適正なアウトプットを完成させます。',
+    'svc-consult-li1':'業務分析・IT化企画','svc-consult-li2':'RFP代行・ベンダー選定支援','svc-consult-li3':'ITロードマップ策定','svc-consult-li4':'情報部門社内システム運用戦略',
+    'svc-ops-title':'システム運用支援サービス','svc-ops-desc':'運用の悩みを即座に解決。社内に新しい仕組みを導入する場合も最適な方法を提示します。',
+    'svc-ops-li1':'現状分析支援・RFP作成支援','svc-ops-li2':'ベンダー選定支援','svc-ops-li3':'運用相談受付 Lv1〜Lv6','svc-ops-li4':'システム相談受付サービス',
+    'stat-1-unit':'年','stat-2-unit':'年+','stat-3-unit':'事業','stat-4-unit':'拠点',
+    'stat-1-label':'Founded','stat-2-label':'Experience','stat-3-label':'Business Lines','stat-4-label':'Core Services',
+    'idc-title':'全国のDC用地と<br><span class="hl">AI計算需要</span>をつなぐ。',
+    'idc-desc':'HASH FUTUREは、日本全国のデータセンター用地を発掘・評価し、GPUクラスタの展開から液冷冷却・電力調達・運用までを一貫して提供します。AI時代の計算基盤を、日本全国に分散配置します。',
+    'idc-s1-label':'Candidate Network','idc-s1-unit':'都道府県','idc-s2-label':'Target PUE','idc-s2-unit':'2029年規制対応','idc-s3-label':'Cooling','idc-s3-unit':'液冷対応','idc-s4-label':'GPU Platform','idc-s4-unit':'/ GB300',
+    'idc-p1-h':'用地発掘・適格性審査','idc-p1-p':'全国の候補DC用地をスクリーニングし、電力容量・PUE・耐震・法令適合性を精査。AIクラスタに適した用地のみを選定します。',
+    'idc-p2-h':'電力・法規・耐震審査','idc-p2-p':'IT受電容量、特別高圧接続、PUE ≤1.3 対応、建築基準法・消防法・震度7不倒不壊を確認。2029年以降の新設DC規制に準拠します。',
+    'idc-p3-h':'GPUクラスタ構築','idc-p3-p':'B300 / GB300 クラスタの設計・調達・設置。8GPU〜72GPU構成、ストレージ・100G専用線・ネットワークを含むフルスタック統合。',
+    'idc-p4-h':'液冷・全スタック運用','idc-p4-p':'DLC（Direct Liquid Cooling）の設計・施工・運用。PUE最適化、保全・監視・24時間運用まで、AIインフラの全ライフサイクルを支援します。',
+    'idc-cta-title':'DC用地の提供をご検討の方へ',
+    'idc-cta-desc':'全国のDC用地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす用地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。',
+    'idc-cta-btn':'お問い合わせ',
     'details-title':'サービス詳細','details-desc':'各サービスの具体的な提供内容・成果物・料金体系をご確認ください。',
-    'pricing-title':'各種サービス料金','pricing-desc':'プロジェクトの規模・期間・難易度に応じて最適なプランをご提案します。下記は標準的な月額料金の目安です。',
+    'pricing-title':'各種<span class="hl">サービス料金</span>','pricing-desc':'プロジェクトの規模・期間・難易度に応じて最適なプランをご提案します。下記は標準的な月額料金の目安です。',
     'company-title':'会社情報','company-desc':'2013年設立。システムエンジニア歴20年以上の専門家チームが、AI時代のITインフラを支えます。',
-    'idc-title':'全国のDC場地と<br><span class="hl">AI計算需要</span>をつなぐ。',
-    'idc-desc':'HASH FUTUREは、日本全国のデータセンター場地を発掘・評価し、GPUクラスタの展開から液冷冷却・電力調達・運用までを一貫して提供します。AI時代の計算基盤を、日本全国に分散配置します。',
-    'idc-cta-title':'DC場地の提供をご検討の方へ',
-    'idc-cta-desc':'全国のDC場地をHASH FUTUREの候補ネットワークに登録しませんか。電力容量・PUE・耐震・法令対応の条件を満たす場地について、AIクラスタ展開のパートナーとしてご一緒できる可能性があります。',
-    'idc-cta-btn':'お問い合わせ'
+    'footer-desc':'AIインフラとシステム統合の専門家。2013年設立、神奈川県藤沢市。AIデータセンター・GPUクラスタ・液冷冷却・システムコンサルティング・PM・運用支援を一気通貫で提供します。',
+    'footer-legal-h':'Legal','footer-link1':'プロジェクトマネジメント','footer-link2':'システムコンサルティング','footer-link3':'システム運用支援','footer-link4':'各種サービス料金','footer-link5':'個人情報保護方針','footer-link6':'情報セキュリティ方針','footer-link7':'アクセシビリティ','footer-link8':'サイトの利用条件','footer-address':'神奈川県藤沢市辻堂神台2丁目2番1号 アイクロス湘南5階E号室',
+    'pm-acc-title':'プロジェクトマネジメントサービス','conc-acc-title':'システムコンサルティングサービス','ops-acc-title':'システム運用支援サービス',
+    'pm-b1-h':'サービス概要','pm-b2-h':'お客様へお渡しする物','pm-b3-h':'サービス詳細 — 請負元のIT企業向け','pm-b4-h':'サービス詳細 — 発注元のIT企業向け',
+    'pm-d1-k':'(1) プロジェクト計画の策定','pm-d1-v':'お客様と弊社と合同でプロジェクト計画を策定します。',
+    'pm-d2-k':'(2) スコープ定義の検証','pm-d2-v':'お客様の業務及びシステムのスコープ定義の検証を行います。',
+    'pm-d3-k':'(3) コスト定義の検証','pm-d3-v':'プロジェクトに必要なコスト定義の検証を行います。',
+    'pm-d4-k':'(4) 品質定義の検証','pm-d4-v':'納品システムに必要な品質定義の検証を行います。',
+    'pm-d5-k':'(5) 人的資源定義の検証','pm-d5-v':'プロジェクトに必要な人的資源の定義の検証を行います。',
+    'pm-d6-k':'(6) コミュニケーション定義の検証','pm-d6-v':'コミュニケーションに必要な定義の検証を行います。',
+    'pm-d7-k':'(7) リスク定義の検証','pm-d7-v':'プロジェクトリスクの定義に必要な定義の検証を行います。',
+    'pm-d8-k':'(8) 調達定義の検証','pm-d8-v':'納品システムに必要な調達定義の検証を行います。',
+    'pm-d9-k':'(9) 統合マネジメントの検証','pm-d9-v':'プロジェクトの統合マネジメントの検証を行います。',
+    'pm-d10-k':'(1) プロジェクト計画書','pm-d10-v':'SEが完成した各ドキュメントを整備し、これを検証してお客様にお渡しします。ドキュメントの構成内容は、スコープ定義書、タイムマネジメント、コストマネジメント、プロジェクト管理会計、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント定義書、リスクマネジメント計画書、調達マネジメント計画書などを含みます。',
+    'pm-d11-k':'(2) 各種検証報告書','pm-d11-v':'統合マネジメント、スコープ定義マネジメント、タイムマネジメント、コストマネジメント、品質マネジメント、人的資源マネジメント、コミュニケーションマネジメント、リスクマネジメント、調達マネジメントに関する報告書。',
+    'pm-d12-k':'プロジェクトマネジメント請負','pm-d12-v':'プロジェクトマネージャーの代行サービス。','pm-d13-k':'PM請負（トラブルプロジェクト）','pm-d13-v':'トラブルプロジェクトの立て直しを含むPM代行。','pm-d14-k':'プロジェクトマネージャー支援','pm-d14-v':'PMの支援を行います。','pm-d15-k':'PM支援（トラブルプロジェクト）','pm-d15-v':'トラブルプロジェクトの立て直しを支援。','pm-d16-k':'PMO（常駐型）','pm-d16-v':'複数のプロジェクトを平準化した基準で管理・指導します。','pm-d17-k':'PMO（スポット型）','pm-d17-v':'スポット対応。ご相談に応じ、必要な時期に実施します。',
+    'pm-d18-k':'プロジェクト監査','pm-d18-v':'開発を行っているIT企業のプロジェクト監査を行います。問題点や課題、リスク等を分析し指導致します。','pm-d19-k':'プロジェクト計画支援','pm-d19-v':'プロジェクトの目的やゴール、スコープ、コストマネジメントについて計画策定の支援を行います。','pm-d20-k':'プロジェクトマネジメント支援','pm-d20-v':'お客様内のPMの支援を行います。計画や資料作成、進捗管理、ベンダー交渉等、プロジェクトで必要となる全ての支援を行います。',
+    'conc-b1-h':'サービス概要','conc-b2-h':'サービス詳細','conc-b3-h':'お客様へお渡しする物',
+    'conc-d1-k':'(1) プロジェクトの立ち上げ','conc-d1-v':'お客様と弊社と合同でプロジェクト計画を策定し、実施します。','conc-d2-k':'(2) 現状調査','conc-d2-v':'お客様の業務及びシステムの現状とその問題点を調査します。','conc-d3-k':'(3) 調査結果の整理、問題提起','conc-d3-v':'調査結果を整理して、不要なデータは排除します。調査結果から真の問題は何かを提起します。','conc-d4-k':'(4) 現状分析','conc-d4-v':'提起した問題からお客様の現状を業務の視点、システムの視点から分析します。','conc-d5-k':'(5) 解決策作成','conc-d5-v':'分析結果を元に業務的解決又はシステム的解決案を作成し、これを提示します。','conc-d6-k':'(6) 解決策作成、検討','conc-d6-v':'解決策についてお客様の承認が得られた時点から具体的な解決策を作成し、主要な方と検討します。','conc-d7-k':'(7) お客様の問題意識との整合','conc-d7-v':'最終的にお客様が抱えた問題意識と具体的解決策のずれがないかを全員で精査いたします。','conc-d8-k':'(8) コンサルテーション支援','conc-d8-v':'具体的解決策をシステム化するプロセスとSEが設計する基本設計の検証を行います。',
+    'conc-d9-k':'業務分析','conc-d9-v':'日常業務を分析し、目に見える形で整理（業務可視化、数値化）。','conc-d10-k':'IT化企画','conc-d10-v':'経営面や業務面での不都合や不満点を整理し、IT化テーマを明確化。','conc-d11-k':'RFP代行','conc-d11-v':'新システムの全体像を纏め各社ベンダーに提案依頼書（RFP）を作成代行。','conc-d12-k':'ITロードマップ（中長期計画策定）','conc-d12-v':'選び出されたテーマを、その重要度、緊急度に応じて優先度をつけ、システムの中長期計画をサポート。','conc-d13-k':'情報部門社内システム運用戦略計画','conc-d13-v':'情報管理部門の運用戦略計画を支援。',
+    'conc-d14-k':'(1) システム化計画書','conc-d14-v':'経営戦略に基づくIT化の計画を記述します。','conc-d15-k':'(2) 資源計画書','conc-d15-v':'システム化に必要な資源計画を記述します。','conc-d16-k':'(3) コスト計画書','conc-d16-v':'システム化に必要な人件費、設備費のコスト計画を記述します。','conc-d17-k':'(4) 要員計画書','conc-d17-v':'システム化に必要な要員計画を記述します。','conc-d18-k':'(5) 新業務フロー','conc-d18-v':'BPRを行った後のお客様の業務フローを記述します。','conc-d19-k':'(6) 論理設計書','conc-d19-v':'システム化の論理図を記述します。','conc-d20-k':'(7) 各種分析書','conc-d20-v':'費用と収益の分析などを記述します。',
+    'ops-b1-h':'サービス詳細',
+    'ops-d1-k':'現状分析支援サービス','ops-d1-v':'システムの現状分析の支援を行います（オンサイトでの調査5回程度を含んでおります）。','ops-d2-k':'RFP作成支援サービス','ops-d2-v':'お客様のご要望に沿ったRFPを作成します（オンサイトでの打ち合わせ3回程度を含んでおります）。','ops-d3-k':'ベンダー選定支援サービス','ops-d3-v':'ベンダー選定で必須となる資料の作成、選定基準の支援を行います。','ops-d4-k':'運用相談受付サービス（Lv1）','ops-d4-v':'システムの運用方法についてのサポートを電話で行います（例：ウィルス対策はどうすればいいのか？等）。','ops-d5-k':'運用相談受付サービス（Lv2）','ops-d5-v':'システムの運用方法についてのサポートを現地で行います（例：社員教育、その他現地でのサポート）。','ops-d6-k':'運用相談受付サービス（Lv3）','ops-d6-v':'システムの運用方法についてのサポートを現地で行います（例：システム担当者サポート業務全般）。','ops-d7-k':'運用相談受付サービス（Lv4）','ops-d7-v':'システムの運用方法についての改善を現地で行います（例：システム管理ツールの導入検討等）。','ops-d8-k':'運用相談受付サービス（Lv5）','ops-d8-v':'システムの運用設計を指導します（新規・見直し）。','ops-d9-k':'運用相談受付サービス（Lv6）','ops-d9-v':'システムの運用設計を行います（新規・見直し）。','ops-d10-k':'システム相談受付サービス','ops-d10-v':'新規システム案件・既存システムの改造案件等の準備に関するサポートを電話で行います（例：システムを構築するがどの製品がいいか？等）。',
+    'pc1-title':'プロジェクトマネジメントサービス','pc1-range':'80万〜200万円','pc2-title':'システムコンサルティングサービス','pc2-range':'50万〜200万円','pc3-title':'システム運用支援サービス','pc3-range':'10万〜120万円',
+    'pc1-r1-n':'プロジェクトマネジメント請負','pc1-r2-n':'プロジェクトマネジメント請負（トラブルプロジェクト）','pc1-r3-n':'プロジェクトマネージャー支援','pc1-r4-n':'プロジェクトマネージャー支援（トラブルプロジェクト）','pc1-r5-n':'PMO（常駐型）','pc1-r6-n':'PMO（スポット型）','pc1-r7-n':'プロジェクト監査','pc1-r8-n':'プロジェクト計画支援','pc1-r9-n':'プロジェクトマネジメント支援',
+    'pc2-r1-n':'業務分析','pc2-r2-n':'IT化計画','pc2-r3-n':'RFP代行','pc2-r4-n':'ITロードマップ（中長期計画策定）','pc2-r5-n':'情報部門社内システム運用戦略計画',
+    'pc3-r1-n':'現状分析支援サービス','pc3-r2-n':'RFP作成支援サービス','pc3-r3-n':'ベンダー選定支援サービス','pc3-r4-n':'運用相談受付サービス（Lv1）','pc3-r5-n':'運用相談受付サービス（Lv2）','pc3-r6-n':'運用相談受付サービス（Lv3）','pc3-r7-n':'運用相談受付サービス（Lv4）','pc3-r8-n':'運用相談受付サービス（Lv5）','pc3-r9-n':'運用相談受付サービス（Lv6）','pc3-r10-n':'システム相談受付サービス',
+    'note-monthly':'月額','note-consult':'ご相談に応じて','note-5inc':'月額 / 5インシデント月','note-resident':'月額 / 常駐型','note-nonresident':'月額 / 非常駐型',
+    'pc1-foot-note':'PMの常駐・スポット対応、トラブルプロジェクトの立て直しまで、規模に応じたお見積りをご提案します。','pc2-foot-note':'業務分析からITロードマップ策定まで、経営戦略とITをリンクさせるご支援をいたします。','pc3-foot-note':'オンサイト調査から運用設計まで、ご要望に応じた柔軟なプランをご用意しています。','pc-foot-btn':'お問い合わせ・お見積り',
+    'pricing-note':'※ 上記は標準的な月額料金の目安です。実際のご料金は、プロジェクトの規模・期間・難易度・稼働形態によりお見積もりいたします。<br>※ 表示価格はすべて税抜です。別途消費税を申し受けます。',
+    'co-k1':'Company','co-v1':'HASH FUTURE株式会社<br><span class="muted">HASH FUTURE Co., Ltd.</span>','co-k2':'Representative','co-v2':'代表取締役　高柳 順之 / JUNJI TAKAYANAGI','co-k3':'Address','co-v3':'〒251-0041<br>神奈川県藤沢市辻堂神台2丁目2番1号<br>アイクロス湘南 5階 E号室','co-k4':'Contact','co-k5':'Business','co-v5':'1. ITプロジェクト支援事業、アドバイス事業<br>2. システムコンサルティングサービス事業<br>3. AIデータセンター事業<br>4. GPUクラウド事業<br>5. 液冷冷却インフラ事業<br>6. AIインフラ構築・運用<br>7. システムインテグレーション<br>8. ネットワークインフラ構築<br>9. AIコンピューティングサービス<br>10. 保全・監視・運用サービス<br>11. その他IT関連事業'
   },
-  en:{
+  en: {
+    'nav-services':'Services','nav-idc':'AI Infrastructure','nav-pricing':'Pricing','nav-company':'Company','nav-contact':'Contact',
+    'hero-h1':'AI infrastructure &<br><span class="grad">system integration experts.</span>',
     'hero-sub':'HASH FUTURE delivers end-to-end IT infrastructure for the AI era: AI data centers, GPU clusters, liquid cooling, system consulting, project management, and operations support. A team of engineers with 20+ years of experience solves your challenges from the root.',
     'cta-services':'View Services','cta-company':'Company',
-    'services-title':'Three pillars for IT project success.',
+    'services-title':'Three pillars for <span class="hl">IT project success</span>.',
     'services-desc':'HASH FUTURE supports every phase of IT projects through three core services: Project Management, System Consulting, and Operations Support.',
-    'details-title':'Service Details','details-desc':'Review the specific deliverables, scope, and pricing structure of each service.',
-    'pricing-title':'Pricing','pricing-desc':'Pricing is tailored to project scale, duration, and complexity. Below are standard monthly reference rates.',
-    'company-title':'Company','company-desc':'Founded in 2013. A team of engineers with 20+ years of experience supporting AI-era IT infrastructure.',
-    'idc-title':'Connecting DC sites with <span class="hl">AI compute demand</span>.',
-    'idc-desc':'HASH FUTURE sources and evaluates DC sites across Japan, and delivers GPU clusters, liquid cooling, power procurement, and operations end to end. We distribute AI-era compute infrastructure nationwide.',
+    'svc-pm-title':'Project Management','svc-pm-desc':'We support planning, execution, and verification with proven, disciplined methods to lead projects to success.',
+    'svc-pm-li1':'Project management outsourcing','svc-pm-li2':'PMO (on-site / spot)','svc-pm-li3':'Project audit & planning support','svc-pm-li4':'Turnaround of troubled projects',
+    'svc-consult-title':'System Consulting','svc-consult-desc':'We accurately capture the process from problem definition to problem resolution, and deliver proper outputs.',
+    'svc-consult-li1':'Business analysis & IT planning','svc-consult-li2':'RFP authoring & vendor selection','svc-consult-li3':'IT roadmap development','svc-consult-li4':'Internal IT operations strategy',
+    'svc-ops-title':'Operation Support','svc-ops-desc':'We resolve operational issues immediately, and propose the optimal approach when introducing new processes internally.',
+    'svc-ops-li1':'Current-state analysis & RFP support','svc-ops-li2':'Vendor selection support','svc-ops-li3':'Operations helpdesk Lv1–Lv6','svc-ops-li4':'System consultation service',
+    'stat-1-unit':'','stat-2-unit':'+ yrs','stat-3-unit':'','stat-4-unit':'',
+    'stat-1-label':'Founded','stat-2-label':'Experience','stat-3-label':'Business Lines','stat-4-label':'Core Services',
+    'idc-title':'Connecting DC sites nationwide with <span class="hl">AI compute demand</span>.',
+    'idc-desc':'HASH FUTURE discovers and evaluates data center sites across Japan, providing end-to-end services from GPU cluster deployment and liquid cooling to power procurement and operations. We distribute AI-era computing infrastructure nationwide.',
+    'idc-s1-label':'Candidate Network','idc-s1-unit':'prefectures','idc-s2-label':'Target PUE','idc-s2-unit':'for 2029 regulation','idc-s3-label':'Cooling','idc-s3-unit':'liquid cooling ready','idc-s4-label':'GPU Platform','idc-s4-unit':'/ GB300',
+    'idc-p1-h':'Site discovery & qualification','idc-p1-p':'We screen candidate DC sites across Japan and rigorously assess power capacity, PUE, seismic resistance, and legal compliance, selecting only sites suitable for AI clusters.',
+    'idc-p2-h':'Power, regulatory & seismic review','idc-p2-p':'We verify IT power capacity, extra-high-voltage connection, PUE ≤1.3, Building Standards Act, Fire Service Act, and seismic intensity 7 resilience, in line with post-2029 DC regulations.',
+    'idc-p3-h':'GPU cluster build-out','idc-p3-p':'Design, procurement, and installation of B300 / GB300 clusters. Full-stack integration from 8-GPU to 72-GPU configurations, including storage, 100G leased lines, and networking.',
+    'idc-p4-h':'Liquid cooling & full-stack ops','idc-p4-p':'Design, construction, and operation of DLC (Direct Liquid Cooling). We support PUE optimization, maintenance, monitoring, and 24/7 operations across the full AI infrastructure lifecycle.',
     'idc-cta-title':'For site owners considering partnership',
     'idc-cta-desc':'Register your DC site in the HASH FUTURE candidate network. Sites meeting our power, PUE, seismic, and compliance criteria can partner with us on AI cluster deployment.',
-    'idc-cta-btn':'Contact us'
+    'idc-cta-btn':'Contact us',
+    'details-title':'Service Details','details-desc':'Review the specific deliverables, scope, and pricing structure for each service.',
+    'pricing-title':'Service <span class="hl">Pricing</span>','pricing-desc':'Pricing is tailored to project scale, duration, and complexity. Below are standard monthly reference rates.',
+    'company-title':'Company','company-desc':'Founded in 2013. A team of engineers with 20+ years of experience supporting AI-era IT infrastructure.',
+    'footer-desc':'Experts in AI infrastructure and system integration. Founded in 2013 in Fujisawa, Kanagawa. We provide end-to-end AI data centers, GPU clusters, liquid cooling, system consulting, PM, and operations support.',
+    'footer-legal-h':'Legal','footer-link1':'Project Management','footer-link2':'System Consulting','footer-link3':'Operation Support','footer-link4':'Pricing','footer-link5':'Privacy Policy','footer-link6':'Information Security Policy','footer-link7':'Accessibility','footer-link8':'Terms of Use','footer-address':'Aicros Shonan 5F-E, 2-2-1 Tsujidokandai, Fujisawa, Kanagawa 251-0041, Japan',
+    'pm-acc-title':'Project Management','conc-acc-title':'System Consulting','ops-acc-title':'Operation Support',
+    'pm-b1-h':'Service Overview','pm-b2-h':'Deliverables','pm-b3-h':'Details — for IT contractors','pm-b4-h':'Details — for IT clients',
+    'pm-d1-k':'(1) Project plan development','pm-d1-v':'We develop the project plan jointly with the client.',
+    'pm-d2-k':'(2) Scope definition review','pm-d2-v':'We review the scope definition of the client\'s business and systems.',
+    'pm-d3-k':'(3) Cost definition review','pm-d3-v':'We review the cost definition required for the project.',
+    'pm-d4-k':'(4) Quality definition review','pm-d4-v':'We review the quality definition required for the delivered system.',
+    'pm-d5-k':'(5) Human resource definition review','pm-d5-v':'We review the definition of human resources required for the project.',
+    'pm-d6-k':'(6) Communication definition review','pm-d6-v':'We review the definitions required for communication.',
+    'pm-d7-k':'(7) Risk definition review','pm-d7-v':'We review the definitions required for project risk.',
+    'pm-d8-k':'(8) Procurement definition review','pm-d8-v':'We review the procurement definition required for the delivered system.',
+    'pm-d9-k':'(9) Integrated management review','pm-d9-v':'We review the integrated management of the project.',
+    'pm-d10-k':'(1) Project plan document','pm-d10-v':'We compile and verify all documents completed by our SEs before delivering to the client. Contents include scope definition, time management, cost management, project accounting, quality management, human resource management, communication management, risk management plan, and procurement management plan.',
+    'pm-d11-k':'(2) Various verification reports','pm-d11-v':'Reports on integrated management, scope definition management, time management, cost management, quality management, human resource management, communication management, risk management, and procurement management.',
+    'pm-d12-k':'Project management outsourcing','pm-d12-v':'Substitute service for a project manager.','pm-d13-k':'PM outsourcing (troubled projects)','pm-d13-v':'PM substitute including turnaround of troubled projects.','pm-d14-k':'Project manager support','pm-d14-v':'Support for the PM.','pm-d15-k':'PM support (troubled projects)','pm-d15-v':'Support for turnaround of troubled projects.','pm-d16-k':'PMO (resident)','pm-d16-v':'Manage and guide multiple projects on standardized criteria.','pm-d17-k':'PMO (spot)','pm-d17-v':'Spot support. Implemented at the required time based on consultation.',
+    'pm-d18-k':'Project audit','pm-d18-v':'Audit IT projects under development. Analyze issues, challenges, and risks, and provide guidance.','pm-d19-k':'Project planning support','pm-d19-v':'Support planning of project purpose, goals, scope, and cost management.','pm-d20-k':'Project management support','pm-d20-v':'Support the client\'s internal PM. Provide all assistance required for the project including plans, documentation, progress management, and vendor negotiation.',
+    'conc-b1-h':'Service Overview','conc-b2-h':'Service Details','conc-b3-h':'Deliverables',
+    'conc-d1-k':'(1) Project kick-off','conc-d1-v':'Develop and execute the project plan jointly with the client.','conc-d2-k':'(2) Current-state survey','conc-d2-v':'Survey the current state of the client\'s business and systems, and their issues.','conc-d3-k':'(3) Organize findings, raise issues','conc-d3-v':'Organize findings and remove unnecessary data. Raise what the true issue is.','conc-d4-k':'(4) Current-state analysis','conc-d4-v':'Analyze the client\'s current state from both business and system perspectives.','conc-d5-k':'(5) Solution drafting','conc-d5-v':'Draft business or system solutions based on analysis and present them.','conc-d6-k':'(6) Solution drafting & review','conc-d6-v':'Once the client approves the solution direction, prepare concrete solutions and review with key stakeholders.','conc-d7-k':'(7) Alignment with client concerns','conc-d7-v':'Verify as a team that the final solution aligns with the client\'s concerns.','conc-d8-k':'(8) Consultation support','conc-d8-v':'Verify the process of systemizing the solution and the basic design prepared by our SEs.',
+    'conc-d9-k':'Business analysis','conc-d9-v':'Analyze daily operations and organize them visibly (visualization, quantification).','conc-d10-k':'IT planning','conc-d10-v':'Organize inconveniences and dissatisfaction on management and operational sides, and clarify IT themes.','conc-d11-k':'RFP authoring','conc-d11-v':'Summarize the overall picture of the new system and author an RFP to vendors.','conc-d12-k':'IT roadmap (mid-to-long-term planning)','conc-d12-v':'Prioritize selected themes by importance and urgency, and support the mid-to-long-term system plan.','conc-d13-k':'Internal IT operations strategy','conc-d13-v':'Support the IT department\'s operations strategy plan.',
+    'conc-d14-k':'(1) Systemization plan','conc-d14-v':'Describe the IT plan based on management strategy.','conc-d15-k':'(2) Resource plan','conc-d15-v':'Describe the resource plan required for systemization.','conc-d16-k':'(3) Cost plan','conc-d16-v':'Describe the cost plan for personnel and equipment required for systemization.','conc-d17-k':'(4) Staffing plan','conc-d17-v':'Describe the staffing plan required for systemization.','conc-d18-k':'(5) New business flow','conc-d18-v':'Describe the client\'s business flow after BPR.','conc-d19-k':'(6) Logical design','conc-d19-v':'Describe the logical diagram of systemization.','conc-d20-k':'(7) Various analyses','conc-d20-v':'Describe cost-benefit analysis, etc.',
+    'ops-b1-h':'Service Details',
+    'ops-d1-k':'Current-state analysis support','ops-d1-v':'Support analysis of the current system state (includes about 5 on-site surveys).','ops-d2-k':'RFP authoring support','ops-d2-v':'Author RFPs aligned with client requirements (includes about 3 on-site meetings).','ops-d3-k':'Vendor selection support','ops-d3-v':'Support the creation of materials and selection criteria essential for vendor selection.','ops-d4-k':'Operations helpdesk (Lv1)','ops-d4-v':'Support system operations by phone (e.g., how to handle virus protection).','ops-d5-k':'Operations helpdesk (Lv2)','ops-d5-v':'Support system operations on-site (e.g., employee training, other on-site support).','ops-d6-k':'Operations helpdesk (Lv3)','ops-d6-v':'Support system operations on-site (e.g., general support for system administrators).','ops-d7-k':'Operations helpdesk (Lv4)','ops-d7-v':'Improve system operations on-site (e.g., considering introduction of management tools).','ops-d8-k':'Operations helpdesk (Lv5)','ops-d8-v':'Guide operations design of the system (new / review).','ops-d9-k':'Operations helpdesk (Lv6)','ops-d9-v':'Perform operations design of the system (new / review).','ops-d10-k':'System consultation service','ops-d10-v':'Support preparation for new or modified system projects by phone (e.g., which product to build the system with).',
+    'pc1-title':'Project Management','pc1-range':'¥800K – ¥2M','pc2-title':'System Consulting','pc2-range':'¥500K – ¥2M','pc3-title':'Operation Support','pc3-range':'¥100K – ¥1.2M',
+    'pc1-r1-n':'Project management outsourcing','pc1-r2-n':'PM outsourcing (troubled projects)','pc1-r3-n':'Project manager support','pc1-r4-n':'PM support (troubled projects)','pc1-r5-n':'PMO (resident)','pc1-r6-n':'PMO (spot)','pc1-r7-n':'Project audit','pc1-r8-n':'Project planning support','pc1-r9-n':'Project management support',
+    'pc2-r1-n':'Business analysis','pc2-r2-n':'IT planning','pc2-r3-n':'RFP authoring','pc2-r4-n':'IT roadmap','pc2-r5-n':'Internal IT operations strategy',
+    'pc3-r1-n':'Current-state analysis support','pc3-r2-n':'RFP authoring support','pc3-r3-n':'Vendor selection support','pc3-r4-n':'Operations helpdesk (Lv1)','pc3-r5-n':'Operations helpdesk (Lv2)','pc3-r6-n':'Operations helpdesk (Lv3)','pc3-r7-n':'Operations helpdesk (Lv4)','pc3-r8-n':'Operations helpdesk (Lv5)','pc3-r9-n':'Operations helpdesk (Lv6)','pc3-r10-n':'System consultation service',
+    'note-monthly':'monthly','note-consult':'on request','note-5inc':'monthly / 5 incidents','note-resident':'monthly / resident','note-nonresident':'monthly / non-resident',
+    'pc1-foot-note':'From resident and spot PM support to turnarounds of troubled projects, we propose estimates tailored to scale.','pc2-foot-note':'We support everything from business analysis to IT roadmap development, linking management strategy with IT.','pc3-foot-note':'From on-site surveys to operations design, we offer flexible plans tailored to your needs.','pc-foot-btn':'Contact & Estimate',
+    'pricing-note':'* Above are standard monthly reference rates. Actual pricing will be quoted based on project scale, duration, difficulty, and engagement style.<br>* Prices exclude tax.',
+    'co-k1':'Company','co-v1':'HASH FUTURE Co., Ltd.','co-k2':'Representative','co-v2':'Junji Takayanagi, Representative Director','co-k3':'Address','co-v3':'Aicros Shonan 5F-E, 2-2-1 Tsujidokandai, Fujisawa, Kanagawa 251-0041, Japan','co-k4':'Contact','co-k5':'Business','co-v5':'1. IT project support & advisory<br>2. System consulting services<br>3. AI data center business<br>4. GPU cloud business<br>5. Liquid cooling infrastructure<br>6. AI infrastructure build & operation<br>7. System integration<br>8. Network infrastructure<br>9. AI computing services<br>10. Maintenance, monitoring & operation<br>11. Other IT-related business'
   },
-  cn:{
+  cn: {
+    'nav-services':'服务','nav-idc':'AI 基础设施','nav-pricing':'价格','nav-company':'公司信息','nav-contact':'联系我们',
+    'hero-h1':'AI 基础设施与<br><span class="grad">系统整合专家。</span>',
     'hero-sub':'HASH FUTURE 提供 AI 时代的端到端 IT 基础设施：AI 数据中心、GPU 集群、液冷、系统咨询、项目管理与运维支持。20 年以上经验的工程师团队，从根本上解决客户课题。',
     'cta-services':'查看服务','cta-company':'公司信息',
-    'services-title':'三大支柱，助力 IT 项目成功。',
-    'services-desc':'HASH FUTURE 以项目管理、系统咨询、运维支持三大服务为核心，支持 IT 项目全生命周期。',
-    'details-title':'服务详情','details-desc':'查看各服务的具体交付内容、范围与费用体系。',
-    'pricing-title':'服务费用','pricing-desc':'根据项目规模、周期、难度提供最优方案。以下为标准月额参考价。',
-    'company-title':'公司信息','company-desc':'2013 年设立。20 年以上经验的工程师团队，支撑 AI 时代的 IT 基础设施。',
+    'services-title':'三大支柱，<span class="hl">助力 IT 项目成功</span>。',
+    'services-desc':'HASH FUTURE 以项目管理、系统咨询、系统运维支持三大服务为核心，支持 IT 项目的全生命周期。',
+    'svc-pm-title':'项目管理服务','svc-pm-desc':'以确实且合规的方法支持计划、执行与验证，确保项目成功。',
+    'svc-pm-li1':'项目管理承包','svc-pm-li2':'PMO（常驻 / 短期）','svc-pm-li3':'项目审计与计划支持','svc-pm-li4':'问题项目重建',
+    'svc-consult-title':'系统咨询服务','svc-consult-desc':'准确把握从问题定义到问题解决的流程，交付合格的成果。',
+    'svc-consult-li1':'业务分析与 IT 规划','svc-consult-li2':'RFP 代理与供应商选定支持','svc-consult-li3':'IT 路线图制定','svc-consult-li4':'信息部门内部系统运用战略',
+    'svc-ops-title':'系统运维支持服务','svc-ops-desc':'即时解决运维烦恼，导入新机制时也提供最优方案。',
+    'svc-ops-li1':'现状分析与 RFP 支持','svc-ops-li2':'供应商选定支持','svc-ops-li3':'运维咨询 Lv1〜Lv6','svc-ops-li4':'系统咨询服务',
+    'stat-1-unit':'年','stat-2-unit':'年+','stat-3-unit':'业务','stat-4-unit':'核心',
+    'stat-1-label':'成立','stat-2-label':'经验','stat-3-label':'业务线','stat-4-label':'核心服务',
     'idc-title':'连接全国 DC 场地与 <span class="hl">AI 算力需求</span>。',
-    'idc-desc':'HASH FUTURE 发掘并评估日本全国的 DC 场地，一站式提供 GPU 集群部署、液冷、电力采购与运维。把 AI 时代的算力基础设施分散部署到全国。',
+    'idc-desc':'HASH FUTURE 发掘并评估日本全国的 DC 场地，一站式提供从 GPU 集群部署、液冷、电力采购到运维的完整服务。把 AI 时代的算力基础设施分散部署到全国。',
+    'idc-s1-label':'候选网络','idc-s1-unit':'都道府县','idc-s2-label':'目标 PUE','idc-s2-unit':'2029 法规对应','idc-s3-label':'冷却方式','idc-s3-unit':'支持液冷','idc-s4-label':'GPU 平台','idc-s4-unit':'/ GB300',
+    'idc-p1-h':'场地发掘与资格审查','idc-p1-p':'对全国候选 DC 场地进行筛选，精查电力容量、PUE、耐震、合规性，仅选取适合 AI 集群的场地。',
+    'idc-p2-h':'电力、法规与耐震审查','idc-p2-p':'确认 IT 受电容量、特高压接入、PUE ≤1.3、建筑基准法、消防法、震度 7 不倒不坏，符合 2029 年后新设 DC 监管。',
+    'idc-p3-h':'GPU 集群部署','idc-p3-p':'B300 / GB300 集群的设计、采购与安装。8 至 72 GPU 配置，含存储、100G 专线与网络的全栈整合。',
+    'idc-p4-h':'液冷与全栈运维','idc-p4-p':'DLC（Direct Liquid Cooling）的设计、施工与运维。涵盖 PUE 优化、维护、监控与 24 小时运维，支持 AI 基础设施全生命周期。',
     'idc-cta-title':'致考虑提供 DC 场地的合作方',
     'idc-cta-desc':'将您的 DC 场地登记进入 HASH FUTURE 候选网络。满足电力、PUE、耐震、合规条件的场地，有机会与我们共同开展 AI 集群部署。',
-    'idc-cta-btn':'联系我们'
+    'idc-cta-btn':'联系我们',
+    'details-title':'服务详情','details-desc':'请查看各项服务的具体交付内容、范围与费用体系。',
+    'pricing-title':'服务<span class="hl">费用</span>','pricing-desc':'根据项目规模、周期、难度提供最优方案。以下为标准月额参考价。',
+    'company-title':'公司信息','company-desc':'2013 年设立。20 年以上经验的工程师团队，支撑 AI 时代的 IT 基础设施。',
+    'footer-desc':'AI 基础设施与系统整合专家。2013 年设立于神奈川县藤泽市。一站式提供 AI 数据中心、GPU 集群、液冷、系统咨询、PM 与运维支持。',
+    'footer-legal-h':'法务','footer-link1':'项目管理','footer-link2':'系统咨询','footer-link3':'系统运维支持','footer-link4':'服务费用','footer-link5':'个人信息保护方针','footer-link6':'信息安全方针','footer-link7':'无障碍','footer-link8':'网站使用条款','footer-address':'日本神奈川县藤泽市辻堂神台2-2-1 アイクロス湘南5F-E',
+    'pm-acc-title':'项目管理服务','conc-acc-title':'系统咨询服务','ops-acc-title':'系统运维支持服务',
+    'pm-b1-h':'服务概要','pm-b2-h':'交付物','pm-b3-h':'服务详情 — 面向承包方 IT 企业','pm-b4-h':'服务详情 — 面向发包方 IT 企业',
+    'pm-d1-k':'(1) 项目计划制定','pm-d1-v':'与客户共同制定项目计划。',
+    'pm-d2-k':'(2) 范围定义验证','pm-d2-v':'验证客户业务与系统的范围定义。',
+    'pm-d3-k':'(3) 成本定义验证','pm-d3-v':'验证项目所需的成本定义。',
+    'pm-d4-k':'(4) 质量定义验证','pm-d4-v':'验证交付系统所需的质量定义。',
+    'pm-d5-k':'(5) 人力资源定义验证','pm-d5-v':'验证项目所需的人力资源定义。',
+    'pm-d6-k':'(6) 沟通定义验证','pm-d6-v':'验证沟通所需的定义。',
+    'pm-d7-k':'(7) 风险定义验证','pm-d7-v':'验证项目风险所需的定义。',
+    'pm-d8-k':'(8) 采购定义验证','pm-d8-v':'验证交付系统所需的采购定义。',
+    'pm-d9-k':'(9) 整合管理验证','pm-d9-v':'验证项目的整合管理。',
+    'pm-d10-k':'(1) 项目计划书','pm-d10-v':'整备 SE 完成的各种文档，验证后交付客户。文档包括范围定义书、时间管理、成本管理、项目管理会计、质量管理、人力资源管理、沟通管理定义书、风险管理计划书、采购管理计划书等。',
+    'pm-d11-k':'(2) 各种验证报告','pm-d11-v':'关于整合管理、范围定义管理、时间管理、成本管理、质量管理、人力资源管理、沟通管理、风险管理、采购管理的报告。',
+    'pm-d12-k':'项目管理承包','pm-d12-v':'项目经理代行服务。','pm-d13-k':'PM 承包（问题项目）','pm-d13-v':'含问题项目重建的 PM 代行。','pm-d14-k':'项目经理支持','pm-d14-v':'支持 PM。','pm-d15-k':'PM 支持（问题项目）','pm-d15-v':'支持问题项目重建。','pm-d16-k':'PMO（常驻型）','pm-d16-v':'以标准化基准管理、指导多个项目。','pm-d17-k':'PMO（短期型）','pm-d17-v':'短期对应。根据商谈在必要时实施。',
+    'pm-d18-k':'项目审计','pm-d18-v':'对正在开发的 IT 企业项目进行审计。分析问题、课题与风险并指导。','pm-d19-k':'项目计划支持','pm-d19-v':'支持项目目的、目标、范围、成本管理的计划制定。','pm-d20-k':'项目管理支持','pm-d20-v':'支持客户内部 PM。包括计划、资料制作、进度管理、供应商交涉等，提供项目所需的一切支持。',
+    'conc-b1-h':'服务概要','conc-b2-h':'服务详情','conc-b3-h':'交付物',
+    'conc-d1-k':'(1) 项目启动','conc-d1-v':'与客户共同制定并实施项目计划。','conc-d2-k':'(2) 现状调查','conc-d2-v':'调查客户业务与系统的现状及问题。','conc-d3-k':'(3) 调查结果整理与问题提出','conc-d3-v':'整理调查结果，剔除冗余数据。提出真正的问题是什么。','conc-d4-k':'(4) 现状分析','conc-d4-v':'从业务和系统两个视角分析客户的现状。','conc-d5-k':'(5) 解决方案制定','conc-d5-v':'基于分析结果制定业务或系统解决方案并提示。','conc-d6-k':'(6) 解决方案制定与探讨','conc-d6-v':'客户认可解决方案后，制定具体方案并与主要方探讨。','conc-d7-k':'(7) 与客户问题意识整合','conc-d7-v':'全员精查客户的问题意识与具体解决方案是否一致。','conc-d8-k':'(8) 咨询支持','conc-d8-v':'验证解决方案系统化流程与 SE 设计的基本设计。',
+    'conc-d9-k':'业务分析','conc-d9-v':'分析日常业务并以可见形式整理（业务可视化、数值化）。','conc-d10-k':'IT 化规划','conc-d10-v':'整理经营面与业务面的不便与不满，明确 IT 化主题。','conc-d11-k':'RFP 代理','conc-d11-v':'梳理新系统全貌，代写向各供应商的提案请求书（RFP）。','conc-d12-k':'IT 路线图（中长期计划）','conc-d12-v':'按重要性、紧急度对主题排序，支持系统中长期计划。','conc-d13-k':'信息部门内部系统运用战略计划','conc-d13-v':'支持信息管理部门的运用战略计划。',
+    'conc-d14-k':'(1) 系统化计划书','conc-d14-v':'记述基于经营战略的 IT 化计划。','conc-d15-k':'(2) 资源计划书','conc-d15-v':'记述系统化所需的资源计划。','conc-d16-k':'(3) 成本计划书','conc-d16-v':'记述系统化所需的人力与设备成本计划。','conc-d17-k':'(4) 人员计划书','conc-d17-v':'记述系统化所需的人员计划。','conc-d18-k':'(5) 新业务流','conc-d18-v':'记述 BPR 后客户的业务流程。','conc-d19-k':'(6) 逻辑设计书','conc-d19-v':'记述系统化的逻辑图。','conc-d20-k':'(7) 各种分析书','conc-d20-v':'记述成本与收益分析等。',
+    'ops-b1-h':'服务详情',
+    'ops-d1-k':'现状分析支持服务','ops-d1-v':'支持系统现状分析（含约 5 次现场调查）。','ops-d2-k':'RFP 制作支持服务','ops-d2-v':'按客户需求制作 RFP（含约 3 次现场沟通）。','ops-d3-k':'供应商选定支持服务','ops-d3-v':'支持供应商选定必需的资料制作与选定基准。','ops-d4-k':'运维咨询受理服务（Lv1）','ops-d4-v':'通过电话支持系统运维方法（例：如何应对病毒）。','ops-d5-k':'运维咨询受理服务（Lv2）','ops-d5-v':'在现场支持系统运维方法（例：员工培训及其他现场支持）。','ops-d6-k':'运维咨询受理服务（Lv3）','ops-d6-v':'在现场支持系统运维方法（例：系统负责人支持业务全般）。','ops-d7-k':'运维咨询受理服务（Lv4）','ops-d7-v':'在现场改善系统运维方法（例：系统管理工具导入讨论等）。','ops-d8-k':'运维咨询受理服务（Lv5）','ops-d5-v':'指导系统运维设计（新建 / 复盘）。','ops-d9-k':'运维咨询受理服务（Lv6）','ops-d9-v':'进行系统运维设计（新建 / 复盘）。','ops-d10-k':'系统咨询受理服务','ops-d10-v':'通过电话支持新系统项目与既有系统改造案件的准备（例：构建系统时该用哪款产品）。',
+    'pc1-title':'项目管理服务','pc1-range':'80万〜200万日元','pc2-title':'系统咨询服务','pc2-range':'50万〜200万日元','pc3-title':'系统运维支持服务','pc3-range':'10万〜120万日元',
+    'pc1-r1-n':'项目管理承包','pc1-r2-n':'项目管理承包（问题项目）','pc1-r3-n':'项目经理支持','pc1-r4-n':'项目经理支持（问题项目）','pc1-r5-n':'PMO（常驻型）','pc1-r6-n':'PMO（短期型）','pc1-r7-n':'项目审计','pc1-r8-n':'项目计划支持','pc1-r9-n':'项目管理支持',
+    'pc2-r1-n':'业务分析','pc2-r2-n':'IT 化规划','pc2-r3-n':'RFP 代理','pc2-r4-n':'IT 路线图（中长期计划）','pc2-r5-n':'信息部门内部系统运用战略计划',
+    'pc3-r1-n':'现状分析支持服务','pc3-r2-n':'RFP 制作支持服务','pc3-r3-n':'供应商选定支持服务','pc3-r4-n':'运维咨询受理服务（Lv1）','pc3-r5-n':'运维咨询受理服务（Lv2）','pc3-r6-n':'运维咨询受理服务（Lv3）','pc3-r7-n':'运维咨询受理服务（Lv4）','pc3-r8-n':'运维咨询受理服务（Lv5）','pc3-r9-n':'运维咨询受理服务（Lv6）','pc3-r10-n':'系统咨询受理服务',
+    'note-monthly':'月额','note-consult':'面议','note-5inc':'月额 / 5 事件','note-resident':'月额 / 常驻型','note-nonresident':'月额 / 非驻场型',
+    'pc1-foot-note':'从常驻/短期 PM 支持到问题项目重建，根据规模提供报价。','pc2-foot-note':'从业务分析到 IT 路线图制定，支持将经营战略与 IT 相连。','pc3-foot-note':'从现场调查到运维设计，提供符合需求的灵活方案。','pc-foot-btn':'咨询与报价',
+    'pricing-note':'※ 以上为标准月额参考价。实际价格根据项目规模、周期、难度、稼働形态进行报价。<br>※ 显示价格均不含税。',
+    'co-k1':'公司名称','co-v1':'HASH FUTURE 株式会社<br><span class="muted">HASH FUTURE Co., Ltd.</span>','co-k2':'代表','co-v2':'代表取締役 高柳 順之 / JUNJI TAKAYANAGI','co-k3':'地址','co-v3':'〒251-0041<br>神奈川县藤泽市辻堂神台2丁目2番1号<br>アイクロス湘南 5F E号室','co-k4':'联系方式','co-k5':'主营业务','co-v5':'1. IT 项目支持与顾问业务<br>2. 系统咨询服务业务<br>3. AI 数据中心业务<br>4. GPU 云业务<br>5. 液冷基础设施业务<br>6. AI 基础设施构建与运维<br>7. 系统集成<br>8. 网络基础设施构建<br>9. AI 计算服务<br>10. 保全、监控与运维服务<br>11. 其他 IT 相关业务'
   }
 };
+
+/* 语言切换 */
 document.querySelectorAll('.lang-switch button').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const l=btn.dataset.lang;
     document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b===btn));
-    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(I18N[l]&&I18N[l][k])el.innerHTML=I18N[l][k];});
-    document.documentElement.lang=l==='cn'?'zh':l;
-    try{localStorage.setItem('hf_lang',l);}catch(e){}
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k=el.dataset.i18n;
+      if(I18N[l] && I18N[l][k] !== undefined){
+        el.innerHTML = I18N[l][k];
+      }
+    });
+    document.documentElement.lang = l==='cn' ? 'zh' : l;
+    try{ localStorage.setItem('hf_lang',l); }catch(e){}
   });
 });
-try{const sl=localStorage.getItem('hf_lang');if(sl&&I18N[sl]){const b=document.querySelector(`.lang-switch button[data-lang="${sl}"]`);if(b)b.click();}}catch(e){}
+
+/* 恢复上次语言 */
+try{
+  const sl = localStorage.getItem('hf_lang');
+  if(sl && I18N[sl]){
+    const b = document.querySelector('.lang-switch button[data-lang="'+sl+'"]');
+    if(b) b.click();
+  }
+}catch(e){}
 
 window.addEventListener('scroll',()=>{
   const h=document.querySelector('.site-header');
   h.style.padding=window.scrollY>60?(IS_MOBILE?'10px 18px':'10px 40px'):(IS_MOBILE?'14px 20px':'18px 40px');
 },{passive:true});
+
 /* ===== CUSTOM CURSOR v2 ===== */
 (function(){
   const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!hasMouse || reducedMotion) return;
 
-  // 创建元素
   const cur = document.createElement('div');
   cur.className = 'hf-cur';
   const shape = document.createElement('div');
@@ -1215,43 +1248,27 @@ window.addEventListener('scroll',()=>{
   document.body.appendChild(cur);
   document.body.appendChild(dot);
 
-  let mx = -100, my = -100;
-  let cx = -100, cy = -100;
-  let firstMove = false;
+  let mx = -100, my = -100, cx = -100, cy = -100, firstMove = false;
 
   document.addEventListener('mousemove', (e) => {
-    mx = e.clientX;
-    my = e.clientY;
+    mx = e.clientX; my = e.clientY;
     dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
-    if (!firstMove) {
-      firstMove = true;
-      cx = mx; cy = my;
-    }
+    if (!firstMove) { firstMove = true; cx = mx; cy = my; }
   });
 
-  document.addEventListener('mouseleave', () => {
-    cur.style.opacity = '0';
-    dot.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cur.style.opacity = '1';
-    dot.style.opacity = '1';
-  });
+  document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; dot.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; dot.style.opacity = '1'; });
 
   const INTERACTIVE = 'a, button, [role="button"], input[type="submit"], input[type="button"], input[type="checkbox"], .btn, .service-card, .pricing-row, .pricing-card, .pricing-footer-btn, .idc-pillar, .acc-header, .contact-close, .lang-switch button, .legal-nav a';
   const TEXT_FIELD = 'input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], textarea';
 
   document.addEventListener('mouseover', (e) => {
     const t = e.target;
-    if (t.closest && t.closest(INTERACTIVE) && !t.closest(TEXT_FIELD)) {
-      cur.classList.add('hf-hover');
-    }
+    if (t.closest && t.closest(INTERACTIVE) && !t.closest(TEXT_FIELD)) cur.classList.add('hf-hover');
   });
   document.addEventListener('mouseout', (e) => {
     const t = e.target;
-    if (t.closest && t.closest(INTERACTIVE)) {
-      cur.classList.remove('hf-hover');
-    }
+    if (t.closest && t.closest(INTERACTIVE)) cur.classList.remove('hf-hover');
   });
 
   document.addEventListener('mousedown', (e) => {
@@ -1301,20 +1318,20 @@ window.addEventListener('scroll',()=>{
 
     <div class="contact-header">
       <div class="section-label">Contact</div>
-      <h3 id="contactTitle">お問い合わせ</h3>
-      <p>以下の情報をご入力ください。担当者より2営業日以内にご連絡いたします。ご入力情報はお問い合わせ対応のみに使用いたします。</p>
+      <h3 id="contactTitle" data-i18n="contact-title">お問い合わせ</h3>
+      <p data-i18n="contact-intro">以下の情報をご入力ください。担当者より2営業日以内にご連絡いたします。ご入力情報はお問い合わせ対応のみに使用いたします。</p>
     </div>
 
     <form class="contact-form" id="contactForm" novalidate onsubmit="return false;">
-      <div class="contact-field"><label>会社名 <span class="req">*</span></label><input type="text" name="company" required placeholder="例：株式会社〇〇"></div>
-      <div class="contact-field"><label>ご担当者名 <span class="req">*</span></label><input type="text" name="contact_name" required placeholder="山田 太郎"></div>
-      <div class="contact-field"><label>メールアドレス <span class="req">*</span></label><input type="email" name="email" required placeholder="name@company.co.jp"></div>
-      <div class="contact-field"><label>電話番号 <span class="hint">任意</span></label><input type="tel" name="phone" placeholder="03-0000-0000"></div>
+      <div class="contact-field"><label data-i18n="cf-company">会社名 <span class="req">*</span></label><input type="text" name="company" required placeholder="例：株式会社〇〇"></div>
+      <div class="contact-field"><label data-i18n="cf-name">ご担当者名 <span class="req">*</span></label><input type="text" name="contact_name" required placeholder="山田 太郎"></div>
+      <div class="contact-field"><label data-i18n="cf-email">メールアドレス <span class="req">*</span></label><input type="email" name="email" required placeholder="name@company.co.jp"></div>
+      <div class="contact-field"><label data-i18n="cf-phone">電話番号 <span class="hint" data-i18n="cf-optional">任意</span></label><input type="tel" name="phone" placeholder="03-0000-0000"></div>
       <div class="contact-field">
-        <label>お問い合わせ種別 <span class="req">*</span></label>
-        <select name="inquiry_type" required>
+        <label data-i18n="cf-inquiry">お問い合わせ種別 <span class="req">*</span></label>
+        <select name="inquiry_type" required data-i18n-options="cf-inquiry-options">
           <option value="">選択してください</option>
-          <option>DC場地の提供について</option>
+          <option>DC用地の提供について</option>
           <option>GPUクラウドについて</option>
           <option>システムコンサルティングについて</option>
           <option>プロジェクトマネジメントについて</option>
@@ -1322,10 +1339,10 @@ window.addEventListener('scroll',()=>{
           <option>その他</option>
         </select>
       </div>
-      <div class="contact-field"><label>場地の所在地 <span class="hint">任意・DC場地の場合</span></label><input type="text" name="site_location" placeholder="例：北海道石狩市"></div>
+      <div class="contact-field"><label data-i18n="cf-site-loc">用地の所在地 <span class="hint" data-i18n="cf-site-loc-hint">任意・DC場地の場合</span></label><input type="text" name="site_location" placeholder="例：北海道石狩市"></div>
       <div class="contact-field">
-        <label>想定規模 <span class="hint">任意</span></label>
-        <select name="scale">
+        <label data-i18n="cf-scale">想定規模 <span class="hint" data-i18n="cf-optional">任意</span></label>
+        <select name="scale" data-i18n-options="cf-scale-options">
           <option value="">選択してください</option>
           <option>未定</option>
           <option>1MW 未満</option>
@@ -1334,14 +1351,14 @@ window.addEventListener('scroll',()=>{
           <option>10MW 以上</option>
         </select>
       </div>
-      <div class="contact-field"><label>お問い合わせ内容 <span class="hint">任意</span></label><textarea name="message" placeholder="ご相談内容の概要をご記入ください"></textarea></div>
+      <div class="contact-field"><label data-i18n="cf-message">お問い合わせ内容 <span class="hint" data-i18n="cf-optional">任意</span></label><textarea name="message" placeholder="ご相談内容の概要をご記入ください"></textarea></div>
       <div class="contact-field">
         <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:12px;font-weight:400;color:var(--muted-2)">
           <input type="checkbox" name="confirm_truth" required style="width:16px;height:16px;accent-color:#00E5FF;margin-top:2px;flex-shrink:0">
-          <span>個人情報の取り扱いに同意します。</span>
+          <span data-i18n="cf-agree">個人情報の取り扱いに同意します。</span>
         </label>
       </div>
-      <button type="button" class="btn btn-primary contact-submit" id="contactSubmit" onclick="submitContact(event)">送信する</button>
+      <button type="button" class="btn btn-primary contact-submit" id="contactSubmit" onclick="submitContact(event)" data-i18n="cf-submit">送信する</button>
       <div class="contact-msg" id="contactMsg"></div>
     </form>
 
@@ -1358,8 +1375,8 @@ window.addEventListener('scroll',()=>{
           <span></span><span></span><span></span><span></span>
         </div>
       </div>
-      <h4>送信完了</h4>
-      <p>お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。</p>
+      <h4 data-i18n="cs-title">送信完了</h4>
+      <p data-i18n="cs-message">お問い合わせありがとうございます。<br>担当者より2営業日以内にご連絡いたします。</p>
       <div class="success-ref">
         <span class="ref-label">REFERENCE</span>
         <span class="ref-value" id="successRef">HF-000000-000</span>
