@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>内部资料 - 密码验证</title>
+<style>
+  body { font-family: "Yu Gothic", sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+  #login-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+  input { padding: 10px; font-size: 16px; margin-bottom: 15px; width: 200px; }
+  button { padding: 10px 20px; font-size: 16px; background: #2e75b6; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  #content { display: none; padding: 40px; background: white; width: 80%; max-width: 900px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+  .error { color: red; font-size: 14px; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<!-- 密码输入界面 -->
+<div id="login-box">
+  <h2>機密資料アクセス</h2>
+  <p>パスワードを入力してください</p>
+  <input type="password" id="pwd" placeholder="Password">
+  <br>
+  <button onclick="checkPwd()">開く</button>
+  <div id="error-msg" class="error"></div>
+</div>
+
+<!-- 你的真实内容（默认隐藏） -->
+<div id="content">
+  <!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>DC・IDC・AIクラスタの違いとIDC集群用地の見極め方</title>
+<style>
+  body {
+    font-family: "Yu Gothic", "Meiryo", "MS Gothic", sans-serif;
+    line-height: 1.8;
+    margin: 40px;
+    color: #222;
+    font-size: 11pt;
+  }
+  h1 {
+    font-size: 20pt;
+    border-bottom: 3px solid #1f4e79;
+    padding-bottom: 8px;
+    color: #1f4e79;
+  }
+  h2 {
+    font-size: 15pt;
+    border-left: 6px solid #2e75b6;
+    padding-left: 10px;
+    margin-top: 28px;
+    color: #1f4e79;
+  }
+  h3 {
+    font-size: 12.5pt;
+    color: #2e75b6;
+    margin-top: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 18px 0;
+    font-size: 9.5pt;
+  }
+  th, td {
+    border: 1px solid #777;
+    padding: 6px 8px;
+    vertical-align: top;
+  }
+  th {
+    background: #dbe5f1;
+    font-weight: bold;
+  }
+  .box {
+    border: 2px solid #2e75b6;
+    background: #eef4fb;
+    padding: 12px 16px;
+    margin: 16px 0;
+  }
+  .warn {
+    border: 2px solid #c00000;
+    background: #fff2f2;
+    padding: 12px 16px;
+    margin: 16px 0;
+  }
+  .check {
+    background: #f7f7f7;
+    border: 1px solid #999;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+  ul, ol {
+    margin-top: 6px;
+  }
+  .small {
+    font-size: 9pt;
+    color: #555;
+  }
+  .pagebreak {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<h1>DC・IDC・AIクラスタの違いと<br>IDC集群用地の見極め方</h1>
+
+<p class="small">対象：完全な外行（非エンジニア）／経営企画・不動産・投資・調達・法務担当者<br>
+目的：DC、IDC、AIクラスタの違いを理解し、IDC集群用地を探す意味と落とし穴を把握する。</p>
+
+<div class="box">
+<strong>最初に覚える一言：</strong><br>
+<strong>データセンター（DC）は「建物と設備」、IDCは「貸し出すサービス」、AIクラスタは「協力して計算する計算機の集まり」</strong>です。<br>
+たとえるなら、DCは「専門的なオフィスビル」、IDCは「ビルの賃貸・管理サービス」、AIクラスタは「ビル内で協力するプロジェクトチーム」です。
+</div>
+
+<h2>1. 三者の基本定義</h2>
+
+<table>
+<tr>
+<th>用語</th>
+<th>本質</th>
+<th>外行向けの説明</th>
+<th>例</th>
+</tr>
+<tr>
+<td><strong>データセンター（DC）</strong></td>
+<td>物理施設・インフラ</td>
+<td>サーバーを安全に置くための建物。電気、冷却、消防、セキュリティ、通信配線などを提供する。</td>
+<td>自社専用の大規模机房、コロケーション施設</td>
+</tr>
+<tr>
+<td><strong>IDC（インターネットデータセンター）</strong></td>
+<td>商業サービス</td>
+<td>DCの施設を使って、サーバー設置場所、帯域、運用代行などを顧客に貸すサービス。</td>
+<td>ラック貸し、サーバー托管、クラウド接続拠点</td>
+</tr>
+<tr>
+<td><strong>AIクラスタ</strong></td>
+<td>論理的な計算アーキテクチャ</td>
+<td>多数のサーバーやGPUを高速ネットワークでつなぎ、一つの巨大な計算機のように使う仕組み。</td>
+<td>GPUクラスタ、HPCクラスタ、推論クラスタ</td>
+</tr>
+</table>
+
+<h3>層の関係</h3>
+<p>
+<strong>DC（物理施設）→ IDC（サービス化）→ AIクラスタ（その上に構築される計算システム）</strong>という関係です。<br>
+ただし、AIクラスタは必ずしもIDCの中にある必要はありません。自社DC内に構築する場合もあります。また、IDC内のサーバーがすべてクラスタになるわけでもありません。
+</p>
+
+<h2>2. 一目でわかる比較表</h2>
+
+<table>
+<tr>
+<th>比較項目</th>
+<th>DC（データセンター）</th>
+<th>IDC（インターネットデータセンター）</th>
+<th>AIクラスタ</th>
+</tr>
+<tr>
+<td>正体</td>
+<td>建物・電力・冷却・通信の物理基盤</td>
+<td>DCを利用した貸出・運用サービス</td>
+<td>高速ネットワークで結ばれた計算機群</td>
+</tr>
+<tr>
+<td>誰が使うか</td>
+<td>自社、テナント、IDC事業者など</td>
+<td>企業、クラウド事業者、AI事業者</td>
+<td>AI開発者、研究機関、推論サービス事業者</td>
+</tr>
+<tr>
+<td>主な価値</td>
+<td>安定した環境、災害対策、電力供給</td>
+<td>初期投資を抑えて早く使える、運用を任せられる</td>
+<td>大規模計算を並列処理できる、故障に強い</td>
+</tr>
+<tr>
+<td>主なコスト</td>
+<td>建設費、電力、冷却、土地、保守</td>
+<td>ラック費、電力従量費、帯域費、運用費</td>
+<td>GPU費、高速ネットワーク費、電力・冷却費、ソフト費</td>
+</tr>
+<tr>
+<td>用地選定の重要性</td>
+<td>非常に高い</td>
+<td>高い（立地・電力・通信・規制）</td>
+<td>間接的に高い（DC/IDCの立地に依存）</td>
+</tr>
+</table>
+
+<h2>3. ハードウェアからソフトウェアまでの全体像</h2>
+
+<h3>3.1 ハードウェア層</h3>
+<table>
+<tr>
+<th>層</th>
+<th>主な構成要素</th>
+<th>AIクラスタで特に重要な点</th>
+</tr>
+<tr>
+<td>土地・建物</td>
+<td>用地、建屋、耐震、消防、浸水対策、警備</td>
+<td>高重量ラック、液冷配管、電力増設余地、冷却水確保</td>
+</tr>
+<tr>
+<td>電力</td>
+<td>受電設備、変圧器、UPS、非常用発電機、配電</td>
+<td>GPUラックは高消費電力。1ラック数十kW～100kW超も。増設周期が長い。</td>
+</tr>
+<tr>
+<td>冷却</td>
+<td>空調、冷凍機、冷却塔、液冷、CDU、配管</td>
+<td>空冷限界を超えるGPUでは液冷必須。水質・漏水・冗長性が課題。</td>
+</tr>
+<tr>
+<td>ネットワーク</td>
+<td>ルーター、スイッチ、光ファイバ、IX接続</td>
+<td>RDMA、InfiniBand、高速イーサネット。遅延と帯域がAI性能を左右。</td>
+</tr>
+<tr>
+<td>計算機</td>
+<td>CPUサーバー、GPUサーバー、ストレージ</td>
+<td>GPUの世代、台数、メモリ、故障率、供給体制。</td>
+</tr>
+<tr>
+<td>ストレージ</td>
+<td>NVMe、並列ファイルシステム、バックアップ</td>
+<td>学習データの読み込み速度、チェックポイント保存速度。</td>
+</tr>
+</table>
+
+<h3>3.2 ソフトウェア層</h3>
+<table>
+<tr>
+<th>層</th>
+<th>主な技術・サービス</th>
+<th>役割</th>
+</tr>
+<tr>
+<td>仮想化・クラウド</td>
+<td>VM、コンテナ、IaaS、Kubernetes</td>
+<td>計算資源を分割・配布し、利用者に提供する。</td>
+</tr>
+<tr>
+<td>クラスタ管理</td>
+<td>Slurm、Kubernetes、ジョブスケジューラ</td>
+<td>GPUやCPUの割当、順番待ち、優先制御を行う。</td>
+</tr>
+<tr>
+<td>AI/ML運用</td>
+<td>MLOps、モデル管理、実験管理、推論配信</td>
+<td>学習から運用までの再現性と効率を高める。</td>
+</tr>
+<tr>
+<td>監視・運用</td>
+<td>電力監視、温度監視、GPU監視、ログ管理</td>
+<td>故障予兆、熱暴走、電力超過を防ぐ。</td>
+</tr>
+<tr>
+<td>セキュリティ</td>
+<td>認証、暗号化、ネットワーク分離、監査</td>
+<td>データ保護、不正アクセス防止、法令対応。</td>
+</tr>
+</table>
+
+<h2>4. それぞれの条件要求</h2>
+
+<h3>4.1 DCに求められる条件</h3>
+<ul>
+<li><strong>電力：</strong>安定した大容量受電、冗長化、増設余地。</li>
+<li><strong>冷却：</strong>外気温、水源、排熱、PUE（電力使用効率）。</li>
+<li><strong>立地：</strong>災害リスク、地盤、浸水、騒音規制、交通・保守アクセス。</li>
+<li><strong>通信：</strong>複数回線、IXまでの距離、バックボーン接続。</li>
+<li><strong>法規制：</strong>土地利用、消防、環境影響、建築基準。</li>
+</ul>
+
+<h3>4.2 IDCに求められる条件</h3>
+<ul>
+<li><strong>SLA：</strong>稼働率、電力保証、故障対応時間、補償条件。</li>
+<li><strong>課金：</strong>ラック単価、電力従量、帯域、保守費の明確さ。</li>
+<li><strong>拡張性：</strong>ラック追加、電力増設、ネットワーク増速の可否。</li>
+<li><strong>セキュリティ：</strong>入退室管理、監視カメラ、専用区画、監査対応。</li>
+<li><strong>接続性：</strong>クラウド接続、IX接続、冗長経路。</li>
+</ul>
+
+<h3>4.3 AIクラスタに求められる条件</h3>
+<ul>
+<li><strong>高電力密度：</strong>GPUラックの消費電力が非常に大きい。</li>
+<li><strong>液冷対応：</strong>高消費電力GPUでは空冷だけでは難しい場合がある。</li>
+<li><strong>高速ネットワーク：</strong>GPU間通信の帯域・遅延が学習速度を左右。</li>
+<li><strong>ストレージ性能：</strong>大規模データセットの読み込みとチェックポイント保存。</li>
+<li><strong>運用体制：</strong>GPU故障、ドライバ、ジョブ管理、冷却水管理の専門人材。</li>
+</ul>
+
+<h2 class="pagebreak">5. IDC集群用地を探す意味</h2>
+
+<p>
+IDC集群用地とは、簡単に言えば「AIクラスタを置くためのIDCやDCを新設・拡張する土地」です。これを探す意味は、単に安い土地を買うことではありません。
+</p>
+
+<div class="box">
+<strong>本質は「電力・冷却・通信・法規制・拡張性を長期に確保できる場所」を選ぶこと</strong>です。AI需要は急拡大する一方、電力増設や冷却設備には時間がかかります。用地選定の失敗は、数年単位の事業遅延につながります。
+</div>
+
+<h3>用地選定で見るべき意義</h3>
+<ul>
+<li><strong>電力確保：</strong>大容量受電の可否、増設までの期間、変電所容量。</li>
+<li><strong>冷却確保：</strong>水、外気、排熱、液冷導入余地。</li>
+<li><strong>通信確保：</strong>光ファイバ、IX、複数キャリア、遅延。</li>
+<li><strong>拡張余地：</strong>将来のGPU増設、建屋増築、駐車場・発電機置場。</li>
+<li><strong>災害リスク：</strong>浸水、地震、土砂災害、火災、停電履歴。</li>
+<li><strong>法規制・住民対応：</strong>用途地域、騒音、振動、排熱、景観、消防。</li>
+<li><strong>税制・補助金：</strong>自治体優遇、固定資産税、雇用補助。</li>
+<li><strong>人材・保守：</strong>技術者、部品供給、交通アクセス。</li>
+</ul>
+
+<h2>6. よくある落とし穴（踩坑点）</h2>
+
+<table>
+<tr>
+<th>落とし穴</th>
+<th>内容</th>
+<th>対策</th>
+</tr>
+<tr>
+<td>電力容量の見誤り</td>
+<td>「受電可能」と聞いても、実際の増設に数年かかる場合がある。</td>
+<td>電力会社の回答を文書で確認。増設スケジュールと費用を契約前に精査。</td>
+</tr>
+<tr>
+<td>冷却能力の過信</td>
+<td>空冷前提のIDCでは高密度GPUラックを入れられない。</td>
+<td>ラックあたりkW、液冷対応、CDU容量、漏水対策を確認。</td>
+</tr>
+<tr>
+<td>IDCとクラスタの混同</td>
+<td>IDCを借りればAIクラスタがすぐ使えるわけではない。</td>
+<td>GPU、ネットワーク、ストレージ、ジョブ管理、運用を別途設計。</td>
+</tr>
+<tr>
+<td>ネットワーク遅延</td>
+<td>立地が遠いとクラウド接続やIX接続で遅延が増える。</td>
+<td>複数経路、IX距離、実測遅延、冗長性を確認。</td>
+</tr>
+<tr>
+<td>SLAの細部</td>
+<td>稼働率99.99%でも電力保証や故障対応範囲が狭い場合がある。</td>
+<td>補償条件、除外事項、復旧時間、電力品質を確認。</td>
+</tr>
+<tr>
+<td>拡張性の欠如</td>
+<td>初期ラックは足りても、電力・冷却・建屋が増設できない。</td>
+<td>将来3～5年のGPU増設計画から逆算して用地・建屋を評価。</td>
+</tr>
+<tr>
+<td>法規制・住民トラブル</td>
+<td>騒音、排熱、景観、水使用で反対運動が起きる。</td>
+<td>用途地域、環境影響、説明体制、自治体事前協議。</td>
+</tr>
+<tr>
+<td>災害リスク</td>
+<td>浸水・地震・土砂災害で長期停止。</td>
+<td>ハザードマップ、過去災害、非常用発電、燃料備蓄。</td>
+</tr>
+<tr>
+<td>GPU供給・輸出規制</td>
+<td>用地があってもGPUを調達できない可能性。</td>
+<td>調達先、規制、代替品、サプライチェーンを確認。</td>
+</tr>
+<tr>
+<td>運用人材不足</td>
+<td>液冷、GPU故障、高速ネットワークの運用者がいない。</td>
+<td>運用委託先、教育、遠隔監視、保守契約を事前に設計。</td>
+</tr>
+<tr>
+<td>「安い土地」だけで判断</td>
+<td>電力・冷却・通信・法規制の追加コストが大きい。</td>
+<td>総保有コスト（TCO）で比較。ライフサイクルで評価。</td>
+</tr>
+</table>
+
+<h2>7. 外行向けチェックリスト</h2>
+
+<div class="check">
+<strong>IDC集群用地を検討するときの確認リスト</strong>
+<ol>
+<li>必要なIT電力（kW）と将来増設分は明確か。</li>
+<li>受電電圧、変電所容量、増設までの期間は確認したか。</li>
+<li>ラックあたりの電力密度と冷却方式（空冷／液冷）は合っているか。</li>
+<li>冷却水、外気、排熱、騒音の条件は満たすか。</li>
+<li>光ファイバ、IX、複数キャリア、冗長経路はあるか。</li>
+<li>土地の用途地域、消防、環境規制、住民対応は問題ないか。</li>
+<li>浸水、地震、土砂災害、火災のリスクは許容範囲か。</li>
+<li>建屋の耐荷重、ラック重量、液冷配管、消防設備は対応可能か。</li>
+<li>SLA、課金、電力従量、故障対応、補償条件は明確か。</li>
+<li>GPU、ネットワーク、ストレージ、運用人材の調達見込みはあるか。</li>
+<li>3～5年後の拡張余地と撤退・移転コストを試算したか。</li>
+<li>「IDCを借りること」と「AIクラスタを構築すること」を混同していないか。</li>
+</ol>
+</div>
+
+<h2>8. 用語集</h2>
+<table>
+<tr>
+<th>用語</th>
+<th>意味</th>
+</tr>
+<tr>
+<td>PUE</td>
+<td>データセンター全体の電力使用量÷IT機器の電力使用量。1に近いほど効率的。</td>
+</tr>
+<tr>
+<td>ラック</td>
+<td>サーバーを収納する棚。AIでは1ラックあたりの消費電力が非常に大きい。</td>
+</tr>
+<tr>
+<td>CDU</td>
+<td>液冷システムで冷却液を循環・熱交換する装置。</td>
+</tr>
+<tr>
+<td>RDMA</td>
+<td>遠隔メモリ直接アクセス。GPU間通信を高速化する技術。</td>
+</tr>
+<tr>
+<td>InfiniBand</td>
+<td>高性能計算向けの高速ネットワーク規格。</td>
+</tr>
+<tr>
+<td>Slurm</td>
+<td>HPC・AIクラスタで使われるジョブスケジューラ。</td>
+</tr>
+<tr>
+<td>SLA</td>
+<td>サービスレベル合意。稼働率や故障対応時間などを定める契約条件。</td>
+</tr>
+</table>
+
+<h2>9. まとめ</h2>
+
+<div class="box">
+<strong>DCは「施設」、IDCは「サービス」、AIクラスタは「計算の仕組み」。</strong><br><br>
+IDC集群用地を探すときは、安い土地や立地だけではなく、<strong>電力・冷却・通信・法規制・拡張性・災害リスク・運用体制</strong>を一体で評価する必要があります。<br><br>
+特にAIクラスタは高電力密度・液冷・高速ネットワークが前提になるため、普通のIDC用地の感覚だけで判断すると、電力増設待ち、冷却不足、ラックあたり電力不足、ネットワーク遅延などの落とし穴に入りやすいです。<br><br>
+<strong>最初に確認すべきは「その土地で、将来必要なkWを確保し、熱を捨てられ、高速通信を引けるか」</strong>です。
+</div>
+
+<p class="small">以上。本教材は一般的な理解のための整理であり、実際の用地評価・契約・法規制確認では、電力会社、自治体、設計者、法務・税務の専門家にご確認ください。</p>
+
+</body>
+</html>
+  
+  <h1>DC・IDC・AIクラスタの違いと<br>IDC集群用地の見極め方</h1>
+  <p>ここに教材の中身が入ります。</p>
+
+  <!-- 粘贴结束 -->
+</div>
+
+<script>
+  // ⚠️ 请在这里修改你的密码
+  const CORRECT_PWD = "hash2026"; 
+
+  function checkPwd() {
+    const input = document.getElementById("pwd").value;
+    if (input === CORRECT_PWD) {
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      document.body.style.display = "block"; // 恢复页面滚动
+    } else {
+      document.getElementById("error-msg").innerText = "パスワードが間違っています。";
+    }
+  }
+</script>
+
+</body>
+</html>
