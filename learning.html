@@ -455,7 +455,132 @@ IDC集群用地を探すときは、安い土地や立地だけではなく、<s
   <h1>DC・IDC・AIクラスタの違いと<br>IDC集群用地の見極め方</h1>
   <p>ここに教材の中身が入ります。</p>
 
-  <!-- 粘贴结束 -->
+<!-- ================= 6MW AI集群用地 核查清单 开始 ================= -->
+<h1 style="margin-top:50px;">実例編：6 MW超 AIクラスタ用地<br><span style="font-size:12pt; color:#555;">現地確認・条件チェックシート（逐条打ち合わせ用）</span></h1>
+
+<div class="warn">
+<strong>前提条件（このシートを使う前に必ず共有すること）：</strong><br>
+本シートは <strong>「IT負荷 6 MW 以上」</strong> を対象とする。GPUラックは<strong>液冷（ダイレクト・トゥ・チップ）を前提</strong>とし、<strong>ラックあたり 60 kW 以上（余裕を見て 100 kW/rack まで対応可能なこと）</strong> を要求する。空冷専用の既存IDCや、ラックあたり20 kW級の従来型コロケーションは、このシートの「不適合」に該当する。<br><br>
+<strong>重要：</strong>「6 MW」は<strong>IT機器の消費電力</strong>を指す。施設全体の受電容量はこれに冷却・損失を加えたものになる（PUE 1.12〜1.25 で設計する場合、<strong>施設全体で 6.7〜7.5 MW 程度の受電・発電容量</strong>が必要）。
+</div>
+
+<h2>■ 使い方</h2>
+<p>
+以下の各項目について、<strong>「□ 確認済み / □ 未確認 / □ 不適合」</strong>のいずれかにチェックを入れ、根拠となる文書名・回答者・日付をメモ欄に記録する。<strong>「口頭で可能と言われた」は「未確認」として扱う。</strong> 全ての必須項目が「確認済み」になるまで、用地の適格判定は行わない。
+</p>
+
+<!-- ================= A. 土地・立地 ================= -->
+<h2>A. 土地・立地（Land &amp; Site）</h2>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>A-1</td><td><strong>敷地面積</strong></td><td>建屋延床 <strong>3,500〜5,000 m²</strong> を確保できること。データホール白空間は <strong>2,000〜2,500 m²</strong> を目安（6 MW / 高密度液冷ラック約80〜100台、1ラックあたり実装面積 3.0〜3.5 m²、通路・サポート含む）<span style="font-size:8pt;">[reference:0]</span>。将来増設分を含めると<strong>敷地全体で 6,000〜10,000 m²</strong> が望ましい。<br>参考実績：6 MW級DCで延床 9,810 m²（韓国KT Cloud事例）、白空間 2,500 m²（独dataR事例）<span style="font-size:8pt;">[reference:1][reference:2]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>A-2</td><td><strong>用途地域・法規制</strong></td><td>工業専用地域・工業地域・準工業地域のいずれかであること（住居専用地域は不可）。<strong>消防法上の危険物取扱い</strong>（発電機燃料・冷却液）の届出可否を自治体に事前確認済みであること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>A-3</td><td><strong>浸水・地震・土砂災害リスク</strong></td><td>ハザードマップ上、<strong>浸水深 0.5 m 未満</strong>の区域であること。活断層からの距離・液状化危険度を確認済みであること。<strong>過去20年間の大規模停電・水害履歴</strong>が無いこと。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>A-4</td><td><strong>交通・保守アクセス</strong></td><td>主要幹線道路から<strong>大型トレーラー（11 t 車級）</strong>が進入可能であること。GPUサーバー・冷却設備の搬入経路（クレーン・仮置き場）を確保できること。<strong>消防車両の進入・消火活動</strong>が可能な空地があること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>A-5</td><td><strong>住民・騒音・排熱</strong></td><td>敷地境界から<strong>500 m 以内に住居が無い</strong>ことが望ましい。冷却塔・発電機の騒音が<strong>敷地境界で 55 dB(A) 以下</strong>に収まる設計余地があること。排熱・水蒸気に対する地元説明の見通しがあること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= B. 建屋・構造 ================= -->
+<h2>B. 建屋・構造（Building &amp; Structure）</h2>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>B-1</td><td><strong>床耐荷重（データホール）</strong></td><td><strong>3,000 kg/m² 以上</strong>であること。これは理化学研究所「富岳」後継機の設計基準と同水準で、高密度液冷ラック（1ラックあたり<strong>1,000 kg 超</strong>、NVIDIA H100搭載サーバーは1台で<strong>104 kg</strong>、ラック満載で<strong>2,000 kg 超</strong>）を安全に支持するために必須<span style="font-size:8pt;">[reference:3][reference:4]</span>。従来型DCの<strong>1,000 kg/m²</strong>では不十分である可能性が高い。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>B-2</td><td><strong>天井高・床下空間</strong></td><td>データホールの<strong>天井高 4.5 m 以上</strong>（液冷配管・CDU・ケーブルトレイのスペース確保）。<strong>床下（フリーアクセス）600 mm 以上</strong>、または配管用の専用シャフトがあること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>B-3</td><td><strong>液冷配管スペース</strong></td><td>CDU（冷却液分配装置）を収容する<strong>専用区画（1台あたり 2〜3 m²、複数台設置可能）</strong>を確保できること。一次側・二次側の<strong>配管ルート（直径 100〜150 mm 級）</strong>を建屋内で通せること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>B-4</td><td><strong>漏水対策・床排水</strong></td><td>液冷配管の接続部・CDU周囲に<strong>漏水検知センサー</strong>を設置できること。データホール床に<strong>排水溝またはドレン</strong>があり、漏水時に<strong>床下への浸水を防げる構造</strong>であること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>B-5</td><td><strong>耐震・免振</strong></td><td>建屋の設計用震度が<strong>1.0 以上</strong>であること。ラック固定用の<strong>アンカーボルト</strong>を打設可能であること。<strong>液冷配管のフレキシブル継手</strong>により地震時の変位を吸収できる設計であること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= C. 電力 ================= -->
+<h2>C. 電力（Power Supply &amp; Distribution）—— 最も時間がかかる領域</h2>
+
+<div class="warn">
+<strong>この領域が「最大のボトルネック」である。</strong>DC本体は約3年で建つが、電網接続の承認・増設には<strong>8〜10年</strong>かかる地域がある。以下の数値は「言質」ではなく<strong>電力会社の文書回答</strong>で確認すること。
+</div>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>C-1</td><td><strong>受電容量（IT負荷）</strong></td><td><strong>6,000 kW 以上</strong>のIT負荷に常時給電できること。将来の増設を見据え、<strong>UPS出力合計 7,500〜9,000 kW</strong> を確保できる受電契約が見込めること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-2</td><td><strong>受電電圧・変圧器</strong></td><td><strong>特別高圧（20 kV 以上）</strong>または<strong>高圧（6.6 kV）</strong>での受電が可能であること。変圧器容量は<strong>2,000 kVA クラス × 複数台（N+1冗長）</strong>を設置できるスペースがあること<span style="font-size:8pt;">[reference:5]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-3</td><td><strong>電網接続の時期</strong></td><td>「受電可能」の<strong>文書回答</strong>があり、その時期が<strong>着工から3年以内</strong>であること。<strong>8〜10年待ち</strong>の地域ではないことを確認する。困難な場合、<strong>ノンファーム型接続</strong>または<strong>自前発電（off-grid）</strong>の選択肢を検討済みであること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-4</td><td><strong>UPS・無停電電源</strong></td><td><strong>2N 冗長</strong>のUPS構成が可能であること。UPSのバッテリー持続時間は<strong>最低 5〜10 分</strong>（発電機起動までのブリッジ）を確保できること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-5</td><td><strong>非常用発電機</strong></td><td>施設全体負荷（<strong>約 7.5 MW</strong>）に対応する<strong>N+1 台</strong>のディーゼルまたはガスタービン発電機を設置できること。1台あたり<strong>2,000〜2,500 kW 級 × 4台</strong>が目安。設置スペース・排気塔の位置を確保できること<span style="font-size:8pt;">[reference:6]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-6</td><td><strong>燃料備蓄</strong></td><td>発電機の<strong>72時間連続運転</strong>分の燃料を敷地内に備蓄できること。7.5 MW級の場合、<strong>軽油 約 120,000〜150,000 L</strong>（1台あたりの消費率と負荷率による）のタンク容量が必要。地下タンクまたは二重殻タンクの設置可否を確認する<span style="font-size:8pt;">[reference:7]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-7</td><td><strong>高圧直流配電への対応余地</strong></td><td>ラック電力が<strong>200 kW 超</strong>になる将来に備え、<strong>800 VDC または 400 VDC</strong>の直流配電を建屋設計に織り込めるか（従来の54 VDCでは銅ケーブル重量・損失が限界に達する）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= D. 冷却 ================= -->
+<h2>D. 冷却（Cooling）—— 空冷不可、液冷必須</h2>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>D-1</td><td><strong>冷却方式</strong></td><td><strong>ダイレクト・トゥ・チップ液冷（DLC）</strong>を主方式とすること。空冷は補助（ネットワーク機器・ストレージ用）に限定する。<strong>空冷のみの設計は不適合</strong>とする（空冷の実用上限は概ね50 kW/rack未満、AIラックは60〜140 kW）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>D-2</td><td><strong>CDU容量・台数</strong></td><td>6 MWのIT熱を処理するための<strong>CDU合計容量 6,500〜7,000 kW 以上</strong>（N+1冗長）。1台あたり<strong>1,000〜1,500 kW 級</strong>のCDUを<strong>5〜7台</strong>設置できるスペースと配管接続を確保すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>D-3</td><td><strong>冷却水流量</strong></td><td>液冷システムの<strong>一次側冷却水流量</strong>として<strong>37,000〜42,000 L/min（6 MW時）</strong>を確保できること。目安として<strong>6.2 GPM/MW</strong>（≈ 23.5 L/min/kW）の冷却水消費を見込む<span style="font-size:8pt;">[reference:8]</span>。水源（上水・工業用水・井水）の確保または<strong>クローズドループ冷却塔</strong>の設置が可能であること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>D-4</td><td><strong>冷却塔・放熱器</strong></td><td><strong>密閉型冷却塔</strong>または<strong>空冷式ドライクーラー</strong>を<strong>N+1 台</strong>設置できる屋外スペースがあること。1基あたり<strong>3,000〜4,000 kW 放熱能力 × 3〜4基</strong>が目安。冬季の凍結対策（グリコール循環・ヒーター）が可能であること<span style="font-size:8pt;">[reference:9]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>D-5</td><td><strong>PUE目標と測定境界</strong></td><td>液冷設計で<strong>PUE 1.12〜1.25（年間平均）</strong>を達成できる設計であること<span style="font-size:8pt;">[reference:10]</span>。PUEの測定境界（IT電力に何を含めるか）を契約前に定義し、<strong>夏季ピークの劣化幅（+0.05〜0.15）</strong>を織り込んだ数値であることを確認する。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>D-6</td><td><strong>冷却水の水質管理</strong></td><td>一次側冷却水の水質基準（<strong>pH 7〜9、導電率 100 μS/cm 以下</strong>）を維持するための水処理設備を設置できること<span style="font-size:8pt;">[reference:11]</span>。薬注・ブロー・フィルター交換の運用体制があること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= E. ネットワーク ================= -->
+<h2>E. ネットワーク（Network）</h2>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>E-1</td><td><strong>外部回線・キャリア</strong></td><td><strong>複数キャリア（2社以上）</strong>の光ファイバーが敷設可能であること。合計<strong>400 Gbps 以上の外部帯域</strong>を確保できること（大規模学習のチェックポイント転送・データ取り込みを想定）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-2</td><td><strong>GPU間バックエンド</strong></td><td><strong>InfiniBand NDR 400 Gbps または Ethernet 400G/800G（RoCEv2）</strong>のファブリックを構築できること。GPUノードあたり<strong>8ポート × 400 Gbps</strong>（InfiniBand）または<strong>2 × 400 Gbps</strong>（Ethernet）を収容するスイッチラックを設置できること<span style="font-size:8pt;">[reference:12]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-3</td><td><strong>ネットワークラックの電力・冷却</strong></td><td>InfiniBand/Ethernetスイッチラックは<strong>1ラックあたり 5〜15 kW</strong>の電力を消費する（高密度スイッチで最大<strong>13 kW</strong>級）<span style="font-size:8pt;">[reference:13]</span>。<strong>ネットワーク専用ラック 4〜6台分</strong>の電力・冷却・スペースをIT負荷6 MWとは別に確保すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-4</td><td><strong>IX・クラウド接続距離</strong></td><td>主要IX（JPIX/JPNAP等）またはクラウド直結ポイントまで<strong>遅延 5 ms 以下</strong>（片道）の立地であること。ファイバー経路長と実測遅延を確認済みであること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= F. サプライチェーン・調達 ================= -->
+<h2>F. サプライチェーン・調達（GPU・機材）</h2>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>F-1</td><td><strong>GPUラックの調達計画</strong></td><td>6 MWを構成する<strong>GPUラック 80〜100台</strong>（NVL72/GB300クラスで1ラック120〜140 kWの場合、<strong>約43〜50台</strong>）の調達先・配分枠が確保できる見込みがあること。NVIDIAの配分競争、AMD等の代替調達、輸出規制の影響を考慮済みであること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>F-2</td><td><strong>冷却設備の調達</strong></td><td>CDU（Motivair、Schneider Electric等）、冷却塔、配管・バルブの<strong>納期 12〜18 か月</strong>を見込み、建屋工程と整合していること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>F-3</td><td><strong>変圧器・発電機の納期</strong></td><td>高圧変圧器・発電機の<strong>納期 18〜24 か月</strong>を見込み、受電・設置スケジュールに反映済みであること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= G. 運用・人材・SLA ================= -->
+<h2>G. 運用・人材・SLA（Operations）</h2>
+
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:35%;">確認項目</th><th style="width:25%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:20%;">根拠・メモ</th></tr>
+<tr><td>G-1</td><td><strong>液冷運用要員</strong></td><td>CDU・冷却水系統の<strong>日常点検・水質管理・漏水対応</strong>ができる技術者が<strong>オンサイトまたは近隣に確保</strong>できること。内製か委託かを明確にすること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>G-2</td><td><strong>GPU故障対応</strong></td><td>GPUノードの故障率（<strong>年間 2〜5%</strong> 程度）を前提に、<strong>スペアGPUサーバー 3〜5台</strong>を常備できるスペースと調達枠があること。オンサイト保守または<strong>4時間以内</strong>の交換体制があること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>G-3</td><td><strong>監視体制</strong></td><td>電力・温度・湿度・漏水・GPU状態を<strong>24時間365日</strong>監視できること。<strong>アラートから15分以内</strong>に一次対応できる体制があること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>G-4</td><td><strong>SLA・補償条件</strong></td><td>稼働率<strong>99.99% 以上</strong>（Tier III相当）のSLAがあること。電力品質・冷却停止時の<strong>補償範囲と除外事項</strong>を文書で確認済みであること<span style="font-size:8pt;">[reference:14]</span>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<!-- ================= 一頁速查表 ================= -->
+<h2 style="margin-top:40px;">📋 一頁速查表（現場・電話確認用）</h2>
+
+<div class="box">
+<strong>6 MW AIクラスタ用地 —— 最低限これだけは数字で確認する</strong>
+<ol style="line-height:2.0;">
+<li><strong>IT負荷：</strong>6,000 kW 以上を常時給電できるか。<strong>UPS出力 7,500 kW 以上</strong>の契約見込みはあるか。</li>
+<li><strong>受電時期：</strong>電力会社の<strong>文書回答</strong>で、<strong>3年以内</strong>に6 MWの受電が可能か。<strong>8〜10年待ち</strong>ではないか。</li>
+<li><strong>ラック密度：</strong><strong>60 kW/rack 以上</strong>（将来 100 kW/rack まで）に対応できるか。<strong>空冷専用なら不適合</strong>。</li>
+<li><strong>床荷重：</strong><strong>3,000 kg/m² 以上</strong>あるか。<strong>1,000 kg/m²</strong>なら高密度液冷ラックは載せられない可能性大。</li>
+<li><strong>冷却水：</strong><strong>37,000 L/min 以上</strong>（6 MW時）の冷却水を確保できるか。<strong>CDU 6,500 kW 以上</strong>（N+1）の設置スペースはあるか。</li>
+<li><strong>PUE：</strong>液冷設計で<strong>1.12〜1.25</strong>を年間平均で達成できる設計か。測定境界は明確か。</li>
+<li><strong>ネットワーク：</strong><strong>InfiniBand 400G または Ethernet 800G</strong> のファブリックを敷けるスペース・電力・冷却があるか。</li>
+<li><strong>GPU調達：</strong><strong>80〜100台</strong>（またはNVL72クラスで<strong>43〜50台</strong>）のラックを調達できる配分枠・リードタイムの見込みがあるか。</li>
+<li><strong>発電機・燃料：</strong><strong>72時間</strong>連続運転分の燃料（<strong>120,000〜150,000 L</strong>）を敷地内に備蓄できるか。</li>
+<li><strong>災害リスク：</strong>浸水深<strong>0.5 m 未満</strong>、活断層・液状化の重大リスクが無いか。</li>
+</ol>
+</div>
+
+<div class="warn" style="margin-top:25px;">
+<strong>最後に——「言質」ではなく「文書」で。</strong><br>
+受電容量・受電時期・PUE・SLA・冷却水確保について、<strong>口頭の「できます」は「未確認」として扱う</strong>。このシートの全必須項目が<strong>文書または実測値</strong>で裏付けられるまで、用地の適格判定は行わない。安い土地・好立地だけで判断すると、電力増設待ち・冷却不足・床荷重不足による<strong>数年単位の事業遅延</strong>という最大の落とし穴に入る。
+</div>
+
+<!-- ================= 6MW AI集群用地 核查清单 结束 ================= -->
 </div>
 
 <script>
