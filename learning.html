@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>内部资料 - 密码验证</title>
+<title>勉強使用 - パスワード検証</title>
 <style>
   body { font-family: "Yu Gothic", sans-serif; background: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
   #login-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
@@ -16,7 +16,7 @@
 
 <!-- 密码输入界面 -->
 <div id="login-box">
-  <h2>機密資料アクセス</h2>
+  <h2>内部勉強資料アクセス</h2>
   <p>パスワードを入力してください</p>
   <input type="password" id="pwd" placeholder="Password">
   <br>
@@ -581,6 +581,166 @@ IDC集群用地を探すときは、安い土地や立地だけではなく、<s
 </div>
 
 <!-- ================= 6MW AI集群用地 核查清单 结束 ================= -->
+<!-- ================= 6MW 空地集装箱 B300 核查清单 开始 ================= -->
+<h1 style="margin-top:50px;">実例編 2：6 MW 空地・コンテナ型 AIクラスタ<br><span style="font-size:12pt; color:#555;">（B300 前提）導入の実現性と現地チェックリスト</span></h1>
+
+<div class="warn">
+<strong>戦略的前提：</strong>クライアントの調達起点が<strong>「6 MW」</strong>であるため、規模は絶対に維持する。既存DCの借用手配は行わず、<strong>「空地にコンテナ型データセンター（AIDC）を搬入する」</strong>前提で、B300（GB300 NVL72）を導入する。<br><br>
+<strong>鉄則：</strong>「電気とネットワークが通れば、コンテナを置くだけで即稼働」は<strong>幻想</strong>である。工場出荷（コンテナ）は早くても、<strong>電力会社の審査・契約（約10ヶ月）と、建築・消防の法規制審査</strong>がボトルネックとなり、コンテナが現地で数ヶ月「置物」になるリスクをいかに制御するかが勝負となる。
+</div>
+
+<h2>■ 0. 規模の逆算：6 MW は B300 で何台になるか</h2>
+<table>
+<tr><th>項目</th><th>数値・条件</th><th>留意点</th></tr>
+<tr><td><strong>B300 サーバー単体消費電力</strong></td><td><strong>14.5〜15 kW（ピーク時 19.7 kW）</strong></td><td>NVIDIA DGX B300（10U）の場合。</td></tr>
+<tr><td><strong>B300 ラック（NVL72）消費電力</strong></td><td><strong>120〜140 kW / ラック</strong></td><td>1ラックに72基のGPUを集約。</td></tr>
+<tr><td><strong>6 MW 時のラック数</strong></td><td><strong>約 43〜50 ラック</strong></td><td>NVL72 クラスで構成する場合。ラック重量は1台<strong>1.5〜2トン</strong>に達する。</td></tr>
+</table>
+
+<h2 class="pagebreak">1. 空地・コンテナ特有の物理的・法的ハードル（必ず文書で確認）</h2>
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:30%;">確認項目</th><th style="width:35%;">要求水準・数値基準（6MW B300前提）</th><th style="width:15%;">判定</th><th style="width:15%;">根拠・メモ</th></tr>
+<tr><td>P-1</td><td><strong>用途地域</strong></td><td><strong>工業専用地域・工業地域・準工業地域</strong>であること（住居系不可）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>P-2</td><td><strong>地耐力・点荷重</strong></td><td>B300ラックは1台<strong>2トン</strong>に達するため、<strong>点荷重</strong>に対する地盤改良・基礎（独立基礎・杭基礎）の設計が可能であること。単なるアスファルト舗装では<strong>不適合</strong>。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>P-3</td><td><strong>建築基準法の適用</strong></td><td>コンテナ型DCが「建築物」とみなされる場合、<strong>建築確認申請</strong>が必要。自治体の見解を<strong>書面</strong>で確認すること（「置くだけ」で済むかはグレーゾーン）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>P-4</td><td><strong>消防法の適用</strong></td><td>固定設置の場合、<strong>防火対象物</strong>となり、延べ面積300㎡以上で消火器具設置義務。消防署の事前認定を取得すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>P-5</td><td><strong>敷地面積</strong></td><td>IT白空間<strong>2,000〜2,500㎡</strong>に加え、変圧器・発電機・冷却塔・消防通路を考慮し、<strong>敷地全体で 6,000〜10,000㎡</strong>を確保すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<h2>2. 電力：最大のボトルネックと時間の壁</h2>
+<div class="warn">
+<strong>日本の電力契約の法定・標準プロセス：</strong><br>
+① 事前相談（1ヶ月） → ② 接続検討申込（3ヶ月 / 22万円） → ③ 発電量調整・供給契約（6ヶ月）<br>
+<strong>合計：最低でも約10ヶ月。</strong> コンテナの工場生産（約100日）より<strong>圧倒的に長い</strong>。この10ヶ月を待てないなら、その用地は「不適」である。
+</div>
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:30%;">確認項目</th><th style="width:35%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:15%;">根拠・メモ</th></tr>
+<tr><td>E-1</td><td><strong>受電契約の見通し</strong></td><td>6,000 kWのIT負荷に対し、施設全体で<strong>7,500 kW以上</strong>の受電容量。特別高圧（60kV以上）または高圧（20kV）での受電契約が<strong>1年以内</strong>に完了する見込みがあるか。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-2</td><td><strong>高調波対策（B300特有）</strong></td><td>B300ラックの総高調波歪率は<strong>約4.8%</strong>。8ラック以上で変圧器を共有する場合、IEEE 519基準を満たすため<strong>12パルス整流器</strong>等の対策が必要。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-3</td><td><strong>UPS・発電機容量</strong></td><td>負荷変動（同期時の電力スパイク）に耐えるため、UPS・発電機は<strong>定常負荷の1.4倍</strong>の容量を確保すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<h2>3. ネットワーク：南北と東西の分離</h2>
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:30%;">確認項目</th><th style="width:35%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:15%;">根拠・メモ</th></tr>
+<tr><td>N-1</td><td><strong>100G 専用線 × 2本</strong></td><td>外部接続用として<strong>100 Gbps × 2本</strong>を確保。かつ、<strong>物理ルートが完全に分離</strong>されていること（同一管路なら冗長性ゼロ）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>N-2</td><td><strong>GPU 東西バックエンド</strong></td><td>100G専用線は南北用であり、B300間の通信には<strong>InfiniBand 400G または Ethernet 800G</strong> の専用ファブリックを別途構築すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<h2 class="pagebreak">4. 時間軸の罠：「コンテナが置物になる」リスクと妥協ライン</h2>
+<div class="box">
+<strong>スケジュールの現実：</strong><br>
+・コンテナ生産・現場設置：<strong>約 100日</strong><br>
+・電力会社の審査・契約・工事：<strong>約 10ヶ月〜</strong><br>
+<br>
+このままでは、コンテナが現地に到着しても、電気が来るまで<strong>数ヶ月間稼働できない（置物化する）</strong>。これを避けるための妥協ライン（並行作業）は以下の通り。
+</div>
+
+<table>
+<tr><th>フェーズ</th><th>アクション</th><th>期間目安</th><th>妥協・リスク管理</th></tr>
+<tr><td>Phase 1</td><td>電力会社への接続検討申込 ＆ 用地の基礎工事・造成</td><td>0〜3ヶ月</td><td>電気が通る前に、コンテナの土台（点荷重に耐える基礎）を作っておく。</td></tr>
+<tr><td>Phase 2</td><td>コンテナの工場生産・現地搬入</td><td>3〜6ヶ月</td><td>電力契約の完了を待たずに搬入。ただし「通電テスト」はできない。</td></tr>
+<tr><td>Phase 3</td><td>受電設備・変圧器の設置 ＆ 電力会社の系統接続</td><td>6〜10ヶ月</td><td>発電機（仮設含む）による<strong>自立運転テスト</strong>を先行して行うことで、コンテナの動作確認を進める。</td></tr>
+<tr><td>Phase 4</td><td>系統電力の受電開始 ＆ B300 の初期ラック点灯</td><td>10ヶ月以降</td><td>1年以内の稼働が必須なら、このスケジュールが<strong>ギリギリの妥協ライン</strong>。</td></tr>
+</table>
+
+<h2>5. 一頁速查表：空地・コンテナ・B300 用地確認</h2>
+
+<div class="check">
+<strong>現場で「Yes/No」を即答させるためのチェックリスト</strong>
+<ol style="line-height:2.0;">
+<li><strong>用途地域：</strong>工業専用/工業/準工業地域か？（住居系なら即アウト）</li>
+<li><strong>地盤：</strong>1ラック2トンの点荷重に耐える基礎（コンクリート/杭）を作れるか？</li>
+<li><strong>建築・消防：</strong>コンテナ設置に建築確認申請や消防署への届出が必要か、自治体・消防に<strong>書面</strong>で確認したか？</li>
+<li><strong>電力容量：</strong>IT負荷6MW＋冷却で<strong>合計7.5MW以上</strong>の受電契約の見込みがあるか？</li>
+<li><strong>電力タイムライン：</strong>接続検討申込から受電開始まで<strong>1年以内</strong>に収まるという回答を電力会社から得ているか？（10ヶ月が標準）</li>
+<li><strong>変圧器：</strong>B300特有の高調波（歪率4.8%）対策として12パルス整流器等を導入できるか？</li>
+<li><strong>ネットワーク（南北）：</strong>100G専用線×2本を、<strong>完全に別ルート</strong>で引けるか？</li>
+<li><strong>ネットワーク（東西）：</strong>GPU間通信用のInfiniBand 400G/Ethernet 800Gの専用ファブリックを構築するスペースと電力があるか？</li>
+<li><strong>コンテナ置物化リスク：</strong>電力を待つ間、コンテナを置く場所と、仮設発電機でのテスト計画はあるか？</li>
+<li><strong>スケジュール：</strong>「コンテナ生産100日」ではなく、「<strong>電力契約10ヶ月</strong>」をクリティカルパスとして計画を立てているか？</li>
+</ol>
+</div>
+
+<div class="warn">
+<strong>結論：</strong>空地へのコンテナ搬入は、イニシャルコストと「建物を建てる」手間を省けるが、<strong>「電気を引く時間」は省略できない</strong>。6MWという規模は、日本の電力インフラにとって「大規模需要家」であり、電力会社の系統接続審査を甘く見てはいけない。1年以内の稼働を目指すなら、<strong>今すぐにでも電力会社への接続検討申込を開始</strong>し、並行して自治体の建築・消防見解を文書で取り付けることが、唯一の現実的な道である。
+</div>
+<!-- ================= 6MW 空地集装箱 B300 核查清单 结束 ================= -->
+<!-- ================= 2MW 空地集装箱 B300 核查清单 开始 ================= -->
+<h1 style="margin-top:50px;">実例編 3：2 MW 空地・コンテナ型 AIクラスタ<br><span style="font-size:12pt; color:#555;">（B300 ミニマム構成：妥協ラインと現実的なチェックリスト）</span></h1>
+
+<div class="warn">
+<strong>戦略的前提：</strong>前段の6MWが「本格的な拠点」であるのに対し、2MWは<strong>「初期検証（PoC）または小規模推論拠点」</strong>として位置づけられる。同じ空地・コンテナ方案を採用するが、<strong>規模が1/3になることで「スケールメリット（コスト効率）が消失する」</strong>という最大の罠がある。2MWのIT負荷に対するインフラ投資（電力契約、用地造成、コンテナ搬入）は、結果的に6MWより「割高」になることを経営層・顧客と共有しておく必要がある。
+</div>
+
+<h2>■ 0. 規模の逆算：2 MW は B300 で何台になるか</h2>
+<table>
+<tr><th>項目</th><th>数値・条件</th><th>留意点</th></tr>
+<tr><td><strong>B300 ラック（NVL72）消費電力</strong></td><td><strong>120〜140 kW / ラック</strong></td><td>1ラックに72基のGPUを集約。</td></tr>
+<tr><td><strong>2 MW 時のラック数</strong></td><td><strong>約 14〜17 ラック</strong></td><td>6MWの半分以下の規模。ラック重量は1台<strong>1.5〜2トン</strong>。</td></tr>
+<tr><td><strong>施設全体の受電容量</strong></td><td><strong>約 2.2〜2.4 MW</strong></td><td>PUE 1.12〜1.2 で設計する場合。内訳：IT 2.0MW ＋ 冷却・損失 0.2〜0.4MW。</td></tr>
+</table>
+
+<h2>1. 用地・コンテナ・法規制（2MW特有の妥協点）</h2>
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:30%;">確認項目</th><th style="width:35%;">要求水準・数値基準（2MW 前提）</th><th style="width:15%;">判定</th><th style="width:15%;">根拠・メモ</th></tr>
+<tr><td>P-1</td><td><strong>敷地面積の余剰</strong></td><td>IT白空間は<strong>600〜800㎡</strong>で足りるが、コンテナ搬入・クレーン設置・発電機・冷却塔・消防通路を考慮し、<strong>敷地全体で 2,000〜3,000㎡</strong>は必要。あまりに狭いと施工不可。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>P-2</td><td><strong>建築基準法の適用（小規模）</strong></td><td>2MW規模のコンテナ（数個）であれば、面積要件により「建築確認申請が不要」と判断できる可能性がある。ただし、<strong>必ず自治体の書面回答</strong>を得ること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>P-3</td><td><strong>消防法の適用（面積要件）</strong></td><td>コンテナの延べ面積が<strong>300㎡未満</strong>であれば、消防用設備の設置義務が免除される可能性がある。ただし、リチウムイオン電池（UPS等）の設置場所による防火区画は必要。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<h2>2. 電力：2MWの落とし穴（電圧と時間）</h2>
+<div class="box">
+<strong>2MW特有の判断基準：</strong><br>
+2MWの受電は、一般的に<strong>高圧（6.6kV または 20kV）</strong>で受電する。6MWのような特別高圧（60kV以上）の巨大な変電所は不要になるが、<strong>電力会社の「接続検討申込（3ヶ月）→供給契約（6ヶ月）」という約10ヶ月の法定・標準プロセスは、規模が小さくても全く変わらない。</strong>
+</div>
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:30%;">確認項目</th><th style="width:35%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:15%;">根拠・メモ</th></tr>
+<tr><td>E-1</td><td><strong>受電契約の見通し</strong></td><td><strong>2,400 kW 以上</strong>の受電容量。高圧（6.6kV等）での受電可否。受電までの期間が<strong>1年以内</strong>か。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-2</td><td><strong>変圧器と受電設備のサイズ</strong></td><td><strong>1,000 kVA × 2台（N+1）</strong>または <strong>1,500 kVA × 2台</strong> クラスの変圧器を設置できるスペース。<br>※1,000kVAを超えると「需要場所」の扱いが変わり、保安規程の作成等が必要になるため、<strong>999kVA以下で分割する（2台以上設置）</strong>という妥協策も検討する。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>E-3</td><td><strong>発電機の妥協ライン</strong></td><td>2.4MW全体をカバーする発電機（N+1）は高額。<strong>IT負荷の2.0MWのみ</strong>をカバーする発電機（例：1,000kW × 2台）に留め、冷却設備は系統電力＋UPSで凌ぐという妥協が可能か。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<h2>3. 冷却とネットワーク</h2>
+<table>
+<tr><th style="width:5%;">No.</th><th style="width:30%;">確認項目</th><th style="width:35%;">要求水準・数値基準</th><th style="width:15%;">判定</th><th style="width:15%;">根拠・メモ</th></tr>
+<tr><td>C-1</td><td><strong>CDU・冷却水流量</strong></td><td>CDU容量は <strong>2,200 kW 以上（N+1）</strong>。冷却水流量は <strong>約 12,000〜13,000 L/min</strong> を確保できること（6MWの1/3）。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>C-2</td><td><strong>冷却塔の設置面積</strong></td><td>空冷式ドライクーラーまたは密閉型冷却塔を2〜3基（N+1）設置できる屋外スペース。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>N-1</td><td><strong>100G 専用線 × 2本の過剰性</strong></td><td><strong>100G × 2本（計200G）</strong>は、2MW（約15ラック）の規模に対して<strong>過剰スペック（オーバースペック）</strong>の可能性がある。コスト削減の妥協ラインとして、<strong>10G〜40G × 2本</strong>に落とすか、顧客が本当に100Gを要求しているか再確認すること。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+<tr><td>N-2</td><td><strong>物理ルートの分離</strong></td><td>帯域を落とす場合でも、<strong>異なるキャリア・異なる物理ルート</strong>での冗長化は必須。</td><td>□済<br>□未<br>□不適</td><td></td></tr>
+</table>
+
+<h2 class="pagebreak">4. 2MW 空地コンテナの「現実的な妥協ライン」</h2>
+<div class="warn">
+<strong>2MWで空地・コンテナを選ぶのは「本当に得策か？」</strong><br>
+約15ラック（2MW）のために、10ヶ月の電力契約、用地造成、コンテナ購入、消防・建築対応を行うのは、<strong>TCO（総保有コスト）が非常に高くつく</strong>。2MWという規模は、日本の市場においては「既存の高品位なDLC（液冷）対応コロケーション（例：IDCフロンティア等）を借りる」方が、<strong>時間（最短2ヶ月）もコストも圧倒的に有利</strong>になるケースが多い。<br>
+空地・コンテナを強行する場合は、以下の妥協ラインを設定する。
+</div>
+
+<table>
+<tr><th>妥協点</th><th>妥協の内容</th><th>リスクと対策</th></tr>
+<tr><td><strong>1. 発電機の容量削減</strong></td><td>施設全体（2.4MW）ではなく、IT負荷（2.0MW）のみをバックアップする発電機を設置。</td><td>冷却設備が停電するとサーバーがオーバーヒートするリスク。冷却側にも大容量UPSを設置するか、IT負荷を一時的に絞る運用でカバー。</td></tr>
+<tr><td><strong>2. 変圧器の分割設置</strong></td><td>「1,000kVA × 2台」ではなく、保安規程の作成を避けるため「500kVA × 4台」等に分割する。</td><td>設置面積が増えるが、法規制・事務コストが下がる。用地の余裕とトレードオフ。</td></tr>
+<tr><td><strong>3. ネットワーク帯域の見直し</strong></td><td>100G × 2本を、40G × 2本（または10G × 2本）に落とす。</td><td>コストは大幅に下がる。顧客の南北通信要件をヒアリングし、オーバースペックを排除する。</td></tr>
+<tr><td><strong>4. 建築・消防の簡素化</strong></td><td>コンテナの延べ面積を<strong>300㎡未満</strong>に抑え、消防設備義務を回避する設計にする。</td><td>設置するコンテナ数を工夫する（1つのコンテナに集約する等）。消防署の事前確認必須。</td></tr>
+</table>
+
+<h2>5. 一頁速查表：2MW 空地・コンテナ チェックリスト</h2>
+
+<div class="check">
+<strong>2MW（B300 約14〜17ラック）の現地確認・意思決定用</strong>
+<ol style="line-height:2.0;">
+<li><strong>戦略判断：</strong>「2MWのために空地を造成しコンテナを置く」ことのTCOは、既存DLCコロケーションを借りるより本当に安いか？（経営層の承認を得ているか）</li>
+<li><strong>受電容量：</strong>施設全体で<strong>2,400 kW 以上</strong>の受電契約が1年以内に可能か？</li>
+<li><strong>電力法規：</strong>変圧器容量が1,000kVAを超える場合、保安規程等の事務コストが発生することを理解しているか？（分割する妥協策は検討したか）</li>
+<li><strong>土地面積：</strong>白空間（600〜800㎡）だけでなく、発電機・冷却塔・クレーン作業を含めた<strong>2,000〜3,000㎡</strong>の用地はあるか？</li>
+<li><strong>建築・消防：</strong>コンテナ面積を<strong>300㎡未満</strong>に抑え、建築確認・消防設備義務を回避できる見込みはあるか？（自治体・消防の書面確認必須）</li>
+<li><strong>冷却：</strong>CDU容量<strong>2,200 kW以上</strong>、冷却水<strong>12,000 L/min</strong> を確保できるか？</li>
+<li><strong>ネットワーク：</strong>顧客が本当に<strong>100G × 2本</strong>を必要としているか？（10G/40Gへのスペックダウンは可能か）</li>
+<li><strong>コンテナ置物化リスク：</strong>電力契約（約10ヶ月）の間に、コンテナを置く場所と仮設電源の計画はあるか？</li>
+</ol>
+</div>
+<!-- ================= 2MW 空地集装箱 B300 核查清单 结束 ================= -->
 </div>
 
 <script>
