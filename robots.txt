@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://j-aga.jp/sitemap.xml
+Sitemap: https://www.hash-future.com/sitemap.xml
